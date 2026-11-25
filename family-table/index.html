@@ -10,6 +10,7 @@
 <meta property="og:description" content="Feed your family God's way in 40 days. Starts January 1.">
 <meta property="og:image" content="../assets/kayla/hero.webp">
 <script>document.documentElement.classList.add("js")</script>
+<script src="/assets/xplr/xplr-track.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -500,6 +501,22 @@ details p{margin:10px 0 0; color:var(--muted)}
     };
     tick(); setInterval(tick, 1000);
   }
+
+  /* ===== funnel tracking (same visit as the quiz when she comes from it) ===== */
+  const T = window.XPLRTrack ? XPLRTrack.init({ site: "kayla" }) : { step(){}, scan(){}, whenSeen(){} };
+  T.step("sales_land", { soil: soil || "none", tier: cur ? cur.id : "closed" }, true);
+  $("vsl").addEventListener("click", () => T.step("vsl_play", null, true));
+  T.whenSeen(document.querySelector(".taste"), "food_view");
+  T.whenSeen(document.querySelector(".proof"), "sales_proof_view");
+  T.whenSeen($("priceCard"), "price_view");
+  T.whenSeen(document.querySelector(".about"), "story_view");
+  T.whenSeen(document.querySelector("section.close"), "close_view");
+  $("priceCard").querySelectorAll("a.btn").forEach(a => a.setAttribute("data-track", "checkout_click"));
+  $("priceCard").querySelectorAll(".plan a").forEach(a => a.setAttribute("data-track", "plan_click"));
+  $("priceCard").querySelectorAll(".gift a").forEach(a => a.setAttribute("data-track", "gift_click"));
+  document.querySelectorAll('a[href="#join"]').forEach(a => { a.setAttribute("data-track", "join_scroll"); });
+  document.querySelectorAll("details").forEach((d,k) => d.addEventListener("toggle", () => d.open && T.step("faq_open", { k: "q" + (k+1) })));
+  T.scan(document);
 
   /* ===== motion: reveals, parallax, price count ===== */
   if (!still) {

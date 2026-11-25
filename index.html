@@ -277,6 +277,7 @@ h1 .line:nth-child(2)>span{transition-delay:.08s}
 }
 
 </style>
+<script src="/assets/xplr/xplr-track.js"></script>
 </head>
 <body>
 <main id="app"></main>
@@ -322,8 +323,12 @@ const Q = () => A.questions.map((q,i) => Object.assign({ i }, q)).filter(q => !q
 const N = () => Q().length;           // steps: -1 intro, 0..N-1 questions, N gate, N+1 results
 const countEstimate = () => { const first = A.questions.find(q => q.type === "branch"); const b = state.branch || (first && first.opts[0][1]); return A.questions.filter(q => !q.branch || q.branch === b).length; };
 
+/* ---------- funnel tracking (XPLR base layer: anonymous step names only) ---------- */
+const T = window.XPLRTrack ? XPLRTrack.init({ site: C.coach.slug, repeat: ["guide_click","cta_click"] }) : { step(){}, scan(){}, whenSeen(){}, watchVideo(){} };
+T.step("land");
 function render(){
   window.scrollTo(0,0);
+  if (state.step > 0 && state.step <= N()) T.step("q", { n: state.step });
   if (state.step < 0) return renderIntro();
   if (state.step < N()) return renderQuestion();
   if (state.step === N()) return renderGate();
@@ -407,7 +412,7 @@ function renderIntro(){
     ${others.length ? `<p class="switch">${others.map(o => `<a href="/${o.id}">Or take ${esc(o.title)}</a>`).join(" ")}</p>` : ""}
   </div></div>`;
   motion();
-  document.getElementById("start").onclick = () => { state.step = resume ? firstUnanswered() : 0; if(!resume){ state.answers={}; state.submitted=false; state.branch=null; state.order=null; } save(); render(); };
+  document.getElementById("start").onclick = () => { T.step("start", null, true); state.step = resume ? firstUnanswered() : 0; if(!resume){ state.answers={}; state.submitted=false; state.branch=null; state.order=null; } save(); render(); };
   const r = document.getElementById("restart");
   if (r) r.onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
 }
@@ -545,6 +550,7 @@ function readableAnswers(){
 /* ---------- gate ---------- */
 function renderGate(){
   const G = C.gate, L = lead();
+  T.step("gate_view");
   app.innerHTML = `
   <div class="top"><div class="wrap"><div class="topbar"><button class="back" id="back">\u2190 Back</button><span>Almost there</span></div>${ART.furrow ? furrowHtml(N(), N()) : `<div class="track"><div class="fill" style="width:98%"></div></div>`}</div></div>
   <div class="wrap gate">
@@ -581,6 +587,7 @@ function renderGate(){
       wrap.classList.toggle("bad", bad); if (bad) ok = false; data[f.key] = v;
     });
     if (!ok) return;
+    T.step("gate_submit", null, true);
     saveLead(data);
     const btn = document.getElementById("go"); btn.disabled = true; btn.textContent = "One moment";
     await submit(data);
@@ -627,7 +634,7 @@ function fileUrl(u){
 function embed(url){
   if (!url) return "";
   let m;
-  if ((m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{6,})/))) return `https://www.youtube.com/embed/${m[1]}?rel=0`;
+  if ((m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{6,})/))) return `https://www.youtube.com/embed/${m[1]}?rel=0&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`;
   if ((m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return `https://player.vimeo.com/video/${m[1]}`;
   return url;
 }
@@ -746,6 +753,16 @@ function renderStepResults(s, P, R, L){
     </div>
   </div></div>`;
   startScene(); motion();
+  T.step("results_view", { r: s.pattern, src: source().src || "" }, true);
+  const vf = app.querySelector(".video iframe"); if (vf) T.watchVideo(vf, "video_play");
+  [["#copy","copy_result"],["#again","retake"]].forEach(([sel,e]) => { const b = app.querySelector(sel); if (b) b.setAttribute("data-track", e); });
+  app.querySelectorAll(".pdf a.btn").forEach(a => a.setAttribute("data-track", "guide_click"));
+  app.querySelectorAll(".cta > .wrap > a.btn").forEach(a => a.setAttribute("data-track", "cta_click"));
+  app.querySelectorAll(".notready a").forEach(a => a.setAttribute("data-track", "notready_click"));
+  app.querySelectorAll(".more a").forEach((a,k) => { a.setAttribute("data-track", "more_click"); a.setAttribute("data-track-k", k ? "bundle" : "ebook"); });
+  const pr = app.querySelector(".proof"); if (pr) pr.setAttribute("data-track-seen", "proof_view");
+  const kn = app.querySelector(".knote"); if (kn) kn.setAttribute("data-track-seen", "note_view");
+  T.scan(app);
   document.getElementById("again").onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
   document.getElementById("copy").onclick = async () => {
     const text = `My ${A.title} result: ${P.headline || P.name}\n\n${R.weekLabel || "Do this week"}: ${P.week}`;

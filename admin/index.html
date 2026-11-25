@@ -12,6 +12,7 @@
 :root{
   --bg:#FAF8F4; --surface:#FFFEFB; --ink:#3D2E1E; --muted:#76664F; --rule:#E7DECF; --gold:#8A6B37; --gold-lt:#C9A96E; --night:#3D2E1E; --night-ink:#FAF8F4; --sand:#F3EDE3; --rust:#9C5B3B; --err:#A33B2E; --ok:#4F7A4A;
   --serif:"Playfair Display", Georgia, serif; --sans:"Jost", "Helvetica Neue", Arial, sans-serif;
+  --panel:var(--surface); --hairline:var(--rule); --steel:var(--muted); --verdant:var(--gold); --porcelain:var(--bg); --display:var(--serif);
   color-scheme: light; box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0E0D0B; --surface:#1A1814; --ink:#F2EBDD; --muted:#A79C88; --rule:#3A342B; --gold:#D8B66E; --sand:#24211C; --err:#E07A6A; --ok:#8FBB88; color-scheme: dark; } }
@@ -95,17 +96,20 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .todo li{padding:8px 0; border-top:1px solid var(--rule); font-size:15px}
 .toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:var(--ink); color:var(--bg); padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:30}
 .toast.on{opacity:1}
+.tabs{display:flex;gap:6px;margin:18px 0 4px}.tab{border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:20px;padding:8px 18px;font:inherit;cursor:pointer}.tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fh{font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px;margin:26px 0 10px}
 </style>
 </head>
 <body>
 <main id="app"></main>
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 <div class="toast" id="toast" role="status"></div>
+<script src="/assets/xplr/xplr-funnel.js"></script>
 <script>
 const app = document.getElementById("app");
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const SESSION = "ica-admin-session";
-let session = null, data = { coach:null, leads:[] }, view = { q:"", assessment:"", pattern:"" };
+let session = null, data = { coach:null, leads:[] }, view = { q:"", assessment:"", pattern:"", tab:"leads" };
 try { session = JSON.parse(sessionStorage.getItem(SESSION) || "null"); } catch(e){}
 const seenKey = () => `ica-admin-seen-${(session && session.coach) || "site"}`;
 const lastSeen = () => { try { return localStorage.getItem(seenKey()) || ""; } catch(e){ return ""; } };
@@ -138,6 +142,61 @@ async function api(body){
   } catch(e){ return { ok:false, error:"Couldn\u2019t reach the server. Check your connection and try again." }; }
 }
 
+/* ---------- Funnel tab (XPLR funnel tracking base layer) ---------- */
+function mountFunnel(){
+  const el = document.getElementById("tab-funnel"); if (!el || !window.XPLRFunnel) return;
+  el.innerHTML = `<h2 class="fh">The quiz</h2><div id="f-quiz"></div><h2 class="fh">The 40-Day Family Table sales page</h2><div id="f-sales"></div>`;
+  const SOIL = { path:"The path", rocky:"Rocky ground", thorns:"Thorns", good:"Good soil" };
+  const soilName = v => SOIL[v] || (v === "none" ? "Came straight to the page" : v);
+  XPLRFunnel.mount(document.getElementById("f-quiz"), {
+    pin: () => session.pin,
+    steps: [
+      { e:"land", label:"Opened the quiz", group:"Arrive" },
+      { e:"start", label:"Pressed Start" },
+      { q:1, label:"Answered Q1", group:"Questions" }, { q:2, label:"Answered Q2" }, { q:3, label:"Answered Q3" },
+      { q:4, label:"Answered Q4" }, { q:5, label:"Answered Q5" }, { q:6, label:"Answered Q6" }, { q:7, label:"Answered Q7" },
+      { e:"gate_view", label:"Saw the sign-up form", group:"Details" },
+      { e:"gate_submit", label:"Left their details" },
+      { e:"results_view", label:"Saw their result", group:"Result" },
+      { e:"cta_click", label:"Clicked through to the 40-Day Family Table" }
+    ],
+    tiles: [ { label:"Quiz visits", step:"land" }, { label:"Started", step:"start", of:"land" },
+             { label:"Leads", step:"gate_submit", of:"land" }, { label:"To the sales page", step:"cta_click", of:"results_view" } ],
+    engagement: { title:"On the results page", base:"results_view", items:[
+      ["Downloaded the free guide","guide_click"], ["Played the video","video_play"], ["Saw the testimonials","proof_view"],
+      ["Read Kayla\u2019s note","note_view"], ["Clicked to the Family Table","cta_click"], ["Chose the Academy trial","notready_click"],
+      ["Clicked the ebook or bundle","more_click"], ["Copied their result","copy_result"], ["Retook the quiz","retake"] ] },
+    breakdowns: [
+      { title:"By source", key:"src", cols:[["Visits","land"],["Leads","gate_submit"],["To sales page","cta_click"]], rate:["Lead rate","gate_submit","land"] },
+      { title:"By soil", key:"p.r", label: soilName, cols:[["Results","results_view"],["Guide","guide_click"],["To sales page","cta_click"]], rate:["Click-through","cta_click","results_view"] }
+    ],
+    tops: [ { title:"Own-pace links clicked", event:"more_click" } ]
+  });
+  XPLRFunnel.mount(document.getElementById("f-sales"), {
+    pin: () => session.pin,
+    steps: [
+      { e:"sales_land", label:"Opened the sales page", group:"Arrive" },
+      { e:"vsl_play", label:"Pressed play on the video", group:"Watch" },
+      { e:"food_view", label:"Scrolled to the food" },
+      { e:"sales_proof_view", label:"Scrolled to the testimonials" },
+      { e:"price_view", label:"Saw the price", group:"Decide" },
+      { e:"checkout_click", label:"Clicked checkout" }
+    ],
+    tiles: [ { label:"Sales page visits", step:"sales_land" }, { label:"Watched", step:"vsl_play", of:"sales_land" },
+             { label:"Saw the price", step:"price_view", of:"sales_land" }, { label:"Clicked checkout", step:"checkout_click", of:"sales_land" } ],
+    engagement: { title:"Also on the sales page", base:"sales_land", items:[
+      ["Clicked a payment plan","plan_click"], ["Opened a question","faq_open"], ["Read Kayla\u2019s story","story_view"],
+      ["Reached the close","close_view"], ["Used the gift note","gift_click"] ] },
+    breakdowns: [
+      { title:"By quiz result", key:"p.soil", label: soilName, cols:[["Visits","sales_land"],["Saw price","price_view"],["Checkout","checkout_click"]], rate:["Checkout rate","checkout_click","sales_land"] },
+      { title:"By source", key:"src", cols:[["Visits","sales_land"],["Checkout","checkout_click"]], rate:["Checkout rate","checkout_click","sales_land"] },
+      { title:"By price step", key:"p.tier", label: v => ({ bf:"Black Friday week", early:"Early family pricing", holiday:"Holiday pricing", boxing:"Boxing Day", last:"Final days", closed:"After doors closed" })[v] || v, cols:[["Visits","sales_land"],["Checkout","checkout_click"]], rate:["Checkout rate","checkout_click","sales_land"] }
+    ],
+    tops: [ { title:"Most opened questions", event:"faq_open" } ],
+    note: "Checkout clicks are people who pressed the button. Paid sales are in Stripe, where each payment carries the same source and soil."
+  });
+}
+
 const fmt = iso => { const d = new Date(iso); return d.toLocaleDateString(undefined, { month:"short", day:"numeric" }) + " " + d.toLocaleTimeString(undefined, { hour:"numeric", minute:"2-digit" }); };
 const wa = n => "https://wa.me/" + String(n||"").replace(/\D/g, "");
 const filtered = () => data.leads.filter(l =>
@@ -153,10 +212,14 @@ function renderApp(){
   const patterns = [...new Set(data.leads.map(l => l.pattern_label).filter(Boolean))].sort();
   app.innerHTML = `
   <div class="bar"><div class="wrap">
-    <div><h1>${esc(data.coach.name)}</h1><small>Leads from your assessments</small></div>
+    <div><h1>${esc(data.coach.name)}</h1><small>${view.tab === "funnel" ? "Where visitors drop off" : "Leads from your assessments"}</small></div>
     <div style="display:flex;gap:8px"><button class="btn ghost sm" id="refresh">Refresh</button><button class="btn ghost sm" id="out">Sign out</button></div>
   </div></div>
   <div class="wrap">
+    <div class="tabs" role="tablist"><button class="tab ${view.tab !== "funnel" ? "on" : ""}" data-tab="leads">Leads</button><button class="tab ${view.tab === "funnel" ? "on" : ""}" data-tab="funnel">Funnel</button></div>
+  </div>
+  <div class="wrap" id="tab-funnel" ${view.tab === "funnel" ? "" : "hidden"}></div>
+  <div class="wrap" id="tab-leads" ${view.tab === "funnel" ? "hidden" : ""}>
     <div class="stats">
       <div class="stat"><b>${data.leads.length}</b><span>Total leads</span></div>
       <div class="stat"><b>${data.leads.filter(l => new Date(l.created_at).getTime() > week).length}</b><span>Last 7 days</span></div>
@@ -171,6 +234,8 @@ function renderApp(){
     <div class="list" id="list"></div>
   </div>`;
   renderList(seen);
+  app.querySelectorAll(".tab").forEach(b => b.onclick = () => { view.tab = b.dataset.tab; renderApp(); });
+  if (view.tab === "funnel") mountFunnel();
   document.getElementById("q").oninput = e => { view.q = e.target.value; renderList(seen); };
   document.getElementById("fa").onchange = e => { view.assessment = e.target.value; renderList(seen); };
   document.getElementById("fp").onchange = e => { view.pattern = e.target.value; renderList(seen); };
