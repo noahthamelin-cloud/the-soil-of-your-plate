@@ -43,7 +43,7 @@ exports.handler = async (event) => {
   };
 
   try {
-    const store = getStore({ name: "leads", consistency: "strong" });
+    const store = getStore("leads");
     await store.setJSON(id, row);
   } catch (e) { return json(502, { error: "Could not save the lead", detail: String(e.message || e) }); }
   return json(200, { ok: true, id });
