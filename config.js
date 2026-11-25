@@ -15,21 +15,26 @@
 const LINKS = {
   academy: "https://www.skool.com/understanding-the-bible-8591/about",
   ebook: "https://kayla-bundy.vercel.app/eat-like-the-bible",
-  familyTable: "PASTE_FAMILY_TABLE_LINK",          // Kayla to send. Until then the button shows "Link coming soon".
-  shop: "https://kayla-bundy.vercel.app/shop"
+  familyTable: "/family-table/",                   // the sales page on this site (VSL + checkout). Soil and source are passed along.
+  shop: "https://kayla-bundy.vercel.app/shop",
+  bundle: "https://buy.stripe.com/7sY7sK59TfhP2py5oO9AA04"   // Masterclass Bundle, $147 (ebook included)
 };
 const GUIDE = "assets/pdfs/Biblical-Eating-Foundation-Guide.pdf";
 const ART = "assets/soil/";   // parable illustrations (WebP), see README
 
 const OFFER = {
+  tablePath: { title: "The 40-Day Family Table", button: "See the 40-Day Family Table", url: LINKS.familyTable,
+    body: "If food has never felt like part of your faith, this is the gentlest place to start. Forty days with the plan handed to you and your family at the table. Starts January 1." },
+  tableRocky: { title: "The 40-Day Family Table", button: "See the 40-Day Family Table", url: LINKS.familyTable,
+    body: "You" + "\u2019" + "re already doing most of it. The 40-Day Family Table gives you the roots: a rhythm, Scripture that grounds you, and women walking with you. Starts January 1." },
   ebook: { title: "Eat Like the Bible", button: "Get the ebook, $27", url: LINKS.ebook,
     body: "Know exactly what to put on your plate and why God made it. The perfect place to begin. $27, instant download." },
   academyTrial: { title: "The Biblical Eating Academy", button: "Start your 7-day free trial", url: LINKS.academy,
     body: "Grow deeper roots alongside women walking the same road, inside my private community on Skool. Free for 7 days, then $50 a month or $550 a year." },
   tableThorns: { title: "The 40-Day Family Table", button: "Join the 40-Day Family Table", url: LINKS.familyTable,
-    body: "Forty days with the plan, the grocery lists and the weekly prep handed to you, and your family at the table. Founding price $497, or 3 payments of $249." },
+    body: "Forty days with the plan, the grocery lists and the weekly prep handed to you, and your family at the table. Starts January 1. Early families get launch pricing." },
   tableGood: { title: "The 40-Day Family Table", button: "Join the 40-Day Family Table", url: LINKS.familyTable,
-    body: "Forty days to turn your rhythm into your family’s rhythm, with meals your husband and kids will actually eat. Founding price $497, or 3 payments of $249." }
+    body: "Forty days to turn your rhythm into your family’s rhythm, with meals your husband and kids will actually eat. Starts January 1. Early families get launch pricing." }
 };
 
 window.ICA = {
@@ -45,6 +50,20 @@ window.ICA = {
   /* Parable art: sower's hand on the intro, a furrow that fills with seeds as the progress bar, the planted seed on the form. */
   art: { hand: ART + "sower-hand.webp", seed: ART + "seed.webp", furrow: ART + "furrow.webp", planted: ART + "planted.webp" },
 
+  /* Kayla's photos through the quiz. [file, focus] where focus is the CSS object-position (which part of the photo stays in frame).
+     Set any one to null to hide it. Files live in assets/kayla/ as q-NN-800.webp and q-NN-1200.webp. */
+  photos: {
+    intro:     ["13", "40% 16%"],
+    questions: [["01","50% 42%"], ["06","50% 34%"], ["15","50% 32%"], ["09","50% 34%"], ["19","50% 34%"], ["04","50% 32%"], ["21","50% 55%"]],
+    gate:      { photo: ["16","50% 30%"], line: "I\u2019ll send your free guide straight to you." },
+    results:   ["10","50% 32%"],
+    /* Social proof shown on the results page before Kayla's note (same quotes as the sales page). */
+    proof: {"kicker": "From women already eating this way", "heading": "Their families are at the table", "row1": [["Having a plan set and laid out for me is what I knew I needed.", "Member"], ["My husband LOVED the shakshuka and said to add it to the rotation.", "Member"], ["Day 3 dinner. My husband also had the soup and loved it.", "Member"], ["I did the gut board today and my younger son wanted to eat most of it.", "Member"], ["Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.", "Christina"]], "row2": [["It has been truly life-changing and in a way I never anticipated.", "Member"], ["I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.", "Courtney"], ["Just starting to see food, actual food, as such a gift.", "Christina"], ["It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.", "Member"], ["I don’t need all the bad foods just to celebrate something.", "Member"], ["I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.", "Member"]], "note": "Real words from real women in Kayla’s community, shared with permission. Results vary.", "ribbon": ["f-dragon2", "f-redrice", "f-raspberries", "f-board2", "f-lentil", "f-beet", "f-berries", "f-dragon"], "ribbonCap": "Every colour He made"},
+    note:      { photo: ["12","45% 35%"], kicker: "A note from Kayla",
+                 body: "Wherever your plate is today, God isn\u2019t done with your table. I built the 40-Day Family Table so you don\u2019t have to figure this out alone. I\u2019d love to have your family with us in January.",
+                 sign: "Kayla" }
+  },
+
   defaultAssessment: "soil",
   linkBetweenAssessments: false,
 
@@ -55,6 +74,8 @@ window.ICA = {
     fields: [
       { key: "name",      label: "First name", type: "text",  required: true,  autocomplete: "given-name" },
       { key: "email",     label: "Email",      type: "email", required: true,  autocomplete: "email" },
+      { key: "whatsapp",  label: "WhatsApp number", type: "tel", required: false, autocomplete: "tel",
+        hint: "So I can personally send you your next step." },
       { key: "instagram", label: "Instagram handle", type: "text", required: false, autocomplete: "off", prefix: "@",
         hint: "So we can find you if you message me on Instagram." }
     ],
@@ -63,7 +84,12 @@ window.ICA = {
     note: "Your answers go to Kayla and her team only. Nothing is shared or sold."
   },
 
-  offers: { heading: "", items: [] },   // each soil carries its own button (see patterns below)
+  offers: { heading: "", items: [] },
+
+  /* Shown under every result's buttons (Kayla, Nov 20): her own-pace products beside the community. Skipped when a result already uses that link. */
+  moreLinks: { label: "Prefer to go at your own pace?", items: [
+    { text: "Eat Like the Bible ebook, $27", url: LINKS.ebook },
+    { text: "The Masterclass Bundle, $147 (ebook included)", url: LINKS.bundle } ] },   // each soil carries its own button (see patterns below)
 
   assessments: {
     soil: {
@@ -92,21 +118,21 @@ window.ICA = {
           action: "Journal the Three Questions Worth Sitting With (page 2), then read Section Two.",
           scene: { base: ART + "path-base.webp", layers: [{ src: ART + "path-birds.webp", cls: "birds" }],
             verse: "Some seeds fell by the way side, and the fowls came and devoured them up.", ref: "Matthew 13:4" },
-          cta: OFFER.ebook,
+          cta: OFFER.tablePath,
           notReady: { text: "Not ready? Peek inside with a 7-day free trial in the Academy", url: LINKS.academy },
           video: "https://youtu.be/XfpBCy4Pxes", pdf: GUIDE },
 
         rocky: { name: "Rocky ground", headline: "Your plate is on rocky ground.",
           means: "You’re doing almost everything right, which is exactly why it’s so frustrating. You’ve got a great start, but no deep roots, so one hard week knocks you back. The missing 10 percent is where the change lives.",
           stage: "Renew and Tend",
-          next: "Grow a deeper why, and stop doing this alone. Inside the Academy you’ll find a rhythm, Scripture that roots you, and women who keep you going.",
+          next: "Grow a deeper why, and stop doing this alone. The 40-Day Family Table gives you a rhythm, Scripture that roots you, and women who keep you going.",
           guideStart: "Section Five, “What the Modern Diet Got Wrong” (pages 6 to 7)",
           week: "Read the ingredient list on everything you buy. More than 5 ingredients, put it back. Then swap out whatever you find using Section Six.",
           action: "Read every ingredient list this week. More than 5 ingredients goes back. Swap using Section Six.",
           scene: { base: ART + "rocky-base.webp", layers: [{ src: ART + "rocky-sprout.webp", cls: "sprout" }, { src: ART + "rocky-wilted.webp", cls: "wilted" }],
             verse: "Because they had no root, they withered away.", ref: "Matthew 13:6" },
-          cta: OFFER.academyTrial,
-          notReady: { text: "Get the Eat Like the Bible ebook ($27) and start on your own", url: LINKS.ebook },
+          cta: OFFER.tableRocky,
+          notReady: { text: "Not ready? Start a 7-day free trial in the Academy", url: LINKS.academy },
           video: "https://youtu.be/XfpBCy4Pxes", pdf: GUIDE },
 
         thorns: { name: "Thorns", headline: "Your plate is among the thorns.",

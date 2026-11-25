@@ -128,10 +128,36 @@ section.block .k{color:var(--gold); font-size:12px; letter-spacing:.14em; text-t
 .pdf b{font-family:var(--serif); font-style:italic; font-size:21px; font-weight:500; display:block; line-height:1.3}
 .pdf p{margin:4px 0 14px; color:var(--muted); font-size:15px}
 .notready{margin:16px 0 0; font-size:15px} .notready a{color:var(--night-muted); text-decoration:underline; text-underline-offset:3px}
+.more{margin:10px 0 0; font-size:13.5px; color:var(--night-muted)} .more a{color:var(--gold-lt); text-underline-offset:3px}
 .soon{font-size:13px; color:var(--night-muted); margin:8px 0 0}
 .btn[disabled]{opacity:.55; cursor:default}
 .care{background:var(--sand); border-radius:14px; padding:18px 20px; font-size:15px; color:var(--muted); margin:30px 0 0}
 .cta{margin-top:42px; padding:40px 0 48px}
+.kban{position:relative;height:42vh;min-height:280px;max-height:440px;overflow:hidden}
+.kban .kph{position:absolute;inset:0;overflow:hidden;border-radius:inherit}.kban .kph img{width:100%;height:100%;object-fit:cover;animation:kdrift 16s ease-in-out infinite alternate}
+.kban:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(61,46,30,0) 45%,var(--night))}
+@keyframes kdrift{from{transform:scale(1.03)}to{transform:scale(1.1) translate(-6px,-4px)}}
+.intro .wrap{justify-content:flex-start}
+.intro .kban + .wrap{margin-top:-70px;position:relative;padding-top:0}
+.kq{margin:16px 0 0;height:170px;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(61,46,30,.14)}
+.kq img{width:100%;height:100%;object-fit:cover;animation:kfade .6s ease}
+@keyframes kfade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+.kgate{position:relative;margin:4px 0 22px;border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 16px 40px rgba(61,46,30,.16)}
+.kgate img{width:100%;height:100%;object-fit:cover}
+.kgate:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,14,.7),rgba(30,22,14,0) 55%)}
+.kgate figcaption{position:absolute;z-index:2;left:18px;right:18px;bottom:14px;color:#fff;font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.3}
+.kres{margin:8px 0 6px;border-radius:20px;overflow:hidden;aspect-ratio:4/5;max-height:520px;box-shadow:0 16px 40px rgba(61,46,30,.14)}
+.kres img{width:100%;height:100%;object-fit:cover}
+.knote{position:relative;margin:-40px -22px 34px;min-height:620px;overflow:hidden;display:flex;align-items:flex-end}
+.knote .kn-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kdrift 18s ease-in-out infinite alternate}
+.knote:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--night) 6%,rgba(61,46,30,.88) 38%,rgba(61,46,30,.15) 68%,rgba(61,46,30,.35))}
+.knote figcaption{position:relative;z-index:2;padding:0 26px 30px}
+.knote .k{margin:0 0 10px;color:var(--gold-lt)}
+.knote .kb{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.4;color:var(--night-ink);margin:0 0 14px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.knote .ks{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--gold-lt);margin:0}
+.knote .ks:before{content:"";display:block;width:44px;height:1px;background:var(--gold-lt);margin:0 0 12px}
+@media (min-width:720px){.knote{margin:-40px 0 34px;border-radius:24px;min-height:680px}}
+@media (prefers-reduced-motion:reduce){.kban .kph img,.kq img,.knote .kn-img{animation:none}}
 .cta h3{font-family:var(--serif); font-style:italic; font-weight:400; font-size:32px; line-height:1.1; margin:0 0 12px}
 .cta p{font-weight:300; color:var(--night-muted); margin:0 0 24px}
 .cta .step{border-top:1px solid var(--night-rule); padding:20px 0}
@@ -142,6 +168,68 @@ section.block .k{color:var(--gold); font-size:12px; letter-spacing:.14em; text-t
 .toast{position:fixed; left:50%; bottom:calc(24px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); background:var(--ink); color:var(--bg); padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:20}
 .toast.on{opacity:1}
 @media (prefers-reduced-motion: reduce){ .fill,.bar i{transition:none} }
+/*KED*/
+/* ===== Sales page design language (cream, editorial, gentle motion) ===== */
+.intro.ed{background:var(--bg); color:var(--ink); min-height:auto}
+.intro.ed .kban{height:27vh; min-height:190px; max-height:320px; margin:14px 16px 0; border-radius:22px; box-shadow:0 22px 50px rgba(61,46,30,.18)}
+@media (min-width:720px){.intro.ed .kban{max-width:680px; margin:24px auto 0}}
+.intro.ed .kban:after{display:none}
+.intro.ed .wrap{margin-top:0; padding-top:24px; justify-content:flex-start}
+.intro.ed .k{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:500; margin:0 0 8px}
+.intro.ed .k,.intro.ed h1,.intro.ed .sub,.intro.ed .lede,.intro.ed .note{text-align:center; margin-left:auto; margin-right:auto}
+.intro.ed .rule{width:64px; margin:4px auto 20px; transform-origin:center}
+.intro.ed h1{font-size:clamp(36px,10vw,58px); line-height:1.04; margin-bottom:10px}
+.intro.ed .sub{margin-bottom:14px}
+.intro.ed .lede{font-size:15px; margin-bottom:18px}
+.intro.ed .meta{margin-bottom:18px}
+.intro.ed .sub{color:var(--gold)}
+.intro.ed .lede,.intro.ed .note,.intro.ed .meta{color:var(--muted)}
+.intro.ed .meta{justify-content:center}
+.intro.ed .btn{margin:0 auto; max-width:340px}
+.rule{height:1px; background:var(--gold-lt); margin:6px 0 22px; transform-origin:left}
+.line{display:block; overflow:hidden; padding-bottom:.06em}.line>span{display:block}
+.res-hero.ed{background:var(--bg); color:var(--ink)}
+.res-hero.ed .k{color:var(--gold); font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:500}
+.res-hero.ed p{color:var(--muted)}
+.res-hero.ed .hello{color:var(--muted)}
+.res-hero.ed .verse{color:var(--muted)}.res-hero.ed .verse b{color:var(--gold)}
+.res-hero.ed .foot{border-color:var(--rule)}
+.res-hero.ed .scene{box-shadow:0 22px 50px rgba(61,46,30,.22)}
+.proof{background:var(--sand); padding:44px 0 40px; margin-top:30px}
+.proof h3{font-family:var(--serif); font-style:italic; font-weight:400; font-size:30px; line-height:1.15; margin:0 0 4px}
+.proof .k{color:var(--gold); font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:500; margin:0 0 6px}
+.proof .marq{overflow:hidden; padding:8px 0; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.proof .ptrack{display:flex; gap:14px; width:max-content; animation:mq 70s linear infinite}
+.proof .ptrack.r{animation-direction:reverse; animation-duration:80s}
+.proof .marq:hover .ptrack{animation-play-state:paused}
+.mc{margin:0; width:270px; background:var(--surface); border:1px solid var(--rule); border-radius:20px; padding:18px; box-shadow:0 10px 26px rgba(61,46,30,.08); display:flex; flex-direction:column; justify-content:space-between}
+.mc blockquote{margin:0; font-family:var(--serif); font-style:italic; font-size:18px; line-height:1.4}
+.mc figcaption{margin-top:12px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold)}
+.pnote{text-align:center; font-size:13px; color:var(--muted); margin:10px 0 0}
+.rib{overflow:hidden; margin-top:24px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.rtrack{display:flex; gap:14px; width:max-content; animation:mq 50s linear infinite}
+.rtrack img{width:96px; height:96px; border-radius:50%; object-fit:cover; border:3px solid #fff; box-shadow:0 6px 16px rgba(61,46,30,.18)}
+.ribcap{text-align:center; font-size:12px; color:var(--muted); letter-spacing:.16em; text-transform:uppercase; margin:12px 0 0}
+@keyframes mq{to{transform:translateX(-50%)}}
+.proof + .cta{margin-top:0}
+.kres,.kq,.kgate{box-shadow:0 22px 50px rgba(61,46,30,.16)}
+/* reveals */
+.rv{opacity:0; transform:translateY(18px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1; transform:none}
+h1 .line>span{transform:translateY(105%); transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+h1.in .line>span{transform:none}
+h1 .line:nth-child(2)>span{transition-delay:.08s}
+.rule{transform:scaleX(0); transition:transform 1.2s cubic-bezier(.65,0,.2,1) .2s}.rule.in{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){ .rv,h1 .line>span,.rule{opacity:1!important; transform:none!important; transition:none!important} .proof .ptrack,.rtrack{animation:none} .proof .marq,.rib{overflow-x:auto} }
+.intro.ed h1,.intro.ed .sub,.intro.ed .lede{animation:none}
+.intro.ed .kban + .wrap{margin-top:0; padding-top:24px}
+.intro.ed .kban{position:relative}
+.intro .sower.under{width:100px; margin:-4px auto 30px}
+.intro .sower.under .fall{animation-name:seedFallS; width:9px}
+.intro .sower.under .fall.f2{width:8px}.intro .sower.under .fall.f3{width:7px}
+@keyframes seedFallS{0%{opacity:0; transform:translateY(0) rotate(0)} 15%{opacity:1} 70%{opacity:1} 100%{opacity:0; transform:translateY(46px) rotate(70deg)}}
+.intro.ed .kban + .wrap{padding-top:12px}
+/*KEDEND*/
 /* ---------- Parable art and motion (optional: only used when config sets C.art / pattern.scene) ---------- */
 .sower{position:relative; width:min(230px,58vw); margin:0 auto 10px; aspect-ratio:1000/1050}
 .sower .hand{width:100%; display:block; opacity:0; transform:translate(-14px,-10px) rotate(-4deg); animation:handIn 1.4s .15s ease-out forwards}
@@ -273,21 +361,52 @@ function logoHtml(){
     ? `<img class="logo" src="${esc(C.coach.logo)}" alt="${esc(C.coach.name)}" onerror="this.outerHTML='<p class=wordmark>${esc(C.coach.name)}</p>'">`
     : `<p class="wordmark">${esc(C.coach.name)}</p>`;
 }
+/* ---------- Kayla's photos ---------- */
+const PH = C.photos || {};
+function kimg(p, cls, alt, eager){ if (!p) return "";
+  const [n, pos] = p, base = "assets/kayla/q-" + n;
+  return `<img class="${cls}" src="${base}-800.webp" srcset="${base}-800.webp 800w, ${base}-1200.webp 1200w" sizes="(min-width:720px) 680px, 100vw" style="object-position:${pos || "50% 35%"}" alt="${esc(alt || "Kayla Bundy")}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'}>`; }
+/* Split a headline into two lines that rise in, like the sales page. */
+function lines(t){ const w = String(t).split(" "); if (w.length < 3) return `<span class="line"><span>${esc(t)}</span></span>`;
+  const h = Math.ceil(w.length / 2); return [w.slice(0,h).join(" "), w.slice(h).join(" ")].map(x => `<span class="line"><span>${esc(x)}</span></span>`).join(""); }
+function proofHtml(){ const p = PH.proof; if (!p) return "";
+  const card = ([q,c]) => `<figure class="mc"><blockquote>\u201c${esc(q)}\u201d</blockquote><figcaption>${esc(c)}</figcaption></figure>`;
+  const rib = (p.ribbon||[]).map(n => `<img src="assets/kayla/${n}-480.webp" alt="" loading="lazy">`).join("");
+  return `<section class="proof">
+    <div class="wrap"><p class="k rv">${esc(p.kicker)}</p><h3 class="rv">${esc(p.heading)}</h3><div class="rule"></div></div>
+    <div class="marq"><div class="ptrack">${p.row1.concat(p.row1).map(card).join("")}</div></div>
+    <div class="marq"><div class="ptrack r">${p.row2.concat(p.row2).map(card).join("")}</div></div>
+    <div class="wrap"><p class="pnote">${esc(p.note)}</p></div>
+    ${rib ? `<div class="rib" aria-hidden="true"><div class="rtrack">${rib}${rib}</div></div><p class="ribcap">${esc(p.ribbonCap||"")}</p>` : ""}
+  </section>`; }
+/* Gentle scroll reveals, same motion as the sales page. */
+function motion(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches){ app.querySelectorAll(".rv,.line,.rule,h1").forEach(e => e.classList.add("in")); return; }
+  app.querySelectorAll("section.block, .kres, .kq, .kgate, .proof .marq, .knote figcaption").forEach(e => e.classList.add("rv"));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold:.12 });
+  app.querySelectorAll(".rv, .rule, h1").forEach(e => io.observe(e));
+}
+function hostNote(){ const h = PH.note; if (!h) return "";
+  return `<figure class="knote">${kimg(h.photo, "kn-img", "Kayla Bundy")}<figcaption><p class="k">${esc(h.kicker)}</p><p class="kb">${esc(h.body)}</p><p class="ks">${esc(h.sign)}</p></figcaption></figure>`; }
+function hand_html(){ return ART.hand ? `<div class="sower under" aria-hidden="true"><img class="hand" src="${esc(ART.hand)}" alt="">${ART.seed ? [1,2,3].map(k => `<img class="fall f${k}" src="${esc(ART.seed)}" alt="">`).join("") : ""}</div>` : ""; }
 function renderIntro(){
   const resume = Object.keys(state.answers).length > 0 && !state.submitted;
   const others = C.linkBetweenAssessments ? Object.values(C.assessments).filter(x => x.id !== A.id) : [];
   app.innerHTML = `
-  <div class="intro dark"><div class="wrap">
-    ${ART.hand ? `<div class="sower" aria-hidden="true"><img class="hand" src="${esc(ART.hand)}" alt="">${ART.seed ? [1,2,3].map(k => `<img class="fall f${k}" src="${esc(ART.seed)}" alt="">`).join("") : ""}</div>` : logoHtml()}
-    <h1>${esc(A.title)}</h1>
-    <p class="sub">${esc(A.subtitle)}</p>
-    <p class="lede">${esc(A.lede)}</p>
+  <div class="intro${PH.intro ? " ed" : " dark"}">${PH.intro ? `<div class="kban"><div class="kph">${kimg(PH.intro, "", "Kayla Bundy smiling in her kitchen", true)}</div></div>` : ""}<div class="wrap">
+    ${PH.intro ? hand_html() + `<p class="k rv">A 2-minute quiz from Kayla Bundy</p>` : ""}
+    ${PH.intro ? "" : ART.hand ? `<div class="sower" aria-hidden="true"><img class="hand" src="${esc(ART.hand)}" alt="">${ART.seed ? [1,2,3].map(k => `<img class="fall f${k}" src="${esc(ART.seed)}" alt="">`).join("") : ""}</div>` : logoHtml()}
+    <h1 aria-label="${esc(A.title)}">${lines(A.title)}</h1>
+    <p class="sub rv">${esc(A.subtitle)}</p>
+    ${PH.intro ? `<div class="rule"></div>` : ""}
+    <p class="lede rv">${esc(A.lede)}</p>
     <div class="meta"><span>${countEstimate()} questions</span><span>${esc(A.minutes)}</span><span>Private to you</span></div>
     <button class="btn" id="start">${resume ? "Pick up where you left off" : "Start"}</button>
     ${resume ? `<button class="btn ghost" id="restart" style="max-width:340px;margin:10px auto 0">Start over</button>` : ""}
     <p class="note">${esc(A.privacy)}</p>
     ${others.length ? `<p class="switch">${others.map(o => `<a href="/${o.id}">Or take ${esc(o.title)}</a>`).join(" ")}</p>` : ""}
   </div></div>`;
+  motion();
   document.getElementById("start").onclick = () => { state.step = resume ? firstUnanswered() : 0; if(!resume){ state.answers={}; state.submitted=false; state.branch=null; state.order=null; } save(); render(); };
   const r = document.getElementById("restart");
   if (r) r.onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
@@ -336,6 +455,7 @@ function renderQuestion(){
     <div class="topbar"><button class="back" id="back">\u2190 Back</button><span>${i+1} of ${total}</span></div>
     ${ART.furrow ? furrowHtml(i, total) : `<div class="track"><div class="fill" style="width:${Math.round(i/total*100)}%"></div></div>`}
   </div></div>
+  ${(PH.questions||[])[i % Math.max(1,(PH.questions||[]).length)] ? `<div class="wrap"><div class="kq">${kimg(PH.questions[i % PH.questions.length], "", "Kayla Bundy in her kitchen", true)}</div></div>` : ""}
   <div class="wrap q"><p class="part">${esc(q.part||"")}</p><h2>${esc(q.q)}</h2>${body}</div>`;
   requestAnimationFrame(() => { const f = app.querySelector(".fill"); if (f) f.style.width = Math.round((i+1)/total*98) + "%"; });
   document.getElementById("back").onclick = () => { state.step = i-1; save(); render(); };
@@ -428,7 +548,7 @@ function renderGate(){
   app.innerHTML = `
   <div class="top"><div class="wrap"><div class="topbar"><button class="back" id="back">\u2190 Back</button><span>Almost there</span></div>${ART.furrow ? furrowHtml(N(), N()) : `<div class="track"><div class="fill" style="width:98%"></div></div>`}</div></div>
   <div class="wrap gate">
-    ${ART.planted ? `<img class="planted" src="${esc(ART.planted)}" alt="" aria-hidden="true">` : ""}
+    ${PH.gate ? `<figure class="kgate">${kimg(PH.gate.photo, "", "Kayla Bundy")}<figcaption>${esc(PH.gate.line)}</figcaption></figure>` : (ART.planted ? `<img class="planted" src="${esc(ART.planted)}" alt="" aria-hidden="true">` : "")}
     <p class="ready">${esc(G.ready || `All ${N()} answered`)}</p>
     <h2>${esc(G.heading)}</h2>
     <p class="body">${esc(G.body)}</p>
@@ -528,7 +648,7 @@ function renderResults(){
   const others = C.linkBetweenAssessments ? Object.values(C.assessments).filter(x => x.id !== A.id) : [];
   const video = embed(P.video);
   app.innerHTML = `
-  <div class="res-hero dark"><div class="wrap">
+  <div class="res-hero${PH.intro ? " ed" : " dark"}"><div class="wrap">
     ${L.name ? `<p class="hello">${esc(L.name)}, here\u2019s what your answers show.</p>` : ""}
     <p class="k">${esc(A.patternKicker)}${s.overall !== null ? ` · ${esc(R.overallLabel || "Overall")} ${s.overall}/100` : ""}</p>
     <h1>${esc(P.name)}</h1>
@@ -566,6 +686,15 @@ function renderResults(){
     catch(e){ const t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); toast("Results copied"); } catch(_){ toast("Copy not available here"); } t.remove(); }
   };
 }
+/* Links to pages on this site (the sales page) carry her soil and source along, so every sale can be traced back. */
+function ctaHref(url, soil){
+  if (!/^\//.test(url)) return url;
+  const u = new URL(url, location.origin);
+  u.searchParams.set("soil", soil);
+  const sr = (typeof source === "function" && source().src) || "";
+  if (sr) u.searchParams.set("src", sr);
+  return u.pathname + u.search;
+}
 /* Step layout (assessment option `layout: "steps"`): headline, what it means, method stage, where to start in the guide,
    one thing to do this week, one main button and a smaller "Not ready?" link. Built for result pages with one clear next step. */
 function renderStepResults(s, P, R, L){
@@ -573,12 +702,13 @@ function renderStepResults(s, P, R, L){
   const live = u => u && !/^PASTE_/.test(u);
   const cta = P.cta || {}, nr = P.notReady || {};
   app.innerHTML = `
-  <div class="res-hero dark"><div class="wrap">
+  <div class="res-hero${PH.intro ? " ed" : " dark"}"><div class="wrap">
     ${L.name ? `<p class="hello">${esc(L.name)}, here’s where your plate is right now.</p>` : ""}
     ${sceneHtml(P)}
     <p class="k">${esc(A.patternKicker)}</p>
-    <h1>${esc(P.headline || P.name)}</h1>
-    <p>${esc(P.means)}</p>
+    <h1 aria-label="${esc(P.headline || P.name)}">${lines(P.headline || P.name)}</h1>
+    <div class="rule"></div>
+    <p class="rv">${esc(P.means)}</p>
     ${R.season ? `<div class="foot">${esc(R.season)}</div>` : ""}
   </div></div>
   <div class="wrap">
@@ -587,6 +717,7 @@ function renderStepResults(s, P, R, L){
       <h3>${esc(P.stage)}</h3>
       <p class="lead">${esc(P.next)}</p>
     </section>
+    ${PH.results ? `<div class="kres">${kimg(PH.results, "", "Kayla Bundy")}</div>` : ""}
     <section class="block"><div class="pdf">
       <p class="k">${esc(R.guideLabel || "Start here in your free guide")}</p>
       <b>${esc(P.guideStart)}</b>
@@ -598,20 +729,23 @@ function renderStepResults(s, P, R, L){
       <ol class="actions"><li><span class="do">${esc(P.week)}</span></li></ol>
       ${R.note ? `<p class="quote">${esc(R.note)}</p>` : ""}
     </section>
-    ${video ? `<section class="block"><h3>${esc(R.videoTitle)}</h3><div class="video"><iframe src="${esc(video)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(R.videoTitle)}"></iframe></div></section>` : ""}
+    ${video ? `<section class="block"><h3>${esc(P.videoTitle || R.videoTitle)}</h3><div class="video"><iframe src="${esc(video)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(P.videoTitle || R.videoTitle)}"></iframe></div></section>` : ""}
     <p class="care">${esc(R.care)}</p>
   </div>
+  ${proofHtml()}
   <div class="cta dark"><div class="wrap">
+    ${hostNote()}
     <h3>${esc(cta.title || "")}</h3>
     <p>${esc(cta.body || "")}</p>
-    ${live(cta.url) ? `<a class="btn" href="${esc(cta.url)}" target="_blank" rel="noopener">${esc(cta.button)}</a>` : `<button class="btn" disabled>${esc(cta.button)}</button><p class="soon">${esc(R.soon || "Link coming soon")}</p>`}
+    ${live(cta.url) ? `<a class="btn" href="${esc(ctaHref(cta.url, s.pattern))}"${/^\//.test(cta.url) ? "" : ` target="_blank" rel="noopener"`}>${esc(cta.button)}</a>` : `<button class="btn" disabled>${esc(cta.button)}</button><p class="soon">${esc(R.soon || "Link coming soon")}</p>`}
     ${nr.text && live(nr.url) ? `<p class="notready"><a href="${esc(nr.url)}" target="_blank" rel="noopener">${esc(nr.text)}</a></p>` : ""}
+    ${(() => { const M = C.moreLinks; if (!M) return ""; const used = [cta.url, nr.url]; const items = (M.items||[]).filter(x => live(x.url) && !used.includes(x.url)); return items.length ? `<p class="more">${esc(M.label)} ${items.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.text)}</a>`).join(" \u00b7 ")}</p>` : ""; })()}
     <div class="tools">
       <button class="btn ghost" id="copy">Copy my result</button>
       <button class="btn ghost" id="again">Retake</button>
     </div>
   </div></div>`;
-  startScene();
+  startScene(); motion();
   document.getElementById("again").onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
   document.getElementById("copy").onclick = async () => {
     const text = `My ${A.title} result: ${P.headline || P.name}\n\n${R.weekLabel || "Do this week"}: ${P.week}`;
