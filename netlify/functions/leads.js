@@ -15,7 +15,7 @@ exports.handler = async (event) => {
     return json(401, { error: "That PIN isn\u2019t right." });
   }
   try {
-    const store = getStore({ name: "leads", consistency: "strong" });
+    const store = getStore("leads");
     const { blobs } = await store.list();
     const keys = blobs.map(b => b.key).sort().reverse().slice(0, 2000);   // newest first (keys start with the timestamp)
     const leads = (await Promise.all(keys.map(k => store.get(k, { type: "json" }).catch(() => null)))).filter(Boolean);
