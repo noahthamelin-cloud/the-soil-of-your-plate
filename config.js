@@ -53,9 +53,9 @@ window.ICA = {
   /* Kayla's photos through the quiz. [file, focus] where focus is the CSS object-position (which part of the photo stays in frame).
      Set any one to null to hide it. Files live in assets/kayla/ as q-NN-800.webp and q-NN-1200.webp. */
   photos: {
-    intro:     ["13", "40% 16%"],
-    questions: [["01","50% 42%"], ["06","50% 34%"], ["15","50% 32%"], ["09","50% 34%"], ["19","50% 34%"], ["04","50% 32%"], ["21","50% 55%"]],
-    gate:      { photo: ["16","50% 30%"], line: "I\u2019ll send your free guide straight to you." },
+    intro:     ["13", "50% 10%"],
+    questions: [["02","50% 10%"], ["06","50% 10%"], ["15","50% 10%"], ["09","50% 20%"], ["19","50% 10%"], ["20","50% 20%"], ["21","50% 20%"]],
+    gate:      { photo: ["16","50% 10%"], line: "I\u2019ll send your free guide straight to you." },
     results:   ["10","50% 32%"],
     /* Social proof shown on the results page before Kayla's note (same quotes as the sales page). */
     proof: {"kicker": "From women already eating this way", "heading": "Their families are at the table", "row1": [["Having a plan set and laid out for me is what I knew I needed.", "Member"], ["My husband LOVED the shakshuka and said to add it to the rotation.", "Member"], ["Day 3 dinner. My husband also had the soup and loved it.", "Member"], ["I did the gut board today and my younger son wanted to eat most of it.", "Member"], ["Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.", "Christina"]], "row2": [["It has been truly life-changing and in a way I never anticipated.", "Member"], ["I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.", "Courtney"], ["Just starting to see food, actual food, as such a gift.", "Christina"], ["It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.", "Member"], ["I don’t need all the bad foods just to celebrate something.", "Member"], ["I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.", "Member"]], "note": "Real words from real women in Kayla’s community, shared with permission. Results vary.", "ribbon": ["f-dragon2", "f-redrice", "f-raspberries", "f-board2", "f-lentil", "f-beet", "f-berries", "f-dragon"], "ribbonCap": "Every colour He made"},
