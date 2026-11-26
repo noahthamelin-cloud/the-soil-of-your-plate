@@ -8,7 +8,10 @@
 <meta name="theme-color" content="#3D2E1E">
 <meta property="og:title" content="The 40-Day Family Table">
 <meta property="og:description" content="Feed your family God's way in 40 days. Starts January 1.">
-<meta property="og:image" content="../assets/kayla/hero.webp">
+<meta property="og:image" content="https://quiz.kaylabundy.com/assets/kayla/og-table.jpg">
+<meta property="og:url" content="https://quiz.kaylabundy.com/family-table/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <script>document.documentElement.classList.add("js")</script>
 <script src="/assets/xplr/xplr-track.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,9 +24,11 @@
    Everything that changes lives here. Rules: no em dashes, no weight
    numbers, no claims to cure or heal. Scarcity and deadlines must be real.
 
-   Checkout: paste one Stripe payment link per price step (and an optional
-   3-payment link). A link still starting with PASTE_ shows "Checkout opens
-   soon" instead of a broken button. The page adds the woman's email
+   Checkout: one pay-in-full Stripe link ($697, promotion codes allowed). Each
+   step's promo code is applied for her automatically (prefilled_promo_code).
+   Codes live in Stripe with matching expiry dates. Payment plans are their own
+   links (every 2 weeks, 3 times). A link starting with PASTE_ shows "Checkout
+   opens soon" instead of a broken button. The page adds the woman's email
    (prefilled_email) and her quiz soil + source (client_reference_id) to
    every Stripe link, so each sale shows where it came from.
    Dates are US Eastern (-05:00). The page picks the step whose end hasn't passed.
@@ -34,18 +39,18 @@ window.SALES = {
   vsl: "https://youtu.be/DTn3C5XKdvA",
   cap: 20,                       // families in the founding group (shown as text, never a fake counter). Set null to hide.
   steps: [
-    { id: "bf",      label: "Black Friday week",   off: 50, price: 349, ends: "2026-12-03T23:59:59-05:00",
-      url: "PASTE_STRIPE_LINK_349", planUrl: "PASTE_STRIPE_PLAN_LINK_349", plan: "3 payments of $117",
+    { id: "bf",      label: "Black Friday week",   off: 29, price: 497, ends: "2026-12-03T23:59:59-05:00",
+      url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "BLACKFRIDAY", planUrl: "https://buy.stripe.com/cNi8wO8m53z7ggocRg9AA0a", plan: "3 payments of $169, every 2 weeks",
       bonus: "ebook" },
-    { id: "early",   label: "Early family pricing", off: 30, price: 488, ends: "2026-12-14T23:59:59-05:00",
-      url: "PASTE_STRIPE_LINK_488", planUrl: "PASTE_STRIPE_PLAN_LINK_488", plan: "3 payments of $163" },
     { id: "holiday", label: "Holiday pricing",      off: 20, price: 558, ends: "2026-12-25T23:59:59-05:00",
-      url: "PASTE_STRIPE_LINK_558", planUrl: "PASTE_STRIPE_PLAN_LINK_558", plan: "3 payments of $187" },
-    { id: "boxing",  label: "Boxing Day flash sale", off: 40, price: 418, ends: "2026-12-26T23:59:59-05:00",
-      url: "PASTE_STRIPE_LINK_418", planUrl: "PASTE_STRIPE_PLAN_LINK_418", plan: "3 payments of $140" },
+      url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "HOLIDAY", planUrl: "https://buy.stripe.com/aFa28qdGp9Xv5BK7wW9AA09", plan: "3 payments of $187, every 2 weeks" },
     { id: "last",    label: "Final days",           off: 0,  price: 697, ends: "2026-12-31T23:59:59-05:00",
-      url: "PASTE_STRIPE_LINK_697", planUrl: "PASTE_STRIPE_PLAN_LINK_697", plan: "3 payments of $233" }
+      url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "", planUrl: "https://buy.stripe.com/eVqbJ07i17Pn3tCcRg9AA0b", plan: "3 payments of $233, every 2 weeks" }
   ],
+  /* Early access: 50% off for the women who voted for early access or commented the keyword.
+     Send them the page with ?access=early (it is remembered on their phone). Not shown to anyone else. */
+  early: { code: "early", id: "earlyaccess", label: "Early access", off: 50, price: 349, ends: "2026-12-03T23:59:59-05:00",
+           url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "EARLYACCESS", planUrl: "https://buy.stripe.com/aFa3cu8m55Hf4xG7wW9AA08", plan: "3 payments of $119, every 2 weeks", bonus: "ebook" },
   closed: { title: "Doors are closed for the January group.",
             body: "Message me the word TABLE on Instagram and you'll be first to hear when the next group opens.",
             button: "Message me on Instagram", url: "PASTE_INSTAGRAM_DM_LINK" },
@@ -58,7 +63,8 @@ window.SALES = {
                body: "For the first families who join.", note: "", enabled: false }   // turn on once the cookbook and the number are confirmed
   },
   gift: { enabled: true,
-          text: "Giving it as a Christmas gift? Check out with your details, then message me the name of the person you're gifting it to and I'll set them up." },
+          text: "Giving it as a Christmas gift? Check out with your details, then email me the name and email of the person you're gifting it to and I'll set them up.",
+          email: "kaylabundymanagement@gmail.com" },
   instagram: "PASTE_INSTAGRAM_DM_LINK"   // e.g. https://ig.me/m/HANDLE
 };
 </script>
@@ -200,6 +206,7 @@ details p{margin:10px 0 0; color:var(--muted)}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 0}
 .duo img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px}
 @media (min-width:640px){.hero-photo{height:420px}}
+.hcd{margin:16px 0 0;text-align:center}.hcd p{margin:0 0 4px;font-size:14px;color:var(--muted)}.hcd p b{color:var(--espresso);font-weight:500}.hcd .flip{margin:6px 0 0}
 
 /* ===== Version A: quiet luxury motion ===== */
 .hero-a{background:var(--cream);color:var(--espresso);padding:0 0 46px}
@@ -271,6 +278,7 @@ details p{margin:10px 0 0; color:var(--muted)}
  .hero-a .wrap{max-width:none;padding:0}
  .hero-a h1{font-size:60px}
 }
+.agree{font-size:12.5px;color:var(--muted);margin:12px 0 0}.agree a{color:var(--gold-ink)}
 /*END*/footer{padding:26px 0 40px; text-align:center; font-size:13px; color:var(--muted)}
 .mobile-cta{position:fixed; left:0; right:0; bottom:0; z-index:15; padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(250,248,244,.96); border-top:1px solid var(--rule); transform:translateY(110%); transition:transform .3s}
 .mobile-cta.show{transform:none}
@@ -289,8 +297,9 @@ details p{margin:10px 0 0; color:var(--muted)}
     <h1 aria-label="Feed your family God’s way in 40 days."><span class="line"><span>Feed your family</span></span><span class="line"><span>God&rsquo;s way</span></span><span class="line"><span>in 40 days.</span></span></h1>
     <p class="sub rv">One dinner. One table. The plan handed to you every week, so you stop cooking twice and stop starting over every Monday.</p>
     <div class="rule"></div>
-    <button class="video vsl-cover rv" id="vsl" type="button" aria-label="Play Kayla's video"><img src="../assets/kayla/about-1200.webp" srcset="../assets/kayla/about-480.webp 480w, ../assets/kayla/about-800.webp 800w, ../assets/kayla/about-1200.webp 1200w, ../assets/kayla/about-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt=""><span class="play"></span><span class="vlab">Watch Kayla&rsquo;s story</span></button>
+    <button class="video vsl-cover rv" id="vsl" type="button" aria-label="Play Kayla's video"><img src="../assets/kayla/about-1200.webp" srcset="../assets/kayla/about-480.webp 480w, ../assets/kayla/about-800.webp 800w, ../assets/kayla/about-1200.webp 1200w, ../assets/kayla/about-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt=""><span class="play"></span><span class="vlab">Watch: the 40-Day Family Table</span></button>
     <a class="btn block rv" href="#join">Save my family’s seat</a>
+    <div class="hcd" id="heroCd" hidden><p id="heroCdLabel"></p><div class="flip" id="flip2" role="timer"></div></div>
     <p class="starts" id="startsLine"></p>
   </div>
 </header>
@@ -308,8 +317,8 @@ details p{margin:10px 0 0; color:var(--muted)}
 <section class="dark cost">
   <div class="wrap">
     <p class="k">The real price</p>
-    <h2>Waiting isn’t free.</h2>
-    <p>Every week you put this off, you’re already paying for it. In takeout. In groceries that go bad in the back of the fridge. In the second dinner you’re cooking at 7pm when you’re already done for the day.</p><p>And your kids are paying too, because they’re learning how to treat food by watching you fight it.</p><p>“Someday” isn’t a plan. It’s how next January ends up looking exactly like this one.</p>
+    <h2>Waiting isn’t free. You’re already paying for it.</h2>
+    <p>Yes, in the takeout you order because there’s no plan. But that’s the smallest cost.</p><p>The real cost is what food is quietly taking from you. It’s pulling you farther from God, because the thing you reach for first when you’re tired, anxious or lonely isn’t Him. It’s pulling you from the people you love, because you’re too drained, too foggy and too hard on yourself to be fully present with them.</p><p>And it’s stealing the energy, confidence and clarity you need for what God has already placed in your lap. The calling, the marriage, the children, the purpose. You can’t steward them well while you’re running on empty.</p><p>Your kids are paying too. The enemy has always used food as a door, from the very first bite in the garden. He uses it to whisper lies to our children about who they are, what their bodies are worth, and who God is. Every craving they’re ruled by and every bit of shame they feel at the table is a door left open.</p><p>‘Someday’ isn’t a plan. It’s how next January looks exactly like this one, with that door still open in your home.</p><p>It’s time to close it.</p>
     <p class="verse">“To day if ye will hear his voice, harden not your hearts.” <span>Hebrews 3:15</span></p>
   </div>
 </section>
@@ -353,7 +362,7 @@ details p{margin:10px 0 0; color:var(--muted)}
     <p class="k">What’s inside</p>
     <h2>Here’s everything I hand you</h2>
     <div class="duo"><img data-sz="half" class="wipe" src="../assets/kayla/prep1-1200.webp" srcset="../assets/kayla/prep1-480.webp 480w, ../assets/kayla/prep1-800.webp 800w, ../assets/kayla/prep1-1200.webp 1200w, ../assets/kayla/prep1-1717.webp 1717w" sizes="(min-width:740px) 340px, 50vw" alt="Kayla putting a dish in the oven" loading="lazy"><img src="../assets/kayla/prep2-1200.webp" srcset="../assets/kayla/prep2-480.webp 480w, ../assets/kayla/prep2-800.webp 800w, ../assets/kayla/prep2-1200.webp 1200w, ../assets/kayla/prep2-1717.webp 1717w" sizes="(min-width:740px) 340px, 50vw" data-sz="half" class="wipe" style="transition-delay:.15s" alt="Kayla smiling while prepping fresh vegetables" loading="lazy"></div>
-    <ul class="inside"><li><b>Week one kitchen reset.</b> Clear out what’s working against you and restock with what God called good. You’ll feel the difference in the first week.</li><li><b>Weekly family meal plans and grocery lists.</b> Dinner is decided before Monday. You just shop the list.</li><li><b>A weekly prep-day plan.</b> One session on the weekend and your week is ready.</li><li><b>Swaps your husband and kids will actually eat.</b> Not diet food. Real meals for the whole table.</li><li><b>Little Learners lessons for your kids.</b> They learn why God made food the way He did, so they’re on your team, not across the table from you.</li><li><b>Daily godly affirmations and a weekly family table devotional.</b> Your table becomes the place your family meets God, not just where they eat.</li><li><b>Recipe library.</b> Meals you’ll keep making long after day 40.</li><li><b>Weekly check-ins and live group calls with me.</b> You won’t be doing this alone. I’ll be right there with you every week.</li></ul>
+    <ul class="inside"><li><b>Week one kitchen reset.</b> Clear out what’s working against you and restock with what God called good. You’ll feel the difference in the first week.</li><li><b>Weekly family meal plans and grocery lists.</b> Dinner is decided before Monday. You just shop the list.</li><li><b>A weekly prep-day plan.</b> One session on the weekend and your week is ready.</li><li><b>Swaps your husband and kids will actually eat.</b> Not diet food. Real meals for the whole table.</li><li><b>Little Learners lessons for your kids.</b> They learn why God made food the way He did, so they’re on your team, not across the table from you.</li><li><b>Daily Godly affirmations and a weekly family table devotional.</b> Your table becomes the place your family meets God, not just where they eat.</li><li><b>Recipe library.</b> Meals you’ll keep making long after day 40.</li><li><b>Weekly check-ins and a private group chat with me.</b> You won’t be doing this alone. I’ll be right there with you every week, and so will the other families.</li></ul>
   </div>
 </section>
 
@@ -385,7 +394,7 @@ details p{margin:10px 0 0; color:var(--muted)}
     <div class="price-card" id="priceCard"></div>
     <div class="guarantee">
       <h3>My promise to you</h3>
-      <p>Show up to the calls and do your weekly check-ins. If your family isn’t eating at least 5 biblical meals a week by day 21, you join my next group free. You do your part, I’ll do mine. The only way to lose is to never start.</p>
+      <p>Do your weekly check-ins and stay active in the group chat. If your family isn’t eating at least 5 biblical meals a week by day 21, you join my next group free. You do your part, I’ll do mine. The only way to lose is to never start.</p>
     </div>
   </div>
 </section>
@@ -404,7 +413,7 @@ details p{margin:10px 0 0; color:var(--muted)}
   <div class="wrap">
     <p class="k">Questions</p>
     <h2 style="margin-bottom:16px">Before you join</h2>
-    <details><summary>When does it start?</summary><p>January 1. Join now and your seat is saved, and you’ll get what you need to get ready before day one.</p></details><details><summary>My husband and kids are picky. Will this work?</summary><p>That’s exactly who I built it for. The swaps are made for the whole table, and the Little Learners lessons bring your kids into it instead of fighting them at dinner.</p></details><details><summary>What if my husband isn’t on board yet?</summary><p>You don’t need him to sign up. You need him to sit down and eat. Most husbands come around the first time a meal is good and nobody calls it diet food.</p></details><details><summary>How much time will it take?</summary><p>The thinking is done for you. You get the meal plan, the grocery list and one prep day a week. You cook, I handle the planning.</p></details><details><summary>I’ve tried before and fallen off.</summary><p>You didn’t fail. The system failed you. This one has a weekly plan, daily affirmations, a weekly devotional, check-ins and a group walking it with you. And if you slip, you don’t start over. You come back to the table.</p></details><details><summary>Is now really the right time?</summary><p>There’s never a perfect time to change how your family eats. January 1 is the closest thing to one. And the price only gets better if you decide early.</p></details><details><summary>Is there a payment plan?</summary><p>Yes, you can split it into 3 payments. You’ll see the option right under the price.</p></details><details><summary>Can I give it as a gift?</summary><p>Yes. Check out with your details, then message me the name of the person you’re gifting it to and I’ll set them up.</p></details><details><summary>Is this medical advice?</summary><p>No. This is faith and whole food, not medical advice. If you’re pregnant, nursing, managing a health condition or taking medication, talk to your doctor before making big changes.</p></details>
+    <details><summary>When does it start?</summary><p>January 1. Join now and your seat is saved, and you’ll get what you need to get ready before day one.</p></details><details><summary>My husband and kids are picky. Will this work?</summary><p>That’s exactly who I built it for. The swaps are made for the whole table, and the Little Learners lessons bring your kids into it instead of fighting them at dinner.</p></details><details><summary>What if my husband isn’t on board yet?</summary><p>You don’t need him to sign up. You need him to sit down and eat. Most husbands come around the first time a meal is good and nobody calls it diet food.</p></details><details><summary>How much time will it take?</summary><p>The thinking is done for you. You get the meal plan, the grocery list and one prep day a week. You cook, I handle the planning.</p></details><details><summary>I’ve tried before and fallen off.</summary><p>You didn’t fail. The system failed you. This one has a weekly plan, daily affirmations, a weekly devotional, weekly check-ins and a private group chat of families walking it with you. And if you slip, you don’t start over. You come back to the table.</p></details><details><summary>Is now really the right time?</summary><p>There’s never a perfect time to change how your family eats. January 1 is the closest thing to one. And the price only gets better if you decide early.</p></details><details><summary>Is there a payment plan?</summary><p>Yes, you can split it into 3 payments, charged every 2 weeks. You’ll see the option right under the price.</p></details><details><summary>Can I give it as a gift?</summary><p>Yes. Check out with your details, then email kaylabundymanagement@gmail.com with the name and email of the person you’re gifting it to, and I’ll set them up.</p></details><details><summary>Is this medical advice?</summary><p>No. This is faith and whole food, not medical advice. If you’re pregnant, nursing, managing a health condition or taking medication, talk to your doctor before making big changes.</p></details>
   </div>
 </section>
 
@@ -416,13 +425,13 @@ details p{margin:10px 0 0; color:var(--muted)}
     <p style="color:var(--night-muted);margin:14px 0 22px">The only question is what’s on it, and who’s sitting around it with you. Forty days. One table. Your whole family.</p>
     <a class="btn" href="#join">Save my family’s seat</a>
     <p class="verse" style="margin-top:26px">“Whether therefore ye eat, or drink, or whatsoever ye do, do all to the glory of God.” <span>1 Corinthians 10:31</span></p>
-    <p class="ps">P.S. If you scrolled straight down here, here’s the short version. Forty days starting January 1. Meal plans, grocery lists and prep day handed to you every week. Live calls and check-ins with me. And my promise: if your family isn’t eating 5 biblical meals a week by day 21, you come back free. The price goes up when the timer hits zero.</p>
+    <p class="ps">P.S. If you scrolled straight down here, here’s the short version. Forty days starting January 1. Meal plans, grocery lists and prep day handed to you every week. Weekly check-ins and a private group chat with me. And my promise: if your family isn’t eating 5 biblical meals a week by day 21, you come back free. The price goes up when the timer hits zero.</p>
   </div>
 </section>
 
-<div class="wrap"><p class="care">Not medical advice. Results vary. Testimonials are shared with permission.</p></div>
+<div class="wrap"><p class="care">Not medical advice. Results vary. Testimonials are shared with permission. See our <a href="/terms/">Terms, Disclaimer and Privacy Policy</a>.</p></div>
 
-<footer>Kayla Bundy &middot; The Biblical Nutritionist &middot; <a href="https://kayla-bundy.vercel.app">kaylabundy.com</a></footer>
+<footer>Kayla Bundy &middot; The Biblical Nutritionist &middot; <a href="https://kaylabundy.com">kaylabundy.com</a> &middot; <a href="/terms/">Terms &amp; Privacy</a></footer>
 
 <div class="mobile-cta" id="mobileCta"><a class="btn block" href="#join" id="mobileBtn">Save my family&rsquo;s seat</a></div>
 
@@ -442,9 +451,10 @@ details p{margin:10px 0 0; color:var(--muted)}
   const src = q.get("src") || q.get("utm_source") || read("ica-src-kayla").src || "direct";
   const soil = q.get("soil") || "";
   const ref = [src, soil].filter(Boolean).join("_").replace(/[^\w-]/g, "").slice(0, 200);
-  const checkout = u => {
+  const checkout = (u, promo) => {
     if (!live(u)) return null;
-    try { const x = new URL(u); x.searchParams.set("client_reference_id", ref); if (lead.email) x.searchParams.set("prefilled_email", lead.email); return x.toString(); }
+    try { const x = new URL(u); x.searchParams.set("client_reference_id", ref); if (lead.email) x.searchParams.set("prefilled_email", lead.email);
+      if (promo) x.searchParams.set("prefilled_promo_code", promo); return x.toString(); }
     catch(e){ return u; }
   };
 
@@ -459,8 +469,13 @@ details p{margin:10px 0 0; color:var(--muted)}
 
   /* current price step */
   const now = Date.now();
-  const steps = S.steps.map(s => ({ ...s, t: Date.parse(s.ends) }));
+  let steps = S.steps.map(s => ({ ...s, t: Date.parse(s.ends) }));
+  /* early-access price for voters and keyword commenters (?access=early, remembered) */
+  try { if (S.early && q.get("access") === S.early.code) localStorage.setItem("ft-access", S.early.code); } catch(e){}
+  let hasEarly = false; try { hasEarly = !!S.early && localStorage.getItem("ft-access") === S.early.code; } catch(e){}
+  if (hasEarly && Date.parse(S.early.ends) > now) steps = [{ ...S.early, t: Date.parse(S.early.ends) }].concat(steps.filter(s => s.t > Date.parse(S.early.ends)));
   const cur = steps.find(s => s.t > now);
+  const deal = st => st.off % 10 === 0 ? `${st.off}% off` : `save $${S.fullPrice - st.price}`;
 
   /* bonuses */
   const B = S.bonuses, list = [];
@@ -477,18 +492,22 @@ details p{margin:10px 0 0; color:var(--muted)}
     $("mobileBtn").textContent = "Join the waitlist";
   } else {
     const next = steps[steps.indexOf(cur) + 1];
-    const buy = checkout(cur.url), plan = checkout(cur.planUrl);
+    const buy = checkout(cur.url, cur.promo), plan = checkout(cur.planUrl);
     $("priceCard").innerHTML = `
       ${cur.off ? `<div class="was">$${S.fullPrice}</div>` : ""}
       <div class="now">$${cur.price}</div>
-      ${cur.off ? `<span class="off">${esc(cur.label)}: ${cur.off}% off</span>` : `<span class="off">${esc(cur.label)}</span>`}
+      ${cur.off ? `<span class="off">${esc(cur.label)}: ${deal(cur)}</span>` : `<span class="off">${esc(cur.label)}</span>`}
       ${buy ? `<a class="btn block" href="${esc(buy)}">Join the 40-Day Family Table</a>` : `<span class="btn block" aria-disabled="true">Join the 40-Day Family Table</span><p class="soon">Checkout opens soon.</p>`}
       ${plan && cur.plan ? `<span class="plan">or <a href="${esc(plan)}">${esc(cur.plan)}</a></span>` : ""}
+      <p class="agree">By joining you agree to the <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Privacy</a>. All sales final, backed by the Family Table Promise.</p>
       <p class="cnt">${next ? `Price goes up to <b>$${next.price}</b> in` : `Doors close in`}</p>
       <div class="flip" id="flip" role="timer">${["Days","Hrs","Min","Sec"].map(l => `<div><b>00</b><small>${l.toUpperCase()}</small></div>`).join("")}</div>
       <ul class="ladder">${steps.map(s => `<li class="${s.t <= now ? "past" : s === cur ? "cur" : ""}"><span>${esc(s.label)}</span><span>$${s.price}</span></li>`).join("")}</ul>
       ${S.cap ? `<p class="cap">Starts ${esc(S.start)}. The founding group is capped at ${S.cap} families.</p>` : ""}
-      ${S.gift.enabled ? `<div class="gift">${esc(S.gift.text)}${live(S.instagram) ? ` <a href="${esc(S.instagram)}" target="_blank" rel="noopener">Message me</a>` : ""}</div>` : ""}`;
+      ${S.gift.enabled ? `<div class="gift">${esc(S.gift.text)}${S.gift.email ? ` <a href="mailto:${esc(S.gift.email)}?subject=${encodeURIComponent("Gift: The 40-Day Family Table")}">${esc(S.gift.email)}</a>` : ""}</div>` : ""}`;
+    $("heroCd").hidden = false;
+    $("heroCdLabel").innerHTML = next ? `${esc(cur.label)} price ends. Goes up to <b>$${next.price}</b> in` : `Doors close in`;
+    $("flip2").innerHTML = ["Days","Hrs","Min","Sec"].map(l => `<div><b>00</b><small>${l.toUpperCase()}</small></div>`).join("");
     const bar = $("bar");
     bar.hidden = false;
     const tick = () => {
@@ -496,8 +515,9 @@ details p{margin:10px 0 0; color:var(--muted)}
       if (left <= 0){ location.reload(); return; }
       const t = fmt(left), z = Math.floor(left/1000);
       const v = [Math.floor(z/86400), Math.floor(z%86400/3600), Math.floor(z%3600/60), z%60].map(x => String(x).padStart(2,"0"));
+      $("flip2").querySelectorAll("b").forEach((b,i) => { if (b.textContent !== v[i]) { b.textContent = v[i]; if (!still) { b.classList.remove("tick"); void b.offsetWidth; b.classList.add("tick"); } } });
       $("flip").querySelectorAll("b").forEach((b,i) => { if (b.textContent !== v[i]) { b.textContent = v[i]; if (!still) { b.classList.remove("tick"); void b.offsetWidth; b.classList.add("tick"); } } });
-      bar.innerHTML = `<b>${esc(cur.label)}${cur.off ? `: ${cur.off}% off` : ""}</b> ends in <span class="t">${t}</span>`;
+      bar.innerHTML = `<b>${esc(cur.label)}${cur.off ? `: ${deal(cur)}` : ""}</b> ends in <span class="t">${t}</span>`;
     };
     tick(); setInterval(tick, 1000);
   }
@@ -512,6 +532,7 @@ details p{margin:10px 0 0; color:var(--muted)}
   T.whenSeen(document.querySelector(".about"), "story_view");
   T.whenSeen(document.querySelector("section.close"), "close_view");
   $("priceCard").querySelectorAll("a.btn").forEach(a => a.setAttribute("data-track", "checkout_click"));
+  $("priceCard").querySelectorAll("a.btn, .plan a").forEach(a => a.addEventListener("click", () => { try { localStorage.setItem("ft-tier", cur ? cur.id : ""); } catch(e){} }));
   $("priceCard").querySelectorAll(".plan a").forEach(a => a.setAttribute("data-track", "plan_click"));
   $("priceCard").querySelectorAll(".gift a").forEach(a => a.setAttribute("data-track", "gift_click"));
   document.querySelectorAll('a[href="#join"]').forEach(a => { a.setAttribute("data-track", "join_scroll"); });

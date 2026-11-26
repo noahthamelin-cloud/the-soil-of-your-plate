@@ -55,7 +55,7 @@ window.ICA = {
   photos: {
     intro:     ["13", "50% 10%"],
     questions: [["02","50% 10%"], ["06","50% 10%"], ["15","50% 10%"], ["09","50% 20%"], ["19","50% 10%"], ["20","50% 20%"], ["21","50% 20%"]],
-    gate:      { photo: ["16","50% 10%"], line: "I\u2019ll send your free guide straight to you." },
+    gate:      { photo: ["16","50% 10%"], line: "Your free guide is ready to download the moment you finish." },
     results:   ["10","50% 32%"],
     /* Social proof shown on the results page before Kayla's note (same quotes as the sales page). */
     proof: {"kicker": "From women already eating this way", "heading": "Their families are at the table", "row1": [["Having a plan set and laid out for me is what I knew I needed.", "Member"], ["My husband LOVED the shakshuka and said to add it to the rotation.", "Member"], ["Day 3 dinner. My husband also had the soup and loved it.", "Member"], ["I did the gut board today and my younger son wanted to eat most of it.", "Member"], ["Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.", "Christina"]], "row2": [["It has been truly life-changing and in a way I never anticipated.", "Member"], ["I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.", "Courtney"], ["Just starting to see food, actual food, as such a gift.", "Christina"], ["It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.", "Member"], ["I don’t need all the bad foods just to celebrate something.", "Member"], ["I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.", "Member"]], "note": "Real words from real women in Kayla’s community, shared with permission. Results vary.", "ribbon": ["f-dragon2", "f-redrice", "f-raspberries", "f-board2", "f-lentil", "f-beet", "f-berries", "f-dragon"], "ribbonCap": "Every colour He made"},
@@ -79,7 +79,7 @@ window.ICA = {
       { key: "instagram", label: "Instagram handle", type: "text", required: false, autocomplete: "off", prefix: "@",
         hint: "So we can find you if you message me on Instagram." }
     ],
-    consent: "By continuing you agree that Kayla and her team can email you about your result and the Biblical Eating Academy. Unsubscribe anytime.",
+    consent: "By continuing you agree that Kayla and her team can contact you by email or WhatsApp about your result, the 40-Day Family Table and the Biblical Eating Academy. Unsubscribe or reply STOP anytime.",
     button: "Show my result",
     note: "Your answers go to Kayla and her team only. Nothing is shared or sold."
   },

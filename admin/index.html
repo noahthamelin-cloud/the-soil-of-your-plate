@@ -180,20 +180,22 @@ function mountFunnel(){
       { e:"food_view", label:"Scrolled to the food" },
       { e:"sales_proof_view", label:"Scrolled to the testimonials" },
       { e:"price_view", label:"Saw the price", group:"Decide" },
-      { e:"checkout_click", label:"Clicked checkout" }
+      { e:"checkout_click", label:"Clicked checkout" },
+      { e:"purchase", label:"Paid", group:"Bought" }
     ],
     tiles: [ { label:"Sales page visits", step:"sales_land" }, { label:"Watched", step:"vsl_play", of:"sales_land" },
-             { label:"Saw the price", step:"price_view", of:"sales_land" }, { label:"Clicked checkout", step:"checkout_click", of:"sales_land" } ],
+             { label:"Saw the price", step:"price_view", of:"sales_land" }, { label:"Clicked checkout", step:"checkout_click", of:"sales_land" }, { label:"Paid", step:"purchase", of:"sales_land" } ],
     engagement: { title:"Also on the sales page", base:"sales_land", items:[
       ["Clicked a payment plan","plan_click"], ["Opened a question","faq_open"], ["Read Kayla\u2019s story","story_view"],
-      ["Reached the close","close_view"], ["Used the gift note","gift_click"] ] },
+      ["Reached the close","close_view"], ["Used the gift note","gift_click"],
+      ["Paid, then joined the group chat","join_chat"], ["Paid, then downloaded the ebook","ebook_download"], ["Paid, then saved the date","calendar_add"] ] },
     breakdowns: [
-      { title:"By quiz result", key:"p.soil", label: soilName, cols:[["Visits","sales_land"],["Saw price","price_view"],["Checkout","checkout_click"]], rate:["Checkout rate","checkout_click","sales_land"] },
-      { title:"By source", key:"src", cols:[["Visits","sales_land"],["Checkout","checkout_click"]], rate:["Checkout rate","checkout_click","sales_land"] },
-      { title:"By price step", key:"p.tier", label: v => ({ bf:"Black Friday week", early:"Early family pricing", holiday:"Holiday pricing", boxing:"Boxing Day", last:"Final days", closed:"After doors closed" })[v] || v, cols:[["Visits","sales_land"],["Checkout","checkout_click"]], rate:["Checkout rate","checkout_click","sales_land"] }
+      { title:"By quiz result", key:"p.soil", label: soilName, cols:[["Visits","sales_land"],["Checkout","checkout_click"],["Paid","purchase"]], rate:["Buy rate","purchase","sales_land"] },
+      { title:"By source", key:"src", cols:[["Visits","sales_land"],["Checkout","checkout_click"],["Paid","purchase"]], rate:["Buy rate","purchase","sales_land"] },
+      { title:"By price step", key:"p.tier", label: v => ({ earlyaccess:"Early access (50% link)", bf:"Black Friday week", early:"Early family pricing", holiday:"Holiday pricing", boxing:"Boxing Day", last:"Final days", closed:"After doors closed" })[v] || v, cols:[["Visits","sales_land"],["Checkout","checkout_click"],["Paid","purchase"]], rate:["Buy rate","purchase","sales_land"] }
     ],
     tops: [ { title:"Most opened questions", event:"faq_open" } ],
-    note: "Checkout clicks are people who pressed the button. Paid sales are in Stripe, where each payment carries the same source and soil."
+    note: "\u201cPaid\u201d counts buyers who reached the welcome page after Stripe. Stripe is still the record of money: each payment carries the same source and soil."
   });
 }
 

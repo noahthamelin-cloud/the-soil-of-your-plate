@@ -285,6 +285,12 @@ h1 .line:nth-child(2)>span{transition-delay:.08s}
 
 </style>
 <script src="/assets/xplr/xplr-track.js"></script>
+<meta property="og:title" content="Which soil is your plate? | Kayla Bundy">
+<meta property="og:description" content="A 2-minute quiz from Kayla Bundy, The Biblical Nutritionist. Find out where your plate is right now, and get your free Biblical Eating Foundation Guide.">
+<meta property="og:image" content="https://quiz.kaylabundy.com/assets/kayla/og-quiz.jpg">
+<meta property="og:url" content="https://quiz.kaylabundy.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <main id="app"></main>
@@ -415,7 +421,7 @@ function renderIntro(){
     <div class="meta"><span>${countEstimate()} questions</span><span>${esc(A.minutes)}</span><span>Private to you</span></div>
     <button class="btn" id="start">${resume ? "Pick up where you left off" : "Start"}</button>
     ${resume ? `<button class="btn ghost" id="restart" style="max-width:340px;margin:10px auto 0">Start over</button>` : ""}
-    <p class="note">${esc(A.privacy)}</p>
+    <p class="note">${esc(A.privacy)} <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Privacy</a></p>
     ${others.length ? `<p class="switch">${others.map(o => `<a href="/${o.id}">Or take ${esc(o.title)}</a>`).join(" ")}</p>` : ""}
   </div></div>`;
   motion();
@@ -575,7 +581,7 @@ function renderGate(){
         ${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ""}
         <p class="err">${f.type==="email" ? "That email doesn\u2019t look right." : f.type==="tel" ? "Add your number with the country code." : "This one is needed."}</p>
       </div>`).join("")}
-      <p class="consent">${esc(G.consent)}</p>
+      <p class="consent">${esc(G.consent)} <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Privacy</a></p>
       <button class="btn" type="submit" id="go">${esc(G.button)}</button>
     </form>
     <p class="note">${esc(G.note)}</p>
