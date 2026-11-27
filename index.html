@@ -1,791 +1,622 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Which soil is your plate? | Kayla Bundy</title>
-<meta name="description" content="Seven questions from the parable of the sower to see where your plate is right now. Free, about 2 minutes.">
+<title>The 40-Day Family Table | Kayla Bundy</title>
+<meta name="description" content="Feed your family God's way in 40 days, without cooking two dinners or starting over every Monday. Starts January 1.">
 <meta name="theme-color" content="#3D2E1E">
-<meta name="robots" content="noindex">
+<meta property="og:title" content="The 40-Day Family Table">
+<meta property="og:description" content="Feed your family God's way in 40 days. Starts January 1.">
+<meta property="og:image" content="https://quiz.kaylabundy.com/assets/kayla/og-table.jpg">
+<meta property="og:url" content="https://quiz.kaylabundy.com/family-table/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add("js")</script>
+<script src="/assets/xplr/xplr-track.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  /* Kayla Bundy brand guide: Espresso #3D2E1E, Warm Cream #FAF8F4, Antique Gold #C9A96E, Soft Linen #F3EDE3. Playfair Display italic headlines, Jost Light body. --gold is a deeper shade of Antique Gold for small text on cream (readability). */
-  --bg:#FAF8F4; --surface:#FFFEFB; --ink:#3D2E1E; --muted:#76664F; --rule:#E7DECF;
-  --gold:#8A6B37; --gold-lt:#C9A96E; --night:#3D2E1E; --night-ink:#FAF8F4; --night-muted:#E4D8C4; --night-rule:#5A4733; --sand:#F3EDE3; --rust:#9C5B3B; --err:#A33B2E;
-  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
-  --sans:"Jost", "Helvetica Neue", Arial, sans-serif;
-  color-scheme: light;
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-:root[data-theme="dark"]{ --bg:#0E0D0B; --surface:#1A1814; --ink:#F2EBDD; --muted:#A79C88; --rule:#3A342B; --gold:#D8B66E; --sand:#24211C; --err:#E07A6A; color-scheme: dark; }
-*,*::before,*::after{box-sizing:inherit}
-html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0; min-height:100%; background:var(--bg); color:var(--ink); font-family:var(--sans); font-weight:300; font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased}
-button,input,select{font:inherit; color:inherit}
-:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
-.wrap{max-width:560px; margin:0 auto; padding:0 22px}
 
-/* dark screens: intro, results hero, offers */
-.dark{background:var(--night); color:var(--night-ink)}
-.intro{min-height:100vh; min-height:100dvh; display:flex; flex-direction:column}
-.intro .wrap{flex:1; display:flex; flex-direction:column; justify-content:center; padding-top:28px; padding-bottom:36px}
-.logo{width:min(250px,62vw); display:block; margin:0 auto 26px}
-.wordmark{font-family:var(--serif); font-size:15px; letter-spacing:.18em; text-transform:uppercase; text-align:center; color:var(--gold-lt); margin:0 0 26px}
-.intro h1{font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(38px,10.5vw,54px); line-height:1.02; margin:0 0 12px; text-align:center; letter-spacing:-.01em}
-.intro .sub{font-family:var(--serif); font-style:italic; font-size:20px; line-height:1.35; color:var(--gold-lt); text-align:center; margin:0 auto 22px; max-width:24em}
-.intro .lede{font-weight:300; font-size:16px; color:var(--night-muted); text-align:center; margin:0 auto 26px; max-width:30em}
-.intro .meta{display:flex; justify-content:center; gap:18px; font-size:13px; color:var(--night-muted); margin-bottom:28px; flex-wrap:wrap}
-.intro .note{font-size:13px; font-weight:300; color:var(--night-muted); opacity:.8; text-align:center; margin:22px auto 0; max-width:30em}
-.intro .switch{text-align:center; margin-top:18px; font-size:14px}
-.intro .switch a{color:var(--gold-lt)}
-
-.btn{display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 30px; border-radius:30px; border:0; background:var(--gold-lt); color:var(--night); font-weight:500; font-size:16px; letter-spacing:.03em; cursor:pointer; text-decoration:none; width:100%}
-.btn:active{transform:translateY(1px)}
-.btn[disabled]{opacity:.4; cursor:not-allowed}
-.btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--rule)}
-.dark .btn.ghost{color:var(--night-ink); border-color:var(--night-rule)}
-.intro .btn{max-width:340px; margin:0 auto}
-
-/* question screens */
-.top{position:sticky; top:0; z-index:5; background:var(--bg); padding:14px 0 10px}
-body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
-.topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:13px; color:var(--muted)}
-.back{background:none; border:0; padding:8px 0; cursor:pointer; color:var(--muted)}
-.track{height:3px; background:var(--rule); border-radius:2px; overflow:hidden; margin-top:10px}
-.fill{height:100%; background:var(--gold); width:0; transition:width .35s ease}
-.q{padding-top:26px; padding-bottom:40px}
-.q .part{font-size:13px; color:var(--gold); margin:0 0 10px; font-weight:500}
-.q h2{font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(28px,7.4vw,36px); line-height:1.12; margin:0 0 10px}
-.q .hint{color:var(--muted); font-size:15px; margin:0 0 24px}
-.opts{display:grid; gap:10px}
-.opt{display:block; width:100%; text-align:left; font-weight:400; background:var(--surface); border:1px solid var(--rule); border-radius:14px; padding:16px 18px; font-size:16px; line-height:1.45; cursor:pointer; transition:border-color .15s, background .15s}
-.opt:hover{border-color:var(--gold)}
-.opt[aria-pressed="true"]{border-color:var(--gold); background:var(--sand); box-shadow:inset 3px 0 0 var(--gold)}
-.scale{display:grid; grid-template-columns:repeat(5,1fr); gap:8px}
-.scale .opt{text-align:center; padding:16px 0; font-family:var(--serif); font-size:22px; font-weight:600}
-.scale.ten .opt{padding:13px 0; font-size:20px}
-.ends{display:flex; justify-content:space-between; font-size:13px; color:var(--muted); margin-top:10px}
-.grid{display:grid; gap:20px}
-.grid-row .label{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px}
-.grid-row b{font-family:var(--serif); font-size:21px; font-weight:600}
-.grid-row span{font-size:13px; color:var(--muted)}
-.grid-row .scale .opt{padding:12px 0; font-size:19px}
-.next{margin-top:28px}
-
-/* gate */
-.gate{padding-top:30px; padding-bottom:44px}
-.gate .ready{font-size:13px; color:var(--gold); font-weight:500; margin:0 0 10px}
-.gate h2{font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(32px,9vw,44px); line-height:1.08; margin:0 0 10px}
-.gate .body{color:var(--muted); margin:0 0 26px}
-.field{margin-bottom:16px}
-.field label{display:block; font-size:14px; font-weight:400; color:var(--muted); margin-bottom:6px}
-.field label small{color:var(--gold)}
-.field .in{display:flex; align-items:center; background:var(--surface); border:1px solid var(--rule); border-radius:14px; padding:0 16px; min-height:54px}
-.field .in:focus-within{border-color:var(--gold)}
-.field .in span{color:var(--muted); margin-right:4px}
-.field input,.field select{flex:1; border:0; background:transparent; min-height:52px; font-size:17px; outline:none; min-width:0; color:var(--ink)}
-.field .hint{font-size:13px; color:var(--muted); margin:6px 0 0}
-.field.bad .in{border-color:var(--err)}
-.field .err{font-size:13px; color:var(--err); margin:6px 0 0; display:none}
-.field.bad .err{display:block}
-.consent{font-size:13px; color:var(--muted); margin:6px 0 18px}
-.gate .note{font-size:13px; color:var(--muted); text-align:center; margin:14px 0 0}
-
-/* results */
-.res-hero{padding:44px 0 40px}
-.res-hero .k{color:var(--gold-lt); font-size:14px; margin:0 0 10px}
-.res-hero h1{font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(40px,11vw,58px); line-height:1; margin:0 0 14px}
-.res-hero .tag{font-family:var(--serif); font-style:italic; font-size:21px; line-height:1.35; color:var(--gold-lt); margin:0 0 18px}
-.res-hero p{font-weight:300; color:var(--night-muted); margin:0 0 12px}
-.res-hero .foot{border-top:1px solid var(--night-rule); margin-top:22px; padding-top:18px}
-.res-hero .foot b{display:block; color:var(--gold-lt); font-weight:500; font-size:14px; margin-bottom:4px}
-.res-hero .hello{font-size:14px; color:var(--night-muted); margin:0 0 6px}
-section.block{padding:38px 0 6px}
-section.block h3{font-family:var(--serif); font-style:italic; font-weight:500; font-size:28px; line-height:1.15; margin:0 0 6px}
-section.block .lead{color:var(--muted); margin:0 0 22px}
-.video{position:relative; padding-top:56.25%; border-radius:14px; overflow:hidden; background:#000}
-.video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-.meter{margin-bottom:20px}
-.meter .row{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:7px}
-.meter .row b{font-family:var(--serif); font-size:20px; font-weight:600}
-.meter .row span{font-size:14px; color:var(--muted)}
-.bar{height:10px; background:var(--sand); border-radius:6px; overflow:hidden}
-.bar i{display:block; height:100%; background:var(--gold); border-radius:6px; width:0; transition:width .9s cubic-bezier(.2,.7,.2,1)}
-.bar.low i{background:var(--rust)}
-.meter p{margin:7px 0 0; font-size:15px; color:var(--muted)}
-.actions{list-style:none; padding:0; margin:0; counter-reset:a}
-.actions li{counter-increment:a; position:relative; padding:20px 0 20px 46px; border-top:1px solid var(--rule)}
-.actions li:last-child{border-bottom:1px solid var(--rule)}
-.actions li::before{content:counter(a); position:absolute; left:0; top:17px; font-family:var(--serif); font-size:32px; line-height:1; color:var(--gold)}
-.actions .why{display:block; font-size:13px; color:var(--gold); margin-bottom:4px; font-weight:500}
-.actions .do{font-family:var(--serif); font-size:20px; line-height:1.35}
-.quote{font-family:var(--serif); font-style:italic; font-size:21px; line-height:1.4; border-left:3px solid var(--gold); padding:4px 0 4px 18px; margin:30px 0 0}
-section.block .k{color:var(--gold); font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin:0 0 6px; font-weight:500}
-.pdf{background:var(--sand); border-radius:14px; padding:20px; margin-top:6px}
-.pdf b{font-family:var(--serif); font-style:italic; font-size:21px; font-weight:500; display:block; line-height:1.3}
-.pdf p{margin:4px 0 14px; color:var(--muted); font-size:15px}
-.notready{margin:16px 0 0; font-size:15px} .notready a{color:var(--night-muted); text-decoration:underline; text-underline-offset:3px}
-.more{margin:10px 0 0; font-size:13.5px; color:var(--night-muted)} .more a{color:var(--gold-lt); text-underline-offset:3px}
-.soon{font-size:13px; color:var(--night-muted); margin:8px 0 0}
-.btn[disabled]{opacity:.55; cursor:default}
-.care{background:var(--sand); border-radius:14px; padding:18px 20px; font-size:15px; color:var(--muted); margin:30px 0 0}
-.cta{margin-top:42px; padding:40px 0 48px}
-.kban{position:relative;height:42vh;min-height:280px;max-height:440px;overflow:hidden}
-.kban .kph{position:absolute;inset:0;overflow:hidden;border-radius:inherit}.kban .kph img{width:100%;height:100%;object-fit:cover;animation:kdrift 16s ease-in-out infinite alternate}
-.kban:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(61,46,30,0) 45%,var(--night))}
-@keyframes kdrift{from{transform:scale(1.03)}to{transform:scale(1.1) translate(-6px,-4px)}}
-.intro .wrap{justify-content:flex-start}
-.intro .kban + .wrap{margin-top:-70px;position:relative;padding-top:0}
-.kq{margin:16px 0 0;aspect-ratio:3/2;max-width:440px;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(61,46,30,.14)}
-.kq img{width:100%;height:100%;object-fit:cover;animation:kfade .6s ease}
-@keyframes kfade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
-.kgate{position:relative;margin:4px 0 22px;border-radius:20px;overflow:hidden;aspect-ratio:3/2;max-width:440px;width:100%;box-shadow:0 16px 40px rgba(61,46,30,.16)}
-.kgate img{width:100%;height:100%;object-fit:cover}
-.kgate:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,14,.7),rgba(30,22,14,0) 55%)}
-.kgate figcaption{position:absolute;z-index:2;left:18px;right:18px;bottom:14px;color:#fff;font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.3}
-.kres{margin:8px 0 6px;border-radius:20px;overflow:hidden;aspect-ratio:4/5;max-height:520px;box-shadow:0 16px 40px rgba(61,46,30,.14)}
-.kres img{width:100%;height:100%;object-fit:cover}
-.knote{position:relative;margin:-40px -22px 34px;min-height:620px;overflow:hidden;display:flex;align-items:flex-end}
-.knote .kn-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kdrift 18s ease-in-out infinite alternate}
-.knote:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--night) 6%,rgba(61,46,30,.88) 38%,rgba(61,46,30,.15) 68%,rgba(61,46,30,.35))}
-.knote figcaption{position:relative;z-index:2;padding:0 26px 30px}
-.knote .k{margin:0 0 10px;color:var(--gold-lt)}
-.knote .kb{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.4;color:var(--night-ink);margin:0 0 14px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
-.knote .ks{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--gold-lt);margin:0}
-.knote .ks:before{content:"";display:block;width:44px;height:1px;background:var(--gold-lt);margin:0 0 12px}
-@media (min-width:720px){.knote{margin:-40px 0 34px;border-radius:24px;min-height:680px}}
-@media (prefers-reduced-motion:reduce){.kban .kph img,.kq img,.knote .kn-img{animation:none}}
-.cta h3{font-family:var(--serif); font-style:italic; font-weight:400; font-size:32px; line-height:1.1; margin:0 0 12px}
-.cta p{font-weight:300; color:var(--night-muted); margin:0 0 24px}
-.cta .step{border-top:1px solid var(--night-rule); padding:20px 0}
-.cta .step b{font-family:var(--serif); font-size:22px; font-weight:500; display:block}
-.cta .step span{display:block; font-weight:300; font-size:15px; color:var(--night-muted); margin:4px 0 14px}
-.cta .code{display:inline-block; font-family:var(--serif); font-size:22px; letter-spacing:.08em; color:var(--gold-lt); border:1px dashed var(--night-rule); padding:6px 14px; border-radius:8px; margin-bottom:14px}
-.tools{display:grid; gap:10px; margin-top:26px}
-.toast{position:fixed; left:50%; bottom:calc(24px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); background:var(--ink); color:var(--bg); padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:20}
-.toast.on{opacity:1}
-@media (prefers-reduced-motion: reduce){ .fill,.bar i{transition:none} }
-/*KED*/
-/* ===== Sales page design language (cream, editorial, gentle motion) ===== */
-.intro.ed{background:var(--bg); color:var(--ink); min-height:auto}
-.intro.ed .kban{width:calc(100% - 32px); max-width:420px; aspect-ratio:3/2; height:auto; min-height:0; max-height:none; margin:14px auto 0; border-radius:22px; box-shadow:0 22px 50px rgba(61,46,30,.18)}
-@media (min-width:720px){.intro.ed .kban{width:100%; max-width:400px; margin:24px auto 0}}
-.intro.ed .kban:after{display:none}
-.intro.ed .wrap{margin-top:0; padding-top:24px; justify-content:flex-start}
-.intro.ed .k{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:500; margin:0 0 8px}
-.intro.ed .k,.intro.ed h1,.intro.ed .sub,.intro.ed .lede,.intro.ed .note{text-align:center; margin-left:auto; margin-right:auto}
-.intro.ed .rule{width:64px; margin:4px auto 20px; transform-origin:center}
-.intro.ed h1{font-size:clamp(36px,10vw,58px); line-height:1.04; margin-bottom:10px}
-.intro.ed .sub{margin-bottom:14px}
-.intro.ed .lede{font-size:15px; margin-bottom:18px}
-.intro.ed .meta{margin-bottom:18px}
-.intro.ed .sub{color:var(--gold)}
-.intro.ed .lede,.intro.ed .note,.intro.ed .meta{color:var(--muted)}
-.intro.ed .meta{justify-content:center}
-.intro.ed .btn{margin:0 auto; max-width:340px}
-.rule{height:1px; background:var(--gold-lt); margin:6px 0 22px; transform-origin:left}
-.line{display:block; overflow:hidden; padding-bottom:.06em}.line>span{display:block}
-.res-hero.ed{background:var(--bg); color:var(--ink)}
-.res-hero.ed .k{color:var(--gold); font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:500}
-.res-hero.ed p{color:var(--muted)}
-.res-hero.ed .hello{color:var(--muted)}
-.res-hero.ed .verse{color:var(--muted)}.res-hero.ed .verse b{color:var(--gold)}
-.res-hero.ed .foot{border-color:var(--rule)}
-.res-hero.ed .scene{box-shadow:0 22px 50px rgba(61,46,30,.22)}
-.proof{background:var(--sand); padding:44px 0 40px; margin-top:30px}
-.proof h3{font-family:var(--serif); font-style:italic; font-weight:400; font-size:30px; line-height:1.15; margin:0 0 4px}
-.proof .k{color:var(--gold); font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:500; margin:0 0 6px}
-.proof .marq{overflow:hidden; padding:8px 0; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.proof .ptrack{display:flex; gap:14px; width:max-content; animation:mq 70s linear infinite}
-.proof .ptrack.r{animation-direction:reverse; animation-duration:80s}
-.proof .marq:hover .ptrack{animation-play-state:paused}
-.mc{margin:0; width:270px; background:var(--surface); border:1px solid var(--rule); border-radius:20px; padding:18px; box-shadow:0 10px 26px rgba(61,46,30,.08); display:flex; flex-direction:column; justify-content:space-between}
-.mc blockquote{margin:0; font-family:var(--serif); font-style:italic; font-size:18px; line-height:1.4}
-.mc figcaption{margin-top:12px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold)}
-.pnote{text-align:center; font-size:13px; color:var(--muted); margin:10px 0 0}
-.rib{overflow:hidden; margin-top:24px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.rtrack{display:flex; gap:14px; width:max-content; animation:mq 50s linear infinite}
-.rtrack img{width:96px; height:96px; border-radius:50%; object-fit:cover; border:3px solid #fff; box-shadow:0 6px 16px rgba(61,46,30,.18)}
-.ribcap{text-align:center; font-size:12px; color:var(--muted); letter-spacing:.16em; text-transform:uppercase; margin:12px 0 0}
-@keyframes mq{to{transform:translateX(-50%)}}
-.proof + .cta{margin-top:0}
-.kres,.kq,.kgate{box-shadow:0 22px 50px rgba(61,46,30,.16)}
-/* reveals */
-.rv{opacity:0; transform:translateY(18px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1; transform:none}
-h1 .line>span{transform:translateY(105%); transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-h1.in .line>span{transform:none}
-h1 .line:nth-child(2)>span{transition-delay:.08s}
-.rule{transform:scaleX(0); transition:transform 1.2s cubic-bezier(.65,0,.2,1) .2s}.rule.in{transform:scaleX(1)}
-@media (prefers-reduced-motion:reduce){ .rv,h1 .line>span,.rule{opacity:1!important; transform:none!important; transition:none!important} .proof .ptrack,.rtrack{animation:none} .proof .marq,.rib{overflow-x:auto} }
-.intro.ed h1,.intro.ed .sub,.intro.ed .lede{animation:none}
-.intro.ed .kban + .wrap{margin-top:0; padding-top:24px}
-.intro.ed .kban{position:relative}
-.intro .sower.under{width:100px; margin:-4px auto 30px}
-.intro .sower.under .fall{animation-name:seedFallS; width:9px}
-.intro .sower.under .fall.f2{width:8px}.intro .sower.under .fall.f3{width:7px}
-@keyframes seedFallS{0%{opacity:0; transform:translateY(0) rotate(0)} 15%{opacity:1} 70%{opacity:1} 100%{opacity:0; transform:translateY(46px) rotate(70deg)}}
-.intro.ed .kban + .wrap{padding-top:12px}
-@media (min-width:900px){
- .intro.ed{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:center; max-width:1120px; margin:0 auto; padding:40px 40px; min-height:100vh; min-height:100dvh}
- .intro.ed .kban{max-width:none; width:100%; aspect-ratio:4/5; max-height:82vh; margin:0}
- .intro.ed .kban + .wrap{padding:0; max-width:none}
- .kq{max-width:320px}
- .kgate{max-width:360px}
-}
-/*KEDEND*/
-/* ---------- Parable art and motion (optional: only used when config sets C.art / pattern.scene) ---------- */
-.sower{position:relative; width:min(230px,58vw); margin:0 auto 10px; aspect-ratio:1000/1050}
-.sower .hand{width:100%; display:block; opacity:0; transform:translate(-14px,-10px) rotate(-4deg); animation:handIn 1.4s .15s ease-out forwards}
-.sower .fall{position:absolute; width:14px; left:70%; top:62%; opacity:0; animation:seedFall 2.6s ease-in infinite}
-.sower .fall.f2{left:76%; animation-delay:.9s; width:12px} .sower .fall.f3{left:67%; animation-delay:1.7s; width:11px}
-@keyframes handIn{to{opacity:1; transform:none}}
-@keyframes seedFall{0%{opacity:0; transform:translateY(0) rotate(0)} 12%{opacity:1} 80%{opacity:1} 100%{opacity:0; transform:translateY(120px) rotate(80deg)}}
-.intro h1,.intro .sub,.intro .lede{animation:fadeUp .9s ease-out both} .intro h1{animation-delay:.5s} .intro .sub{animation-delay:.75s} .intro .lede{animation-delay:.95s}
-@keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
-.furrow{position:relative; height:34px; margin-top:8px}
-.furrow .soil{position:absolute; left:0; right:0; bottom:0; width:100%; height:22px; object-fit:fill; opacity:.95}
-.furrow .seed{position:absolute; bottom:12px; width:13px; transform:translateX(-50%) rotate(-25deg)}
-.furrow .seed.new{animation:plant .7s cubic-bezier(.3,1.4,.5,1) both}
-@keyframes plant{from{opacity:0; transform:translate(-50%,-26px) rotate(40deg)} to{opacity:1; transform:translateX(-50%) rotate(-25deg)}}
-.planted{display:block; width:min(220px,60vw); margin:4px auto 6px; animation:fadeUp .8s ease-out both, glow 3.2s 1s ease-in-out infinite}
-@keyframes glow{50%{filter:drop-shadow(0 0 10px rgba(201,169,110,.55)) brightness(1.04)}}
-.scene{position:relative; width:100%; max-width:360px; aspect-ratio:1; margin:6px auto 22px; border-radius:18px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.25)}
-.scene img{position:absolute; inset:0; width:100%; height:100%; display:block}
-.scene .base{animation:sceneIn 1.1s ease-out both}
-@keyframes sceneIn{from{opacity:0; transform:scale(1.04)} to{opacity:1; transform:none}}
-.scene:not(.go) .l{animation-play-state:paused}
-.verse{font-family:var(--serif); font-style:italic; color:var(--night-muted); font-size:15px; line-height:1.5; text-align:center; max-width:360px; margin:-8px auto 22px; animation:fadeUp 1s 1.2s ease-out both}
-.verse b{display:block; font-family:var(--sans); font-style:normal; font-weight:400; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-lt); margin-top:6px}
-/* the path: birds swoop down toward the seeds */
-.l.birds{opacity:0; animation:birds 3.4s 1s ease-in-out both}
-@keyframes birds{0%{opacity:0; transform:translate(30%,-30%)} 25%{opacity:1} 70%{opacity:1; transform:translate(-14%,22%)} 100%{opacity:1; transform:translate(-10%,14%)}}
-/* rocky ground: springs up quickly, then withers */
-.l.sprout{transform-origin:50% 69%; opacity:0; animation:spring .9s 1s cubic-bezier(.3,1.5,.5,1) forwards, wither .8s 3.1s ease-in forwards}
-.l.wilted{opacity:0; animation:show .9s 3.2s ease-out forwards}
-@keyframes spring{from{opacity:1; transform:scaleY(0)} to{opacity:1; transform:scaleY(1)}}
-@keyframes wither{to{opacity:0}}
-@keyframes show{to{opacity:1}}
-/* thorns: brambles climb in and crowd the sprout */
-.l.thorns{clip-path:inset(100% 0 0 0); transform:scale(1.12); animation:climb 3s 1s ease-out forwards}
-@keyframes climb{to{clip-path:inset(0 0 0 0); transform:scale(1)}}
-/* good soil: thirty, sixty, a hundredfold rise in turn */
-.l.wheat{opacity:0; transform:translateY(10%); clip-path:inset(100% 0 0 0); animation:rise 1.3s ease-out forwards}
-.l.w30{animation-delay:1s} .l.w60{animation-delay:1.8s} .l.w100{animation-delay:2.6s}
-@keyframes rise{to{opacity:1; transform:none; clip-path:inset(0 0 0 0)}}
-@media (prefers-reduced-motion: reduce){
-  .sower .hand,.intro h1,.intro .sub,.intro .lede,.planted,.scene .base,.verse,.furrow .seed.new{animation:none; opacity:1; transform:none}
-  .sower .fall{display:none}
-  .l.birds,.l.wilted,.l.wheat,.l.thorns{animation:none; opacity:1; transform:none; clip-path:none}
-  .l.sprout{animation:none; opacity:0}
-}
-
-</style>
-<script src="/assets/xplr/xplr-track.js"></script>
-<meta property="og:title" content="Which soil is your plate? | Kayla Bundy">
-<meta property="og:description" content="A 2-minute quiz from Kayla Bundy, The Biblical Nutritionist. Find out where your plate is right now, and get your free Biblical Eating Foundation Guide.">
-<meta property="og:image" content="https://quiz.kaylabundy.com/assets/kayla/og-quiz.jpg">
-<meta property="og:url" content="https://quiz.kaylabundy.com/">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-</head>
-<body>
-<main id="app"></main>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="config.js"></script>
 <script>
 /* =====================================================================
-   ENGINE. Reads window.ICA. Do not put coach content in here.
+   SALES PAGE SETTINGS  |  The 40-Day Family Table
+   Everything that changes lives here. Rules: no em dashes, no weight
+   numbers, no claims to cure or heal. Scarcity and deadlines must be real.
+
+   Checkout: one pay-in-full Stripe link ($697, promotion codes allowed). Each
+   step's promo code is applied for her automatically (prefilled_promo_code).
+   Codes live in Stripe with matching expiry dates. Payment plans are their own
+   links (every 2 weeks, 3 times). A link starting with PASTE_ shows "Checkout
+   opens soon" instead of a broken button. The page adds the woman's email
+   (prefilled_email) and her quiz soil + source (client_reference_id) to
+   every Stripe link, so each sale shows where it came from.
+   Dates are US Eastern (-05:00). The page picks the step whose end hasn't passed.
    ===================================================================== */
-const C = window.ICA;
-const app = document.getElementById("app");
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const LEAD_KEY = `ica-lead-${C.coach.slug}`;
-/* Source tracking: links shared as ?src=youtube (or utm_source) are remembered so every lead shows where it came from. */
-const SRC_KEY = `ica-src-${C.coach.slug}`;
-(() => { const q = new URLSearchParams(location.search); const src = q.get("src") || q.get("utm_source"); if (src) try { localStorage.setItem(SRC_KEY, JSON.stringify({ src: src.slice(0,60), campaign: (q.get("utm_campaign")||"").slice(0,60) })); } catch(e){} })();
-const source = () => { try { return JSON.parse(localStorage.getItem(SRC_KEY) || "null") || {}; } catch(e){ return {}; } };
+window.SALES = {
+  fullPrice: 697,
+  start: "January 1, 2027",
+  vsl: "https://youtu.be/BYPWDRWhU-U",
+  cap: 20,                       // families in the founding group (shown as text, never a fake counter). Set null to hide.
+  steps: [
+    { id: "bf",      label: "Black Friday week",   off: 29, price: 497, ends: "2026-12-03T23:59:59-05:00",
+      url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "BLACKFRIDAY", planUrl: "https://buy.stripe.com/cNi8wO8m53z7ggocRg9AA0a", plan: "3 payments of $169, every 2 weeks",
+      bonus: "ebook" },
+    { id: "holiday", label: "Holiday pricing",      off: 20, price: 558, ends: "2026-12-25T23:59:59-05:00",
+      url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "HOLIDAY", planUrl: "https://buy.stripe.com/aFa28qdGp9Xv5BK7wW9AA09", plan: "3 payments of $187, every 2 weeks" },
+    { id: "last",    label: "Final days",           off: 0,  price: 697, ends: "2026-12-31T23:59:59-05:00",
+      url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "", planUrl: "https://buy.stripe.com/eVqbJ07i17Pn3tCcRg9AA0b", plan: "3 payments of $233, every 2 weeks" }
+  ],
+  /* Early access: 50% off for the women who voted for early access or commented the keyword.
+     Send them the page with ?access=early (it is remembered on their phone). Not shown to anyone else. */
+  early: { code: "early", id: "earlyaccess", label: "Early access", off: 50, price: 349, ends: "2026-12-03T23:59:59-05:00",
+           url: "https://buy.stripe.com/00w7sK0TD9Xv5BK04u9AA06", promo: "EARLYACCESS", planUrl: "https://buy.stripe.com/aFa3cu8m55Hf4xG7wW9AA08", plan: "3 payments of $119, every 2 weeks", bonus: "ebook" },
+  closed: { title: "Doors are closed for the January group.",
+            body: "Message me the word TABLE on Instagram and you'll be first to hear when the next group opens.",
+            button: "Message me on Instagram", url: "PASTE_INSTAGRAM_DM_LINK" },
+  bonuses: {
+    ebook:   { title: "Eat Like the Bible ebook, free", value: "$27 value",
+               body: "Start before January 1. Know exactly what to put on your plate and why God made it.", note: "Black Friday week only" },
+    academy: { title: "The Biblical Eating Academy, included", value: "$50 a month value",
+               body: "Women walking the same road, inside my private community on Skool, for your 40 days." },
+    cookbook:{ title: "My physical cookbook, free", value: "",
+               body: "For the first families who join.", note: "", enabled: false }   // turn on once the cookbook and the number are confirmed
+  },
+  gift: { enabled: true,
+          text: "Giving it as a Christmas gift? Check out with your details, then email me the name and email of the person you're gifting it to and I'll set them up.",
+          email: "kaylabundymanagement@gmail.com" },
+  instagram: "PASTE_INSTAGRAM_DM_LINK"   // e.g. https://ig.me/m/HANDLE
+};
+</script>
 
-/* ---------- routing: #assessment-id ---------- */
-/* Which assessment: /scorecard or /heart-over-head (clean links), or #scorecard as a fallback. Anything else = default. */
-function currentId(){
-  const path = location.pathname.replace(/^\/+|\/+$/g, "").split("/")[0];
-  const h = location.hash.replace("#","").trim();
-  if (C.assessments[path]) return path;
-  if (C.assessments[h]) return h;
-  return C.defaultAssessment;
+<style>
+:root{
+  --espresso:#3D2E1E; --cream:#FAF8F4; --gold:#C9A96E; --gold-ink:#8A6B37; --linen:#F3EDE3; --white:#FFFEFB;
+  --muted:#76664F; --rule:#E7DECF; --night-muted:#E4D8C4;
+  --serif:"Playfair Display", Georgia, serif; --sans:"Jost", "Helvetica Neue", Arial, sans-serif;
 }
-let A, KEY, state;
-function load(){
-  A = C.assessments[currentId()];
-  KEY = `ica-${C.coach.slug}-${A.id}-v1`;
-  state = { step:-1, answers:{}, submitted:false, branch:null };
-  try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s && s.answers) state = s; } catch(e){}
-  document.title = `${A.title} | ${C.coach.name}`;
-}
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} };
-const lead = () => { try { return JSON.parse(localStorage.getItem(LEAD_KEY) || "null") || {}; } catch(e){ return {}; } };
-const saveLead = l => { try { localStorage.setItem(LEAD_KEY, JSON.stringify(l)); } catch(e){} };
-window.addEventListener("hashchange", () => { load(); render(); });
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--cream); color:var(--espresso); font-family:var(--sans); font-weight:300; font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+img{max-width:100%; display:block}
+a{color:inherit}
+.wrap{max-width:720px; margin:0 auto; padding:0 22px}
+h1,h2,h3{font-family:var(--serif); font-style:italic; font-weight:400; margin:0; line-height:1.15}
+.k{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-ink); font-weight:500; margin:0 0 10px}
+.dark .k{color:var(--gold)}
+section{padding:56px 0}
+.dark{background:var(--espresso); color:var(--cream)}
+.linen{background:var(--linen)}
+.btn{display:inline-flex; align-items:center; justify-content:center; min-height:56px; padding:0 30px; border-radius:30px; border:0; background:var(--gold); color:var(--espresso); font:500 16px var(--sans); letter-spacing:.03em; text-decoration:none; cursor:pointer; text-align:center}
+.btn.block{display:flex; width:100%}
+.btn[aria-disabled="true"]{opacity:.55; cursor:default}
+.btn.ghost{background:transparent; color:var(--cream); border:1px solid rgba(201,169,110,.6)}
 
-/* Visible questions: a question with `branch` only shows when the person's branch pick matches. Each keeps its original index (q.i) for answers. */
-const Q = () => A.questions.map((q,i) => Object.assign({ i }, q)).filter(q => !q.branch || q.branch === state.branch);
-const N = () => Q().length;           // steps: -1 intro, 0..N-1 questions, N gate, N+1 results
-const countEstimate = () => { const first = A.questions.find(q => q.type === "branch"); const b = state.branch || (first && first.opts[0][1]); return A.questions.filter(q => !q.branch || q.branch === b).length; };
+/* countdown bar */
+.bar{position:sticky; top:0; z-index:20; background:var(--espresso); color:var(--cream); font-size:14px; text-align:center; padding:9px 14px; border-bottom:1px solid rgba(201,169,110,.35)}
+.bar b{color:var(--gold); font-weight:500}
+.bar .t{font-variant-numeric:tabular-nums; letter-spacing:.02em}
 
-/* ---------- funnel tracking (XPLR base layer: anonymous step names only) ---------- */
-const T = window.XPLRTrack ? XPLRTrack.init({ site: C.coach.slug, repeat: ["guide_click","cta_click"] }) : { step(){}, scan(){}, whenSeen(){}, watchVideo(){} };
-T.step("land");
-function render(){
-  window.scrollTo(0,0);
-  if (state.step > 0 && state.step <= N()) T.step("q", { n: state.step });
-  if (state.step < 0) return renderIntro();
-  if (state.step < N()) return renderQuestion();
-  if (state.step === N()) return renderGate();
-  renderResults();
-}
+/* hero */
+.hero{position:relative; overflow:hidden; padding:44px 0 50px; background:var(--espresso); color:var(--cream)}
+.hero .art{position:absolute; inset:auto 0 0 0; height:62%; opacity:.22; pointer-events:none}
+.hero .art img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(34px,8.5vw,52px); margin:4px 0 12px}
+.hero .sub{font-size:19px; color:var(--night-muted); margin:0 0 22px}
+.video{position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:#000; box-shadow:0 14px 40px rgba(0,0,0,.35); margin:0 0 22px}
+.video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.starts{font-size:14px; color:var(--night-muted); margin:12px 0 0; text-align:center}
 
-/* ---------- parable art helpers ---------- */
-const ART = C.art || {};
-function furrowHtml(done, total){
-  const seeds = Array.from({length:done}, (_,k) => `<img class="seed${k === done-1 ? " new" : ""}" style="left:${((k+.5)/total*100).toFixed(1)}%" src="${esc(ART.seed)}" alt="">`).join("");
-  return `<div class="furrow" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}"><img class="soil" src="${esc(ART.furrow)}" alt="">${seeds}</div>`;
-}
-function sceneHtml(P){
-  const sc = P.scene; if (!sc) return "";
-  return `<div class="scene" id="scene" aria-hidden="true"><img class="base" src="${esc(sc.base)}" alt="">` +
-    (sc.layers||[]).map(l => `<img class="l ${esc(l.cls)}" src="${esc(l.src)}" alt="">`).join("") + `</div>` +
-    (sc.verse ? `<p class="verse">${esc(sc.verse)}<b>${esc(sc.ref||"")}</b></p>` : "");
-}
-/* Start a scene's motion once its images have loaded, so nothing pops in half-drawn. */
-function startScene(){
-  const el = document.getElementById("scene"); if (!el) return;
-  const imgs = [...el.querySelectorAll("img")];
-  Promise.race([Promise.all(imgs.map(i => i.decode ? i.decode().catch(()=>{}) : Promise.resolve())), new Promise(r => setTimeout(r, 2500))])
-    .then(() => el.classList.add("go"));
-}
-/* Warm the browser cache with her scene while she fills in the form. */
-function preloadScene(){
-  try { const P = A.patterns[score().pattern]; const sc = P && P.scene; if (!sc) return;
-    [sc.base, ...(sc.layers||[]).map(l => l.src)].forEach(u => { const im = new Image(); im.src = u; }); } catch(e){}
-}
+/* pain */
+.checks{list-style:none; padding:0; margin:18px 0 0}
+.checks li{position:relative; padding:12px 0 12px 34px; border-top:1px solid var(--rule)}
+.checks li:before{content:""; position:absolute; left:4px; top:20px; width:14px; height:14px; border-radius:50%; border:1.5px solid var(--gold-ink)}
+.lead{font-size:19px; color:var(--muted); margin:14px 0 0}
+h2{font-size:clamp(28px,6.5vw,38px)}
 
-/* ---------- intro ---------- */
-function logoHtml(){
-  return C.coach.logo
-    ? `<img class="logo" src="${esc(C.coach.logo)}" alt="${esc(C.coach.name)}" onerror="this.outerHTML='<p class=wordmark>${esc(C.coach.name)}</p>'">`
-    : `<p class="wordmark">${esc(C.coach.name)}</p>`;
-}
-/* ---------- Kayla's photos ---------- */
-const PH = C.photos || {};
-function kimg(p, cls, alt, eager){ if (!p) return "";
-  const [n, pos] = p, base = "assets/kayla/q-" + n;
-  return `<img class="${cls}" src="${base}-800.webp" srcset="${base}-800.webp 800w, ${base}-1200.webp 1200w" sizes="(min-width:720px) 680px, 100vw" style="object-position:${pos || "50% 35%"}" alt="${esc(alt || "Kayla Bundy")}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'}>`; }
-/* Split a headline into two lines that rise in, like the sales page. */
-function lines(t){ const w = String(t).split(" "); if (w.length < 3) return `<span class="line"><span>${esc(t)}</span></span>`;
-  const h = Math.ceil(w.length / 2); return [w.slice(0,h).join(" "), w.slice(h).join(" ")].map(x => `<span class="line"><span>${esc(x)}</span></span>`).join(""); }
-function proofHtml(){ const p = PH.proof; if (!p) return "";
-  const card = ([q,c]) => `<figure class="mc"><blockquote>\u201c${esc(q)}\u201d</blockquote><figcaption>${esc(c)}</figcaption></figure>`;
-  const rib = (p.ribbon||[]).map(n => `<img src="assets/kayla/${n}-480.webp" alt="" loading="lazy">`).join("");
-  return `<section class="proof">
-    <div class="wrap"><p class="k rv">${esc(p.kicker)}</p><h3 class="rv">${esc(p.heading)}</h3><div class="rule"></div></div>
-    <div class="marq"><div class="ptrack">${p.row1.concat(p.row1).map(card).join("")}</div></div>
-    <div class="marq"><div class="ptrack r">${p.row2.concat(p.row2).map(card).join("")}</div></div>
-    <div class="wrap"><p class="pnote">${esc(p.note)}</p></div>
-    ${rib ? `<div class="rib" aria-hidden="true"><div class="rtrack">${rib}${rib}</div></div><p class="ribcap">${esc(p.ribbonCap||"")}</p>` : ""}
-  </section>`; }
-/* Gentle scroll reveals, same motion as the sales page. */
-function motion(){
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches){ app.querySelectorAll(".rv,.line,.rule,h1").forEach(e => e.classList.add("in")); return; }
-  app.querySelectorAll("section.block, .kres, .kq, .kgate, .proof .marq, .knote figcaption").forEach(e => e.classList.add("rv"));
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold:.12 });
-  app.querySelectorAll(".rv, .rule, h1").forEach(e => io.observe(e));
-}
-function hostNote(){ const h = PH.note; if (!h) return "";
-  return `<figure class="knote">${kimg(h.photo, "kn-img", "Kayla Bundy")}<figcaption><p class="k">${esc(h.kicker)}</p><p class="kb">${esc(h.body)}</p><p class="ks">${esc(h.sign)}</p></figcaption></figure>`; }
-function hand_html(){ return ART.hand ? `<div class="sower under" aria-hidden="true"><img class="hand" src="${esc(ART.hand)}" alt="">${ART.seed ? [1,2,3].map(k => `<img class="fall f${k}" src="${esc(ART.seed)}" alt="">`).join("") : ""}</div>` : ""; }
-function renderIntro(){
-  const resume = Object.keys(state.answers).length > 0 && !state.submitted;
-  const others = C.linkBetweenAssessments ? Object.values(C.assessments).filter(x => x.id !== A.id) : [];
-  app.innerHTML = `
-  <div class="intro${PH.intro ? " ed" : " dark"}">${PH.intro ? `<div class="kban"><div class="kph">${kimg(PH.intro, "", "Kayla Bundy smiling in her kitchen", true)}</div></div>` : ""}<div class="wrap">
-    ${PH.intro ? hand_html() + `<p class="k rv">A 2-minute quiz from Kayla Bundy</p>` : ""}
-    ${PH.intro ? "" : ART.hand ? `<div class="sower" aria-hidden="true"><img class="hand" src="${esc(ART.hand)}" alt="">${ART.seed ? [1,2,3].map(k => `<img class="fall f${k}" src="${esc(ART.seed)}" alt="">`).join("") : ""}</div>` : logoHtml()}
-    <h1 aria-label="${esc(A.title)}">${lines(A.title)}</h1>
-    <p class="sub rv">${esc(A.subtitle)}</p>
-    ${PH.intro ? `<div class="rule"></div>` : ""}
-    <p class="lede rv">${esc(A.lede)}</p>
-    <div class="meta"><span>${countEstimate()} questions</span><span>${esc(A.minutes)}</span><span>Private to you</span></div>
-    <button class="btn" id="start">${resume ? "Pick up where you left off" : "Start"}</button>
-    ${resume ? `<button class="btn ghost" id="restart" style="max-width:340px;margin:10px auto 0">Start over</button>` : ""}
-    <p class="note">${esc(A.privacy)} <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Privacy</a></p>
-    ${others.length ? `<p class="switch">${others.map(o => `<a href="/${o.id}">Or take ${esc(o.title)}</a>`).join(" ")}</p>` : ""}
-  </div></div>`;
-  motion();
-  document.getElementById("start").onclick = () => { T.step("start", null, true); state.step = resume ? firstUnanswered() : 0; if(!resume){ state.answers={}; state.submitted=false; state.branch=null; state.order=null; } save(); render(); };
-  const r = document.getElementById("restart");
-  if (r) r.onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
-}
-function firstUnanswered(){ for (let i=0;i<N();i++) if (!answered(i)) return i; return N(); }
-function answered(i){
-  const q = Q()[i], a = state.answers[q.i];
-  if (q.type === "grid") return !!a && q.keys.every(k => a[k]);
-  return a !== undefined;
-}
+/* old vs new */
+.vs{display:grid; gap:14px; margin-top:22px}
+.vs div{border-radius:16px; padding:20px 22px}
+.vs .old{background:var(--white); border:1px solid var(--rule)}
+.vs .new{background:var(--espresso); color:var(--cream)}
+.vs h3{font-size:22px; margin:0 0 6px}
+.vs .new h3{color:var(--gold)}
+.vs p{margin:0}
 
-/* ---------- questions ---------- */
-function scaleHtml(q, cur, extra){
-  const max = q.max || 5, vals = Array.from({length:max}, (_,k)=>k+1);
-  return `<div class="scale ${max>5?"ten":""}" role="group" aria-label="1 to ${max}">` +
-    vals.map(v => `<button class="opt" ${extra||""} data-v="${v}" aria-pressed="${cur===v}">${v}</button>`).join("") + `</div>`;
-}
-/* Shuffled answer order (assessment option `shuffle: true`). Made once per attempt and saved, so Back and resume keep the same order. Answers always store the original option index. */
-function optOrder(q){
-  const idx = q.opts.map((_,k) => k);
-  if (!A.shuffle || q.type === "branch") return idx;
-  state.order = state.order || {};
-  if (!state.order[q.i] || state.order[q.i].length !== idx.length){
-    for (let k = idx.length - 1; k > 0; k--){ const j = Math.floor(Math.random() * (k + 1)); [idx[k], idx[j]] = [idx[j], idx[k]]; }
-    state.order[q.i] = idx; save();
-  }
-  return state.order[q.i];
-}
-function renderQuestion(){
-  const i = state.step, q = Q()[i], a = state.answers[q.i], total = state.branch ? N() : countEstimate();
-  let body = "";
-  if (q.type === "scenario" || q.type === "branch"){
-    body = `<p class="hint">${esc(q.hint || A.scenarioHint || "")}</p><div class="opts">` +
-      optOrder(q).map(k => `<button class="opt" data-v="${k}" aria-pressed="${a===k}">${esc(q.opts[k][0])}</button>`).join("") + `</div>`;
-  } else if (q.type === "scale"){
-    const ends = q.ends || A.scaleEnds || ["Low","High"];
-    body = `<p class="hint">${esc(q.hint || A.scaleHint || "")}</p>${scaleHtml(q, a)}<div class="ends"><span>${esc(ends[0])}</span><span>${esc(ends[1])}</span></div>`;
-  } else {
-    const cur = a || {};
-    body = `<p class="hint">${esc(q.hint || "")}</p><div class="grid">` +
-      q.keys.map(k => { const d = A.dimensions[k]; return `<div class="grid-row"><div class="label"><b>${esc(d.label)}</b><span>${esc(d.sub||"")}</span></div>${scaleHtml(q, cur[k], `data-key="${k}"`)}</div>`; }).join("") +
-      `</div><div class="next"><button class="btn" id="finish" ${answered(i)?"":"disabled"}>${esc(q.button || "Continue")}</button></div>`;
-  }
-  app.innerHTML = `
-  <div class="top"><div class="wrap">
-    <div class="topbar"><button class="back" id="back">\u2190 Back</button><span>${i+1} of ${total}</span></div>
-    ${ART.furrow ? furrowHtml(i, total) : `<div class="track"><div class="fill" style="width:${Math.round(i/total*100)}%"></div></div>`}
-  </div></div>
-  ${(PH.questions||[])[i % Math.max(1,(PH.questions||[]).length)] ? `<div class="wrap"><div class="kq">${kimg(PH.questions[i % PH.questions.length], "", "Kayla Bundy in her kitchen", true)}</div></div>` : ""}
-  <div class="wrap q"><p class="part">${esc(q.part||"")}</p><h2>${esc(q.q)}</h2>${body}</div>`;
-  requestAnimationFrame(() => { const f = app.querySelector(".fill"); if (f) f.style.width = Math.round((i+1)/total*98) + "%"; });
-  document.getElementById("back").onclick = () => { state.step = i-1; save(); render(); };
-  app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
-    const v = Number(b.dataset.v);
-    if (q.type === "grid"){
-      state.answers[q.i] = Object.assign({}, state.answers[q.i], { [b.dataset.key]: v }); save();
-      b.parentElement.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-pressed", x===b));
-      const f = document.getElementById("finish"); if (f) f.disabled = !answered(i);
-      return;
-    }
-    state.answers[q.i] = v;
-    if (q.type === "branch") state.branch = q.opts[v][1];
-    save();
-    b.parentElement.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-pressed", x===b));
-    setTimeout(() => { state.step = i+1; save(); render(); }, 220);
-  });
-  const fin = document.getElementById("finish");
-  if (fin) fin.onclick = () => { if (answered(i)) { state.step = i+1; save(); render(); } };
-}
+/* method */
+.method{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:22px}
+.method div{background:var(--white); border:1px solid var(--rule); border-radius:16px; padding:18px}
+.method b{font-family:var(--serif); font-style:italic; font-weight:400; font-size:23px; display:block; color:var(--espresso)}
+.method span{font-size:15px; color:var(--muted)}
 
-/* ---------- scoring ---------- */
-function score(){
-  const sums = {}, picks = {};
-  Object.keys(A.patterns).forEach(k => picks[k] = 0);
-  Object.keys(A.dimensions).forEach(k => sums[k] = []);
-  const push = (k, v, max) => { if (sums[k]) sums[k].push(Math.round((v-1)/(max-1)*100)); };
-  Q().forEach(q => {
-    const a = state.answers[q.i]; if (a === undefined) return;
-    if (q.type === "scenario") picks[q.opts[a][1]]++;
-    if (q.type === "scale"){ const max = q.max||5; push(q.key, a, max); if (q.also) push(q.also.key, q.also.reverse ? (max+1-a) : a, max); }
-    if (q.type === "grid") Object.entries(a).forEach(([k,v]) => push(k, v, q.max||5));
-  });
-  const dims = {};
-  Object.entries(sums).forEach(([k,arr]) => dims[k] = arr.length ? Math.round(arr.reduce((x,y)=>x+y,0)/arr.length) : null);
-  const groups = A.groups || [];
-  const lowGroup = groups.length ? (groups.find(g => g.lowestFrom) || groups[0]).id : null;
-  const order = A.lowestOrder || Object.keys(dims);
-  const ranked = Object.entries(dims).filter(([k,v]) => A.dimensions[k].group === lowGroup && v !== null)
-    .sort((a,b) => (a[1]-b[1]) || (order.indexOf(a[0]) - order.indexOf(b[0])));
-  const groupVals = ranked.map(r => r[1]);
-  const overall = A.overall && groupVals.length ? Math.round(groupVals.reduce((x,y)=>x+y,0)/groupVals.length) : null;
-  const s = { dims, picks, overall, branch: state.branch, low: ranked[0] && ranked[0][0], next: ranked[1] && ranked[1][0] };
-  if (typeof A.profile === "function") s.pattern = A.profile(s);
-  else {
-    s.pattern = A.patternOrder.reduce((best,k) => picks[k] > picks[best] ? k : best, A.patternOrder[0]);
-    /* Tie-break (assessment option `tieBreak: <question index>`): if several patterns share the top count, the pattern picked on that question wins when it is one of them. */
-    if (typeof A.tieBreak === "number"){
-      const top = Math.max(...Object.values(picks)), tied = Object.keys(picks).filter(k => picks[k] === top);
-      const tq = A.questions[A.tieBreak], ta = state.answers[A.tieBreak];
-      if (tied.length > 1 && tq && ta !== undefined && tied.includes(tq.opts[ta][1])) s.pattern = tq.opts[ta][1];
-    }
-    if (A.forcePattern && picks[A.forcePattern.key] >= A.forcePattern.min) s.pattern = A.forcePattern.key;
-  }
-  return s;
-}
-function level(v, g, d){
-  const t = (d && d.thresholds) || g.thresholds || [65,40];
-  const L = (d && d.labels) || g.labels;
-  return v >= t[0] ? ["high", L.high] : v >= t[1] ? ["mid", L.mid] : ["low", L.low];
-}
-const pick = (v, s) => (v && typeof v === "object") ? (v[s.branch] || Object.values(v)[0]) : v;   // branch-keyed text
-function actionsFor(s){
-  const P = A.patterns[s.pattern], D = A.dimensions;
-  const rule = (A.rules||[]).find(r => r.when(s));
-  const dimAct = k => ({ why: D[k].why || `Your lowest: ${D[k].label}`, action: pick(D[k].action, s) });
-  const acts = [{ why:`Your ${A.patternWord || "pattern"}: ${P.name}`, action:pick(P.action, s) }];
-  if (rule) acts.push({ why:rule.why, action:rule.action });
-  else if (s.low && D[s.low].action){
-    const g = (A.groups||[]).find(x => x.lowestFrom) || (A.groups||[])[0] || {}, strong = s.dims[s.low] >= ((g.thresholds||[65,40])[0]);
-    acts.push(Object.assign(dimAct(s.low), { why: strong ? `Keep ${D[s.low].label} strong` : D[s.low].why ? `${D[s.low].label}: ${D[s.low].why}` : `Your biggest leverage point: ${D[s.low].label}` }));
-  }
-  const nextKey = (rule && rule.dim !== s.low) ? s.low : s.next;
-  if (nextKey && D[nextKey].action){ const a = pick(D[nextKey].action, s); if (!acts.some(x => x.action === a)) acts.push({ why:`Next: ${D[nextKey].label}`, action:a }); }
-  return acts.filter(a => a.action).slice(0,3);
-}
-function readableAnswers(){
-  return Q().map((q,i) => {
-    const a = state.answers[q.i]; let out;
-    if (q.type === "scenario" || q.type === "branch") out = a === undefined ? null : q.opts[a][0];
-    else if (q.type === "scale") out = a ?? null;
-    else { out = {}; Object.entries(a||{}).forEach(([k,v]) => out[A.dimensions[k].label] = v); }
-    return { n:i+1, part:q.part||"", question:q.q, answer:out };
-  });
+/* inside */
+.inside{list-style:none; padding:0; margin:20px 0 0; display:grid; gap:10px}
+.inside li{background:var(--white); border:1px solid var(--rule); border-radius:14px; padding:14px 16px 14px 48px; position:relative}
+.inside li:before{content:""; position:absolute; left:18px; top:20px; width:12px; height:12px; border-radius:50%; background:var(--gold)}
+.inside b{font-weight:500}
+
+/* quotes */
+.quotes{display:grid; gap:12px; margin-top:22px}
+.quote{background:var(--white); border-left:3px solid var(--gold); border-radius:4px 14px 14px 4px; padding:16px 18px; font-family:var(--serif); font-style:italic; font-size:19px; line-height:1.45}
+.small{font-size:13.5px; color:var(--muted); margin:14px 0 0}
+
+/* bonuses */
+.bonus{display:grid; gap:12px; margin-top:20px}
+.bonus div{border:1px solid rgba(201,169,110,.45); border-radius:16px; padding:18px 20px; background:rgba(255,255,255,.04)}
+.bonus h3{font-size:22px; color:var(--cream)}
+.bonus .v{font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin:4px 0 6px}
+.bonus p{margin:0; color:var(--night-muted)}
+.bonus .tag{display:inline-block; margin-top:10px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; background:var(--gold); color:var(--espresso); border-radius:20px; padding:3px 10px; font-weight:500}
+
+/* pricing */
+.price-card{background:var(--white); border:1px solid var(--rule); border-radius:22px; padding:28px 24px; box-shadow:0 18px 50px rgba(61,46,30,.12); text-align:center}
+.price-card .was{color:var(--muted); text-decoration:line-through; font-size:20px}
+.price-card .now{font-family:var(--serif); font-size:60px; line-height:1; margin:6px 0 2px}
+.price-card .off{display:inline-block; background:var(--espresso); color:var(--gold); border-radius:20px; padding:4px 12px; font-size:13px; letter-spacing:.1em; text-transform:uppercase; margin:6px 0 14px}
+.price-card .plan{display:block; margin-top:12px; font-size:15px}
+.price-card .plan a{color:var(--gold-ink)}
+.price-card .soon{font-size:14px; color:var(--muted); margin:8px 0 0}
+.price-card .cnt{font-size:15px; margin:14px 0 0; color:var(--muted)}
+.price-card .cnt b{color:var(--espresso); font-weight:500; font-variant-numeric:tabular-nums}
+.ladder{list-style:none; padding:0; margin:22px 0 0; text-align:left; font-size:15px}
+.ladder li{display:flex; justify-content:space-between; gap:10px; padding:9px 0; border-top:1px solid var(--rule); color:var(--muted)}
+.ladder li.past{text-decoration:line-through; opacity:.55}
+.ladder li.cur{color:var(--espresso); font-weight:500}
+.ladder li.cur span:first-child:after{content:"  \2190  now"; color:var(--gold-ink); font-weight:400}
+.cap{font-size:14px; color:var(--muted); margin:16px 0 0}
+.gift{background:var(--linen); border-radius:14px; padding:14px 16px; margin-top:16px; font-size:15px; text-align:left}
+.gift a{color:var(--gold-ink)}
+
+/* guarantee */
+.guarantee{border:1.5px dashed var(--gold-ink); border-radius:20px; padding:24px 22px; text-align:center; margin-top:26px; background:var(--white)}
+.guarantee h3{font-size:24px; margin-bottom:8px}
+
+/* about */
+.about p{margin:12px 0 0}
+
+/* faq */
+details{border-top:1px solid var(--rule); padding:14px 0}
+details:last-of-type{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer; font-weight:500; list-style:none; position:relative; padding-right:28px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+"; position:absolute; right:4px; top:-2px; font-size:22px; color:var(--gold-ink)}
+details[open] summary:after{content:"\2212"}
+details p{margin:10px 0 0; color:var(--muted)}
+
+.care{font-size:13px; color:var(--muted); margin:22px 0 0}
+/*FTCSS*/.verse{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.4;color:var(--gold);margin:20px 0 0}
+.verse span{display:block;font-family:var(--sans);font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-top:6px;color:var(--night-muted)}
+.cost p,.forty p{margin:12px 0 0}
+.cost p:not(.k):not(.verse){color:var(--night-muted)}
+.refs{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.ps{font-size:15px;color:var(--night-muted);text-align:left;border-top:1px solid rgba(201,169,110,.35);margin:26px 0 0;padding-top:18px}
+.care{text-align:center}
+.hero{padding-top:0}
+.hero-photo{position:relative;height:300px;margin:0 0 22px;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.hero-photo:after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to bottom,rgba(61,46,30,0),var(--espresso))}
+.ph{margin:20px 0 0}
+.ph img{width:100%;border-radius:16px;object-fit:cover}
+.ph-r img{aspect-ratio:4/3;object-position:50% 30%}
+.ph-wide img{aspect-ratio:4/3;object-position:50% 45%}
+.ph-portrait img{aspect-ratio:4/5;object-position:50% 25%;margin-bottom:22px}
+.ph-close{max-width:300px;margin:0 auto 24px}
+.ph-close img{aspect-ratio:1/1;border-radius:50%;object-position:50% 20%;border:3px solid var(--gold)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 0}
+.duo img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px}
+@media (min-width:640px){.hero-photo{height:420px}}
+.hcd{margin:16px 0 0;text-align:center}.hcd p{margin:0 0 4px;font-size:14px;color:var(--muted)}.hcd p b{color:var(--espresso);font-weight:500}.hcd .flip{margin:6px 0 0}
+
+/* ===== Version A: quiet luxury motion ===== */
+.hero-a{background:var(--cream);color:var(--espresso);padding:0 0 46px}
+.hero-a .hero-photo{height:340px;margin:0 0 24px}
+.hero-a .hero-photo:after{display:none}
+.hero-a .hero-photo img{animation:drift 16s ease-in-out infinite alternate;transform-origin:50% 30%}
+@keyframes drift{from{transform:scale(1.03)}to{transform:scale(1.11) translate(-6px,-6px)}}
+.hero-a .k{color:var(--gold-ink)}
+.hero-a h1{font-size:clamp(38px,10vw,58px);line-height:1.04;margin:6px 0 14px}
+.hero-a .sub{color:var(--muted);font-size:18px}
+.line{display:block;overflow:hidden;padding-bottom:.06em}.line>span{display:block}
+.rule{height:1px;background:var(--gold);margin:4px 0 22px;transform-origin:left}
+.vsl-cover{display:block;width:100%;border:0;padding:0;cursor:pointer;background:#000;font:inherit;color:#fff}
+.vsl-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.vsl-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,14,.6),rgba(30,22,14,0) 60%)}
+.vsl-cover .play{position:absolute;z-index:2;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;background:rgba(250,248,244,.94);animation:pulse 2.4s infinite}
+.vsl-cover .play:before{content:"";position:absolute;left:28px;top:22px;border-left:18px solid var(--espresso);border-top:13px solid transparent;border-bottom:13px solid transparent}
+.vsl-cover .vlab{position:absolute;z-index:2;left:16px;bottom:12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,169,110,.6)}70%{box-shadow:0 0 0 20px rgba(201,169,110,0)}100%{box-shadow:0 0 0 0 rgba(201,169,110,0)}}
+.hero-a .starts{color:var(--muted)}
+/* taste */
+.tsee{font-size:clamp(30px,7.5vw,42px);line-height:1.12;margin:4px 0 6px}.sc{font-variant:small-caps}
+.tref{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin:0 0 14px}
+.mos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mos .tile{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:4/5}
+.mos .tile:nth-child(3n+1){grid-column:span 2;aspect-ratio:16/11}
+.mos .tile img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover;animation:breathe 9s ease-in-out infinite alternate;will-change:transform}
+@keyframes breathe{from{scale:1.02}to{scale:1.12}}
+.rib{overflow:hidden;margin-top:26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.rtrack{display:flex;gap:14px;width:max-content;animation:mq 50s linear infinite}
+.rtrack img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 16px rgba(61,46,30,.18)}
+.ribcap{text-align:center;font-size:12px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin:12px 0 0}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* proof marquee */
+.proof .marq{overflow:hidden;padding:8px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.proof .track{display:flex;gap:14px;width:max-content;animation:mq 70s linear infinite}
+.proof .track.r{animation-direction:reverse;animation-duration:80s}
+.proof .marq:hover .track{animation-play-state:paused}
+.mc{margin:0;width:270px;background:#fff;border:1px solid var(--rule);border-radius:20px;padding:18px;box-shadow:0 10px 26px rgba(61,46,30,.08);display:flex;flex-direction:column;justify-content:space-between}
+.mc blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.4}
+.mc figcaption{margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
+/* price */
+.price-card .was{position:relative;display:inline-block;text-decoration:none}
+.price-card .was:after{content:"";position:absolute;left:-4px;right:-4px;top:52%;height:1.5px;background:var(--gold-ink);transform:scaleX(0);transform-origin:left;transition:transform .6s ease .3s}
+.price-card.in .was:after{transform:scaleX(1)}
+.price-card .now{font-variant-numeric:tabular-nums}
+.flip{display:flex;gap:6px;justify-content:center;margin:10px 0 4px}
+.flip div{background:var(--espresso);color:var(--cream);border-radius:9px;min-width:52px;padding:7px 4px 5px;text-align:center;font-variant-numeric:tabular-nums;font-size:22px;line-height:1}
+.flip small{display:block;font-size:9px;letter-spacing:.14em;color:var(--gold);margin-top:4px}
+.flip b{display:inline-block;font-weight:400}.flip b.tick{animation:tick .35s ease}
+@keyframes tick{from{transform:translateY(-40%);opacity:.2}to{transform:none;opacity:1}}
+/* reveals (only when JS is on and motion is allowed) */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .line>span{transform:translateY(105%);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .in .line>span,.js h1.in .line>span{transform:none}
+.js h1 .line:nth-child(2)>span{transition-delay:.08s}.js h1 .line:nth-child(3)>span{transition-delay:.16s}
+.js .wipe{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.65,0,.2,1)}.js .wipe.in{clip-path:inset(0 0 0 0)}
+.js .rule{transform:scaleX(0);transition:transform 1.2s cubic-bezier(.65,0,.2,1) .2s}.js .rule.in{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){
+ .js .rv,.js .line>span,.js .wipe,.js .rule{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
+ .hero-a .hero-photo img,.mos .tile img,.rtrack,.proof .track,.vsl-cover .play{animation:none!important}
+ .rib,.proof .marq{overflow-x:auto}
 }
 
-/* ---------- gate ---------- */
-function renderGate(){
-  const G = C.gate, L = lead();
-  T.step("gate_view");
-  app.innerHTML = `
-  <div class="top"><div class="wrap"><div class="topbar"><button class="back" id="back">\u2190 Back</button><span>Almost there</span></div>${ART.furrow ? furrowHtml(N(), N()) : `<div class="track"><div class="fill" style="width:98%"></div></div>`}</div></div>
-  <div class="wrap gate">
-    ${PH.gate ? `<figure class="kgate">${kimg(PH.gate.photo, "", "Kayla Bundy")}<figcaption>${esc(PH.gate.line)}</figcaption></figure>` : (ART.planted ? `<img class="planted" src="${esc(ART.planted)}" alt="" aria-hidden="true">` : "")}
-    <p class="ready">${esc(G.ready || `All ${N()} answered`)}</p>
-    <h2>${esc(G.heading)}</h2>
-    <p class="body">${esc(G.body)}</p>
-    <form id="gate" novalidate>
-      ${G.fields.map(f => `
-      <div class="field" data-key="${f.key}">
-        <label for="f-${f.key}">${esc(f.label)} ${f.required ? "" : "<small>optional</small>"}</label>
-        <div class="in">${f.prefix ? `<span>${esc(f.prefix)}</span>` : ""}${f.type === "select"
-          ? `<select id="f-${f.key}" name="${f.key}"><option value="">Choose one</option>${(f.options||[]).map(o => `<option ${L[f.key]===o?"selected":""}>${esc(o)}</option>`).join("")}</select>`
-          : `<input id="f-${f.key}" name="${f.key}" type="${f.type||"text"}" inputmode="${f.type==="tel"?"tel":f.type==="email"?"email":"text"}" autocomplete="${f.autocomplete||"on"}" value="${esc(L[f.key]||"")}" ${f.required?"required":""}>`}</div>
-        ${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ""}
-        <p class="err">${f.type==="email" ? "That email doesn\u2019t look right." : f.type==="tel" ? "Add your number with the country code." : "This one is needed."}</p>
-      </div>`).join("")}
-      <p class="consent">${esc(G.consent)} <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Privacy</a></p>
-      <button class="btn" type="submit" id="go">${esc(G.button)}</button>
-    </form>
-    <p class="note">${esc(G.note)}</p>
-  </div>`;
-  preloadScene();
-  document.getElementById("back").onclick = () => { state.step = N()-1; save(); render(); };
-  document.getElementById("gate").onsubmit = async e => {
-    e.preventDefault();
-    const data = {}; let ok = true;
-    G.fields.forEach(f => {
-      const el = document.getElementById("f-"+f.key), wrap = el.closest(".field");
-      let v = el.value.trim(); if (f.key === "instagram") v = v.replace(/^@/,"");
-      let bad = f.required && !v;
-      if (v && f.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) bad = true;
-      if (v && f.type === "tel" && v.replace(/\D/g,"").length < 7) bad = true;
-      wrap.classList.toggle("bad", bad); if (bad) ok = false; data[f.key] = v;
-    });
-    if (!ok) return;
-    T.step("gate_submit", null, true);
-    saveLead(data);
-    const btn = document.getElementById("go"); btn.disabled = true; btn.textContent = "One moment";
-    await submit(data);
-    state.step = N()+1; save(); render();
-  };
+@media (min-width:900px){
+ .hero-a{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:48px 40px 60px}
+ .hero-a .hero-photo{height:auto;width:100%;aspect-ratio:4/5;margin:0;border-radius:24px;box-shadow:0 30px 70px rgba(61,46,30,.18)}
+ .hero-a .wrap{max-width:none;padding:0}
+ .hero-a h1{font-size:60px}
 }
+.agree{font-size:12.5px;color:var(--muted);margin:12px 0 0}.agree a{color:var(--gold-ink)}
+/*END*/footer{padding:26px 0 40px; text-align:center; font-size:13px; color:var(--muted)}
+.mobile-cta{position:fixed; left:0; right:0; bottom:0; z-index:15; padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(250,248,244,.96); border-top:1px solid var(--rule); transform:translateY(110%); transition:transform .3s}
+.mobile-cta.show{transform:none}
+@media (min-width:640px){ .vs{grid-template-columns:1fr 1fr} .method{grid-template-columns:repeat(4,1fr)} .mobile-cta{display:none} }
 
-async function submit(data){
-  const s = score();
-  const payload = {
-    coach: C.coach.slug, assessment: A.id, assessment_title: A.title,
-    lead: data,
-    pattern: s.pattern, pattern_label: A.patterns[s.pattern].name,
-    scores: s.dims, picks: s.picks, lowest: s.low, overall: s.overall, branch: s.branch,
-    answers: readableAnswers(),
-    actions: actionsFor(s).map(a => a.action),
-    meta: { ref: document.referrer || "", src: source().src || "", campaign: source().campaign || "", ua: navigator.userAgent, page: location.href }
-  };
-  try {
-    const r = await fetch("/.netlify/functions/submit", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload) });
-    if (!r.ok) throw new Error("submit " + r.status);
-    state.submitted = true; state.pending = null;
-  } catch(e) {
-    // never block the person from their results; keep the payload and retry on the results screen
-    state.pending = payload;
-  }
-  save();
-}
-async function retryPending(){
-  if (!state.pending || state.submitted) return;
-  try {
-    const r = await fetch("/.netlify/functions/submit", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(state.pending) });
-    if (r.ok){ state.submitted = true; state.pending = null; save(); }
-  } catch(e){}
-}
+/* nudges: short cuts to the video and the price for people who skim */
+.nudge{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;margin:30px 0 0;padding:20px 0 0;border-top:1px solid var(--rule);text-align:center}
+.nudge p{flex-basis:100%;margin:0;font-family:var(--serif);font-style:italic;font-size:19px}
+.nudge .btn{min-height:50px;padding:0 26px;font-size:15px}
+.nudge .vlink{background:none;border:0;padding:6px 2px;font:500 15px var(--sans);color:inherit;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.nudge .vlink:before{content:"\25B6";font-size:10px;margin-right:7px;vertical-align:1px}
+.dark .nudge{border-top-color:rgba(201,169,110,.3)}
+.dark .nudge p{color:var(--cream)}
+/* desktop rail */
+.rail{position:fixed;right:22px;bottom:22px;z-index:15;width:236px;padding:18px 18px 14px;border-radius:18px;background:var(--espresso);color:var(--cream);box-shadow:0 18px 40px rgba(30,22,14,.28);text-align:center;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s}
+.rail.show{opacity:1;transform:none;pointer-events:auto}
+.rail .rk{margin:0;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.rail .rp{margin:4px 0 12px;font-family:var(--serif);font-size:19px;line-height:1.25}
+.rail .btn{width:100%;min-height:48px;padding:0 14px;font-size:15px}
+.rail .vlink{display:block;width:100%;margin-top:8px;background:none;border:0;color:var(--night-muted);font:13.5px var(--sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (max-width:1099px){.rail{display:none}}
+/* mobile bar: video + seat */
+.mobile-cta{display:flex;gap:8px}
+.mobile-cta .btn{flex:1}
+.mobile-cta .mv{flex:0 0 auto;min-height:56px;padding:0 18px;border-radius:30px;border:1px solid var(--espresso);background:transparent;color:var(--espresso);font:500 15px var(--sans);cursor:pointer}
+@media (prefers-reduced-motion: reduce){.rail{transition:none}}
+@media (min-width:640px){.mobile-cta{display:none}}
 
-/* ---------- results ---------- */
-/* Drive share link -> direct download. Any other URL or path passes through. Placeholders are hidden. */
-function fileUrl(u){
-  if (!u || /^PASTE_/.test(u)) return "";
-  const m = u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?.*id=)([\w-]{20,})/);
-  return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : u;
-}
-function embed(url){
-  if (!url) return "";
-  let m;
-  if ((m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{6,})/))) return `https://www.youtube.com/embed/${m[1]}?rel=0&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`;
-  if ((m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return `https://player.vimeo.com/video/${m[1]}`;
-  return url;
-}
-function renderResults(){
-  retryPending();
-  const s = score(), P = A.patterns[s.pattern], R = A.results, D = A.dimensions, L = lead();
-  const acts = actionsFor(s);
-  if (A.layout === "steps") return renderStepResults(s, P, R, L);
-  const groupsHtml = (A.groups||[]).map(g => {
-    const keys = Object.keys(D).filter(k => D[k].group === g.id && s.dims[k] !== null);
-    const leadTxt = g.leadLowest && s.low ? g.leadLowest.replace("{low}", `<b>${esc(D[s.low].label.toLowerCase())}</b>`) : esc(g.lead||"");
-    return `<section class="block"><h3>${esc(g.title)}</h3><p class="lead">${leadTxt}</p>` +
-      keys.map(k => { const v = s.dims[k], [lvl, lab] = level(v, g, D[k]); const isLow = g.lowIsBad !== false && lvl === "low"; const note = D[k].notes ? D[k].notes[lvl] : "";
-        return `<div class="meter"><div class="row"><b>${esc(D[k].label)}</b><span>${esc(lab)}</span></div><div class="bar ${isLow?"low":""}"><i data-w="${Math.max(v,4)}"></i></div>${note?`<p>${esc(note)}</p>`:""}</div>`; }).join("") +
-      `</section>`;
-  }).join("");
-  const offers = C.offers.items.filter(o => o.enabled && o.url && (!o.when || o.when(L, s)));
-  const others = C.linkBetweenAssessments ? Object.values(C.assessments).filter(x => x.id !== A.id) : [];
-  const video = embed(P.video);
-  app.innerHTML = `
-  <div class="res-hero${PH.intro ? " ed" : " dark"}"><div class="wrap">
-    ${L.name ? `<p class="hello">${esc(L.name)}, here\u2019s what your answers show.</p>` : ""}
-    <p class="k">${esc(A.patternKicker)}${s.overall !== null ? ` · ${esc(R.overallLabel || "Overall")} ${s.overall}/100` : ""}</p>
-    <h1>${esc(P.name)}</h1>
-    <p class="tag">${esc(P.tag)}</p>
-    <p>${esc(P.body)}</p>
-    <div class="foot"><b>${esc(P.footLabel)}</b>${esc(P.foot)}</div>
-  </div></div>
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .mobile-cta{transition:none} }
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar" hidden></div>
+
+<header class="hero hero-a">
+  <div class="hero-photo"><img src="../assets/kayla/hero-1200.webp" srcset="../assets/kayla/hero-480.webp 480w, ../assets/kayla/hero-800.webp 800w, ../assets/kayla/hero-1200.webp 1200w, ../assets/kayla/hero-1717.webp 1717w" sizes="(min-width:900px) 560px, 100vw" alt="Kayla smiling in her kitchen, holding a plate of fresh vegetables" fetchpriority="high"></div>
   <div class="wrap">
-    ${video ? `<section class="block"><h3>${esc(R.videoTitle)}</h3><div class="video"><iframe src="${esc(video)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(P.name)}"></iframe></div></section>` : ""}
-    <section class="block">
-      <h3>${esc(R.actionsTitle)}</h3><p class="lead">${esc(R.actionsLead)}</p>
-      <ol class="actions">${acts.map(a => `<li><span class="why">${esc(a.why)}</span><span class="do">${esc(a.action)}</span></li>`).join("")}</ol>
-      ${R.note ? `<p class="quote">${esc(R.note)}</p>` : ""}
-    </section>
-    ${groupsHtml}
-    ${fileUrl(P.pdf) ? `<section class="block"><div class="pdf"><b>${esc(R.pdfTitle)}</b><p>${esc(R.pdfBody)}</p><a class="btn" href="${esc(fileUrl(P.pdf))}" target="_blank" rel="noopener">${esc(R.pdfButton)}</a></div></section>` : ""}
-    <p class="care">${esc(R.care)}</p>
-  </div>
-  <div class="cta dark"><div class="wrap">
-    <h3>${esc(C.offers.heading)}</h3>
-    <p>${esc(C.coach.programLine)}</p>
-    ${offers.map(o => `<div class="step"><b>${esc(o.title)}</b><span>${esc(o.body)}</span>${o.code ? `<div class="code">${esc(o.code)}</div><br>` : ""}<a class="btn" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.button)}</a></div>`).join("")}
-    <div class="tools">
-      ${others.map(o => `<a class="btn ghost" href="/${o.id}">Take ${esc(o.title)}</a>`).join("")}
-      <button class="btn ghost" id="copy">Copy my results</button>
-      <button class="btn ghost" id="again">Retake</button>
-    </div>
-  </div></div>`;
-  requestAnimationFrame(() => setTimeout(() => app.querySelectorAll(".bar i").forEach(i => i.style.width = i.dataset.w + "%"), 60));
-  document.getElementById("again").onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
-  document.getElementById("copy").onclick = async () => {
-    const bars = Object.keys(D).filter(k => s.dims[k] !== null).map(k => `${D[k].label} ${s.dims[k]}/100`).join(", ");
-    const text = `My ${A.title} result: ${P.name}. ${bars}.\n\nTomorrow:\n` + acts.map((a,k) => `${k+1}. ${a.action}`).join("\n");
-    try { await navigator.clipboard.writeText(text); toast("Results copied"); }
-    catch(e){ const t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); toast("Results copied"); } catch(_){ toast("Copy not available here"); } t.remove(); }
-  };
-}
-/* Links to pages on this site (the sales page) carry her soil and source along, so every sale can be traced back. */
-function ctaHref(url, soil){
-  if (!/^\//.test(url)) return url;
-  const u = new URL(url, location.origin);
-  u.searchParams.set("soil", soil);
-  const sr = (typeof source === "function" && source().src) || "";
-  if (sr) u.searchParams.set("src", sr);
-  return u.pathname + u.search;
-}
-/* Step layout (assessment option `layout: "steps"`): headline, what it means, method stage, where to start in the guide,
-   one thing to do this week, one main button and a smaller "Not ready?" link. Built for result pages with one clear next step. */
-function renderStepResults(s, P, R, L){
-  const video = embed(P.video), pdf = fileUrl(P.pdf || R.pdf);
-  const live = u => u && !/^PASTE_/.test(u);
-  const cta = P.cta || {}, nr = P.notReady || {};
-  app.innerHTML = `
-  <div class="res-hero${PH.intro ? " ed" : " dark"}"><div class="wrap">
-    ${L.name ? `<p class="hello">${esc(L.name)}, here’s where your plate is right now.</p>` : ""}
-    ${sceneHtml(P)}
-    <p class="k">${esc(A.patternKicker)}</p>
-    <h1 aria-label="${esc(P.headline || P.name)}">${lines(P.headline || P.name)}</h1>
+    <p class="k rv">The 40-Day Family Table · Starts January 1</p>
+    <h1 aria-label="Feed your family God’s way in 40 days."><span class="line"><span>Feed your family</span></span><span class="line"><span>God&rsquo;s way</span></span><span class="line"><span>in 40 days.</span></span></h1>
+    <p class="sub rv">One dinner. One table. The plan handed to you every week, so you stop cooking twice and stop starting over every Monday.</p>
     <div class="rule"></div>
-    <p class="rv">${esc(P.means)}</p>
-    ${R.season ? `<div class="foot">${esc(R.season)}</div>` : ""}
-  </div></div>
-  <div class="wrap">
-    <section class="block">
-      <p class="k">${esc(R.stageLabel || "Your next step")}</p>
-      <h3>${esc(P.stage)}</h3>
-      <p class="lead">${esc(P.next)}</p>
-    </section>
-    ${PH.results ? `<div class="kres">${kimg(PH.results, "", "Kayla Bundy")}</div>` : ""}
-    <section class="block"><div class="pdf">
-      <p class="k">${esc(R.guideLabel || "Start here in your free guide")}</p>
-      <b>${esc(P.guideStart)}</b>
-      <p>${esc(R.pdfBody || "")}</p>
-      ${pdf ? `<a class="btn" href="${esc(pdf)}" target="_blank" rel="noopener">${esc(R.pdfButton)}</a>` : ""}
-    </div></section>
-    <section class="block">
-      <p class="k">${esc(R.weekLabel || "Do this week")}</p>
-      <ol class="actions"><li><span class="do">${esc(P.week)}</span></li></ol>
-      ${R.note ? `<p class="quote">${esc(R.note)}</p>` : ""}
-    </section>
-    ${video ? `<section class="block"><h3>${esc(P.videoTitle || R.videoTitle)}</h3><div class="video"><iframe src="${esc(video)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(P.videoTitle || R.videoTitle)}"></iframe></div></section>` : ""}
-    <p class="care">${esc(R.care)}</p>
+    <button class="video vsl-cover rv" id="vsl" type="button" aria-label="Play Kayla's video"><img src="../assets/kayla/about-1200.webp" srcset="../assets/kayla/about-480.webp 480w, ../assets/kayla/about-800.webp 800w, ../assets/kayla/about-1200.webp 1200w, ../assets/kayla/about-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt=""><span class="play"></span><span class="vlab">Watch: the 40-Day Family Table</span></button>
+    <a class="btn block rv" href="#join">Save my family’s seat</a>
+    <div class="hcd" id="heroCd" hidden><p id="heroCdLabel"></p><div class="flip" id="flip2" role="timer"></div></div>
+    <p class="starts" id="startsLine"></p>
   </div>
-  ${proofHtml()}
-  <div class="cta dark"><div class="wrap">
-    ${hostNote()}
-    <h3>${esc(cta.title || "")}</h3>
-    <p>${esc(cta.body || "")}</p>
-    ${live(cta.url) ? `<a class="btn" href="${esc(ctaHref(cta.url, s.pattern))}"${/^\//.test(cta.url) ? "" : ` target="_blank" rel="noopener"`}>${esc(cta.button)}</a>` : `<button class="btn" disabled>${esc(cta.button)}</button><p class="soon">${esc(R.soon || "Link coming soon")}</p>`}
-    ${nr.text && live(nr.url) ? `<p class="notready"><a href="${esc(nr.url)}" target="_blank" rel="noopener">${esc(nr.text)}</a></p>` : ""}
-    ${(() => { const M = C.moreLinks; if (!M) return ""; const used = [cta.url, nr.url]; const items = (M.items||[]).filter(x => live(x.url) && !used.includes(x.url)); return items.length ? `<p class="more">${esc(M.label)} ${items.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.text)}</a>`).join(" \u00b7 ")}</p>` : ""; })()}
-    <div class="tools">
-      <button class="btn ghost" id="copy">Copy my result</button>
-      <button class="btn ghost" id="again">Retake</button>
-    </div>
-  </div></div>`;
-  startScene(); motion();
-  T.step("results_view", { r: s.pattern, src: source().src || "" }, true);
-  const vf = app.querySelector(".video iframe"); if (vf) T.watchVideo(vf, "video_play");
-  [["#copy","copy_result"],["#again","retake"]].forEach(([sel,e]) => { const b = app.querySelector(sel); if (b) b.setAttribute("data-track", e); });
-  app.querySelectorAll(".pdf a.btn").forEach(a => a.setAttribute("data-track", "guide_click"));
-  app.querySelectorAll(".cta > .wrap > a.btn").forEach(a => a.setAttribute("data-track", "cta_click"));
-  app.querySelectorAll(".notready a").forEach(a => a.setAttribute("data-track", "notready_click"));
-  app.querySelectorAll(".more a").forEach((a,k) => { a.setAttribute("data-track", "more_click"); a.setAttribute("data-track-k", k ? "bundle" : "ebook"); });
-  const pr = app.querySelector(".proof"); if (pr) pr.setAttribute("data-track-seen", "proof_view");
-  const kn = app.querySelector(".knote"); if (kn) kn.setAttribute("data-track-seen", "note_view");
-  T.scan(app);
-  document.getElementById("again").onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
-  document.getElementById("copy").onclick = async () => {
-    const text = `My ${A.title} result: ${P.headline || P.name}\n\n${R.weekLabel || "Do this week"}: ${P.week}`;
-    try { await navigator.clipboard.writeText(text); toast("Result copied"); }
-    catch(e){ toast("Copy not available here"); }
-  };
-}
-function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.classList.add("on"); setTimeout(() => t.classList.remove("on"), 1800); }
+</header>
 
-load(); render();
+<section>
+  <div class="wrap">
+    <p class="k">Be honest with me</p>
+    <h2>Does this sound like your kitchen?</h2>
+    <figure class="ph ph-r"><img class="wipe" src="../assets/kayla/pain-1200.webp" srcset="../assets/kayla/pain-480.webp 480w, ../assets/kayla/pain-800.webp 800w, ../assets/kayla/pain-1200.webp 1200w, ../assets/kayla/pain-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt="Kayla reaching into a kitchen cabinet holding a bowl of eggs" loading="lazy"></figure>
+    <ul class="checks"><li>You cook one dinner for yourself and a second one for everyone else.</li><li>Monday you’re all in. By Wednesday it’s takeout and a promise to start again next week.</li><li>Your husband pokes at the plate. Your kids ask for something else.</li><li>It’s 5pm, you’re standing in front of the fridge, and there’s no plan and no energy left.</li><li>You love the Lord, and deep down you know food was meant to be part of that, not a fight you have three times a day.</li></ul>
+    <p class="lead">Here’s what nobody told you. You were never short on willpower. You were short on a plan, and on people walking it with you. Willpower runs out by Wednesday. A plan doesn’t.</p>
+    <div class="nudge" data-nudge="pain"><p>If that sounds like your kitchen, you already know this is for you.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
+  </div>
+</section>
+
+<section class="dark cost">
+  <div class="wrap">
+    <p class="k">The real price</p>
+    <h2>Waiting isn’t free. You’re already paying for it.</h2>
+    <p>Yes, in the takeout you order because there’s no plan. But that’s the smallest cost.</p><p>The real cost is what food is quietly taking from you. It’s pulling you farther from God, because the thing you reach for first when you’re tired, anxious or lonely isn’t Him. It’s pulling you from the people you love, because you’re too drained, too foggy and too hard on yourself to be fully present with them.</p><p>And it’s stealing the energy, confidence and clarity you need for what God has already placed in your lap. The calling, the marriage, the children, the purpose. You can’t steward them well while you’re running on empty.</p><p>Your kids are paying too. The enemy has always used food as a door, from the very first bite in the garden. He uses it to whisper lies to our children about who they are, what their bodies are worth, and who God is. Every craving they’re ruled by and every bit of shame they feel at the table is a door left open.</p><p>‘Someday’ isn’t a plan. It’s how next January looks exactly like this one, with that door still open in your home.</p><p>It’s time to close it.</p>
+    <p class="verse">“To day if ye will hear his voice, harden not your hearts.” <span>Hebrews 3:15</span></p>
+    <div class="nudge" data-nudge="cost"><p>Ready to close that door?</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
+  </div>
+</section>
+
+<section class="forty">
+  <div class="wrap">
+    <p class="k">Why forty days</p>
+    <h2>Forty days is how God prepares His people.</h2>
+    <figure class="ph ph-wide"><img class="wipe" src="../assets/kayla/forty-1200.webp" srcset="../assets/kayla/forty-480.webp 480w, ../assets/kayla/forty-800.webp 800w, ../assets/kayla/forty-1200.webp 1200w, ../assets/kayla/forty-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt="Kayla reading her Bible with bread and grapes" loading="lazy"></figure>
+    <p>The rain fell for forty days. Moses was on the mountain forty days. Jesus spent forty days in the wilderness before His ministry began. Forty days is long enough to break an old pattern, and short enough that you can see the finish line from day one.</p><p>Daniel asked for just ten days to prove what God’s food would do. I’m giving your family forty.</p>
+    <p class="refs">Genesis 7:12 · Exodus 24:18 · Matthew 4:2 · Daniel 1:12</p>
+  </div>
+</section>
+
+<section class="linen">
+  <div class="wrap">
+    <p class="k">Why this is different</p>
+    <h2>Same seed. Different soil.</h2>
+    <div class="vs">
+      <div class="old"><h3>The old way</h3><p>Plans built for one woman, running on rules and willpower, ignoring everyone else at your table. So you fight your cravings and your family at the same time, and you lose both.</p></div>
+      <div class="new"><h3>The Family Table</h3><p>Built for the whole family and rooted in Scripture. The meal plans, the grocery lists and prep day are handed to you. You stop deciding and start following, together.</p></div>
+    </div>
+    <div class="method"><div><b>Renew</b><span>how you see food and your plate</span></div><div><b>Plant</b><span>one simple change at a time</span></div><div><b>Tend</b><span>it with a weekly plan and prep day</span></div><div><b>Harvest</b><span>a rhythm your whole family shares</span></div></div>
+    <div class="nudge" data-nudge="different"><p>Want the whole picture in a few minutes?</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
+  </div>
+</section>
+
+<section class="taste">
+  <div class="wrap">
+    <p class="k">Taste and see</p>
+    <h2 class="tsee">&ldquo;O taste and see that the <span class="sc">Lord</span> is good.&rdquo;</h2>
+    <p class="tref">Psalm 34:8</p>
+    <p class="lead" style="margin:0 0 20px">Real food, in every colour He made. Fish and steak, berries and bread, eggs, lentils and fresh greens. Nothing bland, nothing boxed.</p>
+    <div class="mos"><div class="tile wipe" style="transition-delay:0.0s"><img data-sz="tile" data-px="-0.08" style="animation-delay:-0.0s" src="../assets/kayla/f-raspberries-1200.webp" srcset="../assets/kayla/f-raspberries-480.webp 480w, ../assets/kayla/f-raspberries-800.webp 800w, ../assets/kayla/f-raspberries-1200.webp 1200w, ../assets/kayla/f-raspberries-1512.webp 1512w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.12s"><img data-sz="tile" data-px="0.1" style="animation-delay:-2.3s" src="../assets/kayla/f-dragon-1200.webp" srcset="../assets/kayla/f-dragon-480.webp 480w, ../assets/kayla/f-dragon-800.webp 800w, ../assets/kayla/f-dragon-1200.webp 1200w, ../assets/kayla/f-dragon-1512.webp 1512w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.24s"><img data-sz="tile" data-px="-0.08" style="animation-delay:-4.6s" src="../assets/kayla/f-beet-1200.webp" srcset="../assets/kayla/f-beet-480.webp 480w, ../assets/kayla/f-beet-800.webp 800w, ../assets/kayla/f-beet-1200.webp 1200w, ../assets/kayla/f-beet-1512.webp 1512w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.0s"><img data-sz="tile" data-px="0.1" style="animation-delay:-6.8999999999999995s" src="../assets/kayla/f-lentil-1200.webp" srcset="../assets/kayla/f-lentil-480.webp 480w, ../assets/kayla/f-lentil-800.webp 800w, ../assets/kayla/f-lentil-1200.webp 1200w, ../assets/kayla/f-lentil-1932.webp 1932w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.12s"><img data-sz="tile" data-px="-0.08" style="animation-delay:-9.2s" src="../assets/kayla/f-berries-1200.webp" srcset="../assets/kayla/f-berries-480.webp 480w, ../assets/kayla/f-berries-800.webp 800w, ../assets/kayla/f-berries-1200.webp 1200w, ../assets/kayla/f-berries-1512.webp 1512w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.24s"><img data-sz="tile" data-px="0.1" style="animation-delay:-11.5s" src="../assets/kayla/f-bread-1200.webp" srcset="../assets/kayla/f-bread-480.webp 480w, ../assets/kayla/f-bread-800.webp 800w, ../assets/kayla/f-bread-1200.webp 1200w, ../assets/kayla/f-bread-1932.webp 1932w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.0s"><img data-sz="tile" data-px="-0.08" style="animation-delay:-13.799999999999999s" src="../assets/kayla/f-board-1200.webp" srcset="../assets/kayla/f-board-480.webp 480w, ../assets/kayla/f-board-800.webp 800w, ../assets/kayla/f-board-1200.webp 1200w, ../assets/kayla/f-board-1512.webp 1512w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.12s"><img data-sz="tile" data-px="0.1" style="animation-delay:-16.099999999999998s" src="../assets/kayla/f-steak-1200.webp" srcset="../assets/kayla/f-steak-480.webp 480w, ../assets/kayla/f-steak-800.webp 800w, ../assets/kayla/f-steak-1200.webp 1200w, ../assets/kayla/f-steak-1512.webp 1512w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div><div class="tile wipe" style="transition-delay:0.24s"><img data-sz="tile" data-px="-0.08" style="animation-delay:-18.4s" src="../assets/kayla/f-rasp-cakes-1200.webp" srcset="../assets/kayla/f-rasp-cakes-480.webp 480w, ../assets/kayla/f-rasp-cakes-800.webp 800w, ../assets/kayla/f-rasp-cakes-1200.webp 1200w, ../assets/kayla/f-rasp-cakes-1512.webp 1512w" sizes="(min-width:740px) 680px, 100vw" alt="" loading="lazy"></div></div>
+  </div>
+  <div class="rib" aria-hidden="true"><div class="rtrack"><img data-sz="rib" src="../assets/kayla/f-dragon2-1200.webp" srcset="../assets/kayla/f-dragon2-480.webp 480w, ../assets/kayla/f-dragon2-800.webp 800w, ../assets/kayla/f-dragon2-1200.webp 1200w, ../assets/kayla/f-dragon2-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-redrice-1200.webp" srcset="../assets/kayla/f-redrice-480.webp 480w, ../assets/kayla/f-redrice-800.webp 800w, ../assets/kayla/f-redrice-1200.webp 1200w, ../assets/kayla/f-redrice-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-raspberries-1200.webp" srcset="../assets/kayla/f-raspberries-480.webp 480w, ../assets/kayla/f-raspberries-800.webp 800w, ../assets/kayla/f-raspberries-1200.webp 1200w, ../assets/kayla/f-raspberries-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-board2-1200.webp" srcset="../assets/kayla/f-board2-480.webp 480w, ../assets/kayla/f-board2-800.webp 800w, ../assets/kayla/f-board2-1200.webp 1200w, ../assets/kayla/f-board2-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-lentil-1200.webp" srcset="../assets/kayla/f-lentil-480.webp 480w, ../assets/kayla/f-lentil-800.webp 800w, ../assets/kayla/f-lentil-1200.webp 1200w, ../assets/kayla/f-lentil-1932.webp 1932w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-beet-1200.webp" srcset="../assets/kayla/f-beet-480.webp 480w, ../assets/kayla/f-beet-800.webp 800w, ../assets/kayla/f-beet-1200.webp 1200w, ../assets/kayla/f-beet-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-berries-1200.webp" srcset="../assets/kayla/f-berries-480.webp 480w, ../assets/kayla/f-berries-800.webp 800w, ../assets/kayla/f-berries-1200.webp 1200w, ../assets/kayla/f-berries-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-dragon-1200.webp" srcset="../assets/kayla/f-dragon-480.webp 480w, ../assets/kayla/f-dragon-800.webp 800w, ../assets/kayla/f-dragon-1200.webp 1200w, ../assets/kayla/f-dragon-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-dragon2-1200.webp" srcset="../assets/kayla/f-dragon2-480.webp 480w, ../assets/kayla/f-dragon2-800.webp 800w, ../assets/kayla/f-dragon2-1200.webp 1200w, ../assets/kayla/f-dragon2-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-redrice-1200.webp" srcset="../assets/kayla/f-redrice-480.webp 480w, ../assets/kayla/f-redrice-800.webp 800w, ../assets/kayla/f-redrice-1200.webp 1200w, ../assets/kayla/f-redrice-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-raspberries-1200.webp" srcset="../assets/kayla/f-raspberries-480.webp 480w, ../assets/kayla/f-raspberries-800.webp 800w, ../assets/kayla/f-raspberries-1200.webp 1200w, ../assets/kayla/f-raspberries-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-board2-1200.webp" srcset="../assets/kayla/f-board2-480.webp 480w, ../assets/kayla/f-board2-800.webp 800w, ../assets/kayla/f-board2-1200.webp 1200w, ../assets/kayla/f-board2-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-lentil-1200.webp" srcset="../assets/kayla/f-lentil-480.webp 480w, ../assets/kayla/f-lentil-800.webp 800w, ../assets/kayla/f-lentil-1200.webp 1200w, ../assets/kayla/f-lentil-1932.webp 1932w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-beet-1200.webp" srcset="../assets/kayla/f-beet-480.webp 480w, ../assets/kayla/f-beet-800.webp 800w, ../assets/kayla/f-beet-1200.webp 1200w, ../assets/kayla/f-beet-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-berries-1200.webp" srcset="../assets/kayla/f-berries-480.webp 480w, ../assets/kayla/f-berries-800.webp 800w, ../assets/kayla/f-berries-1200.webp 1200w, ../assets/kayla/f-berries-1512.webp 1512w" sizes="110px" alt="" loading="lazy"><img data-sz="rib" src="../assets/kayla/f-dragon-1200.webp" srcset="../assets/kayla/f-dragon-480.webp 480w, ../assets/kayla/f-dragon-800.webp 800w, ../assets/kayla/f-dragon-1200.webp 1200w, ../assets/kayla/f-dragon-1512.webp 1512w" sizes="110px" alt="" loading="lazy"></div></div>
+  <p class="ribcap">Every colour He made</p>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="k">What’s inside</p>
+    <h2>Here’s everything I hand you</h2>
+    <div class="duo"><img data-sz="half" class="wipe" src="../assets/kayla/prep1-1200.webp" srcset="../assets/kayla/prep1-480.webp 480w, ../assets/kayla/prep1-800.webp 800w, ../assets/kayla/prep1-1200.webp 1200w, ../assets/kayla/prep1-1717.webp 1717w" sizes="(min-width:740px) 340px, 50vw" alt="Kayla putting a dish in the oven" loading="lazy"><img src="../assets/kayla/prep2-1200.webp" srcset="../assets/kayla/prep2-480.webp 480w, ../assets/kayla/prep2-800.webp 800w, ../assets/kayla/prep2-1200.webp 1200w, ../assets/kayla/prep2-1717.webp 1717w" sizes="(min-width:740px) 340px, 50vw" data-sz="half" class="wipe" style="transition-delay:.15s" alt="Kayla smiling while prepping fresh vegetables" loading="lazy"></div>
+    <ul class="inside"><li><b>Week one kitchen reset.</b> Clear out what’s working against you and restock with what God called good. You’ll feel the difference in the first week.</li><li><b>Weekly family meal plans and grocery lists.</b> Dinner is decided before Monday. You just shop the list.</li><li><b>A weekly prep-day plan.</b> One session on the weekend and your week is ready.</li><li><b>Swaps your husband and kids will actually eat.</b> Not diet food. Real meals for the whole table.</li><li><b>Little Learners lessons for your kids.</b> They learn why God made food the way He did, so they’re on your team, not across the table from you.</li><li><b>Daily Godly affirmations and a weekly family table devotional.</b> Your table becomes the place your family meets God, not just where they eat.</li><li><b>Recipe library.</b> Meals you’ll keep making long after day 40.</li><li><b>Weekly check-ins and a private group chat with me.</b> You won’t be doing this alone. I’ll be right there with you every week, and so will the other families.</li></ul>
+    <div class="nudge" data-nudge="inside"><p>All of it is yours from day one.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
+  </div>
+</section>
+
+<section class="linen proof">
+  <div class="wrap">
+    <p class="k">From women already eating this way</p>
+    <h2>Their families are at the table</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="marq"><div class="track"><figure class="mc"><blockquote>&ldquo;Having a plan set and laid out for me is what I knew I needed.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;My husband LOVED the shakshuka and said to add it to the rotation.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Day 3 dinner. My husband also had the soup and loved it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I did the gut board today and my younger son wanted to eat most of it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.&rdquo;</blockquote><figcaption>Christina</figcaption></figure><figure class="mc"><blockquote>&ldquo;Having a plan set and laid out for me is what I knew I needed.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;My husband LOVED the shakshuka and said to add it to the rotation.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Day 3 dinner. My husband also had the soup and loved it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I did the gut board today and my younger son wanted to eat most of it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.&rdquo;</blockquote><figcaption>Christina</figcaption></figure></div></div>
+  <div class="marq"><div class="track r"><figure class="mc"><blockquote>&ldquo;It has been truly life-changing and in a way I never anticipated.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.&rdquo;</blockquote><figcaption>Courtney</figcaption></figure><figure class="mc"><blockquote>&ldquo;Just starting to see food, actual food, as such a gift.&rdquo;</blockquote><figcaption>Christina</figcaption></figure><figure class="mc"><blockquote>&ldquo;It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I don’t need all the bad foods just to celebrate something.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;It has been truly life-changing and in a way I never anticipated.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.&rdquo;</blockquote><figcaption>Courtney</figcaption></figure><figure class="mc"><blockquote>&ldquo;Just starting to see food, actual food, as such a gift.&rdquo;</blockquote><figcaption>Christina</figcaption></figure><figure class="mc"><blockquote>&ldquo;It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I don’t need all the bad foods just to celebrate something.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.&rdquo;</blockquote><figcaption>Member</figcaption></figure></div></div>
+  <div class="wrap"><p class="small" style="text-align:center">Real words from real women in Kayla’s community, shared with permission. Results vary.</p>
+    <div class="nudge" data-nudge="proof"><p>Your family could be next at the table.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div></div>
+</section>
+
+<section class="dark" id="bonusSec">
+  <div class="wrap">
+    <p class="k">When you join</p>
+    <h2>Your bonuses</h2>
+    <p style="color:var(--night-muted);margin:10px 0 0">Join now and these come with your seat.</p>
+    <div class="bonus" id="bonuses"></div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <p class="k" style="text-align:center">Join the January group</p>
+    <h2 style="text-align:center">Save your family’s seat</h2>
+    <p class="lead" style="text-align:center;margin:12px 0 22px">You can keep paying for the old way a little at a time, every week, with no end date. Or you can make one decision and change how your family eats for good.</p>
+    <div class="price-card" id="priceCard"></div>
+    <div class="guarantee">
+      <h3>My promise to you</h3>
+      <p>Do your weekly check-ins and stay active in the group chat. If your family isn’t eating at least 5 biblical meals a week by day 21, you join my next group free. You do your part, I’ll do mine. The only way to lose is to never start.</p>
+    </div>
+  </div>
+</section>
+
+<section class="linen about">
+  <div class="wrap">
+    <figure class="ph ph-portrait"><img class="wipe" src="../assets/kayla/about-1200.webp" srcset="../assets/kayla/about-480.webp 480w, ../assets/kayla/about-800.webp 800w, ../assets/kayla/about-1200.webp 1200w, ../assets/kayla/about-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt="Kayla Bundy at her table, smiling with a cup of tea" loading="lazy"></figure>
+    <p class="k">Who I am</p>
+    <h2>Hi, I’m Kayla.</h2>
+    <p>I was a professional dancer. From the outside I looked like the picture of health. On the inside I was exhausted, constantly sick, and running on a kind of tired that sleep didn’t fix.</p><p>Then I removed refined sugar, and something shifted. That one change sent me back to Scripture with a new question: what foods does God actually call good? Years later, eating this way is one of the most joyful parts of my life, and I want that for your whole table.</p>
+    <p style="font-family:var(--serif); font-style:italic; font-size:20px; margin-top:16px">&ldquo;Food is not the enemy, but it is what the enemy will always use to distort, manipulate and separate you from God.&rdquo;</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="k">Questions</p>
+    <h2 style="margin-bottom:16px">Before you join</h2>
+    <details><summary>When does it start?</summary><p>January 1. Join now and your seat is saved, and you’ll get what you need to get ready before day one.</p></details><details><summary>My husband and kids are picky. Will this work?</summary><p>That’s exactly who I built it for. The swaps are made for the whole table, and the Little Learners lessons bring your kids into it instead of fighting them at dinner.</p></details><details><summary>What if my husband isn’t on board yet?</summary><p>You don’t need him to sign up. You need him to sit down and eat. Most husbands come around the first time a meal is good and nobody calls it diet food.</p></details><details><summary>How much time will it take?</summary><p>The thinking is done for you. You get the meal plan, the grocery list and one prep day a week. You cook, I handle the planning.</p></details><details><summary>I’ve tried before and fallen off.</summary><p>You didn’t fail. The system failed you. This one has a weekly plan, daily affirmations, a weekly devotional, weekly check-ins and a private group chat of families walking it with you. And if you slip, you don’t start over. You come back to the table.</p></details><details><summary>Is now really the right time?</summary><p>There’s never a perfect time to change how your family eats. January 1 is the closest thing to one. And the price only gets better if you decide early.</p></details><details><summary>Is there a payment plan?</summary><p>Yes, you can split it into 3 payments, charged every 2 weeks. You’ll see the option right under the price.</p></details><details><summary>Can I give it as a gift?</summary><p>Yes. Check out with your details, then email kaylabundymanagement@gmail.com with the name and email of the person you’re gifting it to, and I’ll set them up.</p></details><details><summary>Is this medical advice?</summary><p>No. This is faith and whole food, not medical advice. If you’re pregnant, nursing, managing a health condition or taking medication, talk to your doctor before making big changes.</p></details>
+
+    <div class="nudge" data-nudge="faq"><p>Still have a question? The video answers most of them.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>  </div>
+</section>
+
+<section class="dark close">
+  <div class="wrap" style="text-align:center">
+    <figure class="ph ph-close"><img src="../assets/kayla/close-1200.webp" srcset="../assets/kayla/close-480.webp 480w, ../assets/kayla/close-800.webp 800w, ../assets/kayla/close-1200.webp 1200w, ../assets/kayla/close-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt="Kayla laughing, holding a fresh loaf of bread" loading="lazy"></figure>
+    <p class="k">One last thing</p>
+    <h2>A year from now, you’ll have a family table either way.</h2>
+    <p style="color:var(--night-muted);margin:14px 0 22px">The only question is what’s on it, and who’s sitting around it with you. Forty days. One table. Your whole family.</p>
+    <a class="btn" href="#join">Save my family’s seat</a>
+    <p class="verse" style="margin-top:26px">“Whether therefore ye eat, or drink, or whatsoever ye do, do all to the glory of God.” <span>1 Corinthians 10:31</span></p>
+    <p class="ps">P.S. If you scrolled straight down here, here’s the short version. Forty days starting January 1. Meal plans, grocery lists and prep day handed to you every week. Weekly check-ins and a private group chat with me. And my promise: if your family isn’t eating 5 biblical meals a week by day 21, you come back free. The price goes up when the timer hits zero.</p>
+  </div>
+</section>
+
+<div class="wrap"><p class="care">Not medical advice. Results vary. Testimonials are shared with permission. See our <a href="/terms/">Terms, Disclaimer and Privacy Policy</a>.</p></div>
+
+<footer>Kayla Bundy &middot; The Biblical Nutritionist &middot; <a href="https://kaylabundy.com">kaylabundy.com</a> &middot; <a href="/terms/">Terms &amp; Privacy</a></footer>
+
+<aside class="rail" id="rail" aria-label="Save your seat"><p class="rk">40-Day Family Table</p><p class="rp" id="railPrice">Starts January 1</p><a class="btn" href="#join">Save my seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></aside>
+<div class="mobile-cta" id="mobileCta"><button class="mv" type="button" data-vsl aria-label="Watch Kayla's video">&#9654; Video</button><a class="btn block" href="#join" id="mobileBtn">Save my family&rsquo;s seat</a></div>
+
+<script>
+(() => {
+  document.documentElement.classList.add("js");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const S = window.SALES;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const live = u => u && !/^PASTE_/.test(u);
+
+  /* who she is (from the quiz, same site) and where she came from */
+  const q = new URLSearchParams(location.search);
+  const read = k => { try { return JSON.parse(localStorage.getItem(k) || "null") || {}; } catch(e){ return {}; } };
+  const lead = read("ica-lead-kayla");
+  const src = q.get("src") || q.get("utm_source") || read("ica-src-kayla").src || "direct";
+  const soil = q.get("soil") || "";
+  const ref = [src, soil].filter(Boolean).join("_").replace(/[^\w-]/g, "").slice(0, 200);
+  const checkout = (u, promo) => {
+    if (!live(u)) return null;
+    try { const x = new URL(u); x.searchParams.set("client_reference_id", ref); if (lead.email) x.searchParams.set("prefilled_email", lead.email);
+      if (promo) x.searchParams.set("prefilled_promo_code", promo); return x.toString(); }
+    catch(e){ return u; }
+  };
+
+  /* VSL */
+  const id = (S.vsl.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{6,})/) || [])[1];
+  /* YouTube only loads when she taps play: faster page on phones */
+  $("vsl").addEventListener("click", function(){
+    if (!id || this.dataset.on) return; this.dataset.on = 1;
+    this.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?rel=0&playsinline=1&autoplay=1" title="The 40-Day Family Table" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  });
+  $("startsLine").textContent = `Starts ${S.start}.${S.cap ? ` The founding group is capped at ${S.cap} families.` : ""}`;
+
+  /* current price step */
+  const now = Date.now();
+  let steps = S.steps.map(s => ({ ...s, t: Date.parse(s.ends) }));
+  /* early-access price for voters and keyword commenters (?access=early, remembered) */
+  try { if (S.early && q.get("access") === S.early.code) localStorage.setItem("ft-access", S.early.code); } catch(e){}
+  let hasEarly = false; try { hasEarly = !!S.early && localStorage.getItem("ft-access") === S.early.code; } catch(e){}
+  if (hasEarly && Date.parse(S.early.ends) > now) steps = [{ ...S.early, t: Date.parse(S.early.ends) }].concat(steps.filter(s => s.t > Date.parse(S.early.ends)));
+  const cur = steps.find(s => s.t > now);
+  const deal = st => st.off % 10 === 0 ? `${st.off}% off` : `save $${S.fullPrice - st.price}`;
+
+  /* bonuses */
+  const B = S.bonuses, list = [];
+  if (cur && cur.bonus === "ebook") list.push(B.ebook);
+  list.push(B.academy);
+  if (B.cookbook.enabled) list.push(B.cookbook);
+  $("bonuses").innerHTML = list.map(b => `<div><h3>${esc(b.title)}</h3>${b.value ? `<p class="v">${esc(b.value)}</p>` : ""}<p>${esc(b.body)}</p>${b.note ? `<span class="tag">${esc(b.note)}</span>` : ""}</div>`).join("");
+
+  /* price card */
+  const fmt = ms => { const s = Math.max(0, Math.floor(ms/1000)); const d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60), x = s%60;
+    return `${d ? d + "d " : ""}${String(h).padStart(2,"0")}h ${String(m).padStart(2,"0")}m ${String(x).padStart(2,"0")}s`; };
+  if (!cur){
+    $("priceCard").innerHTML = `<h3 style="font-size:26px">${esc(S.closed.title)}</h3><p>${esc(S.closed.body)}</p>${live(S.closed.url) ? `<a class="btn" href="${esc(S.closed.url)}" target="_blank" rel="noopener">${esc(S.closed.button)}</a>` : ""}`;
+    $("mobileBtn").textContent = "Join the waitlist";
+  } else {
+    const next = steps[steps.indexOf(cur) + 1];
+    const buy = checkout(cur.url, cur.promo), plan = checkout(cur.planUrl);
+    $("priceCard").innerHTML = `
+      ${cur.off ? `<div class="was">$${S.fullPrice}</div>` : ""}
+      <div class="now">$${cur.price}</div>
+      ${cur.off ? `<span class="off">${esc(cur.label)}: ${deal(cur)}</span>` : `<span class="off">${esc(cur.label)}</span>`}
+      ${buy ? `<a class="btn block" href="${esc(buy)}">Join the 40-Day Family Table</a>` : `<span class="btn block" aria-disabled="true">Join the 40-Day Family Table</span><p class="soon">Checkout opens soon.</p>`}
+      ${plan && cur.plan ? `<span class="plan">or <a href="${esc(plan)}">${esc(cur.plan)}</a></span>` : ""}
+      <p class="agree">By joining you agree to the <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Privacy</a>. All sales final, backed by the Family Table Promise.</p>
+      <p class="cnt">${next ? `Price goes up to <b>$${next.price}</b> in` : `Doors close in`}</p>
+      <div class="flip" id="flip" role="timer">${["Days","Hrs","Min","Sec"].map(l => `<div><b>00</b><small>${l.toUpperCase()}</small></div>`).join("")}</div>
+      <ul class="ladder">${steps.map(s => `<li class="${s.t <= now ? "past" : s === cur ? "cur" : ""}"><span>${esc(s.label)}</span><span>$${s.price}</span></li>`).join("")}</ul>
+      ${S.cap ? `<p class="cap">Starts ${esc(S.start)}. The founding group is capped at ${S.cap} families.</p>` : ""}
+      ${S.gift.enabled ? `<div class="gift">${esc(S.gift.text)}${S.gift.email ? ` <a href="mailto:${esc(S.gift.email)}?subject=${encodeURIComponent("Gift: The 40-Day Family Table")}">${esc(S.gift.email)}</a>` : ""}</div>` : ""}`;
+    $("heroCd").hidden = false;
+    $("heroCdLabel").innerHTML = next ? `${esc(cur.label)} price ends. Goes up to <b>$${next.price}</b> in` : `Doors close in`;
+    $("flip2").innerHTML = ["Days","Hrs","Min","Sec"].map(l => `<div><b>00</b><small>${l.toUpperCase()}</small></div>`).join("");
+    const bar = $("bar");
+    bar.hidden = false;
+    const tick = () => {
+      const left = cur.t - Date.now();
+      if (left <= 0){ location.reload(); return; }
+      const t = fmt(left), z = Math.floor(left/1000);
+      const v = [Math.floor(z/86400), Math.floor(z%86400/3600), Math.floor(z%3600/60), z%60].map(x => String(x).padStart(2,"0"));
+      $("flip2").querySelectorAll("b").forEach((b,i) => { if (b.textContent !== v[i]) { b.textContent = v[i]; if (!still) { b.classList.remove("tick"); void b.offsetWidth; b.classList.add("tick"); } } });
+      $("flip").querySelectorAll("b").forEach((b,i) => { if (b.textContent !== v[i]) { b.textContent = v[i]; if (!still) { b.classList.remove("tick"); void b.offsetWidth; b.classList.add("tick"); } } });
+      bar.innerHTML = `<b>${esc(cur.label)}${cur.off ? `: ${deal(cur)}` : ""}</b> ends in <span class="t">${t}</span>`;
+    };
+    tick(); setInterval(tick, 1000);
+  }
+
+  /* ===== funnel tracking (same visit as the quiz when she comes from it) ===== */
+  const T = window.XPLRTrack ? XPLRTrack.init({ site: "kayla" }) : { step(){}, scan(){}, whenSeen(){} };
+  T.step("sales_land", { soil: soil || "none", tier: cur ? cur.id : "closed" }, true);
+  $("vsl").addEventListener("click", () => T.step("vsl_play", null, true));
+  T.whenSeen(document.querySelector(".taste"), "food_view");
+  T.whenSeen(document.querySelector(".proof"), "sales_proof_view");
+  T.whenSeen($("priceCard"), "price_view");
+  T.whenSeen(document.querySelector(".about"), "story_view");
+  T.whenSeen(document.querySelector("section.close"), "close_view");
+  $("priceCard").querySelectorAll("a.btn").forEach(a => a.setAttribute("data-track", "checkout_click"));
+  $("priceCard").querySelectorAll("a.btn, .plan a").forEach(a => a.addEventListener("click", () => { try { localStorage.setItem("ft-tier", cur ? cur.id : ""); } catch(e){} }));
+  $("priceCard").querySelectorAll(".plan a").forEach(a => a.setAttribute("data-track", "plan_click"));
+  $("priceCard").querySelectorAll(".gift a").forEach(a => a.setAttribute("data-track", "gift_click"));
+  document.querySelectorAll('a[href="#join"]').forEach(a => { a.setAttribute("data-track", "join_scroll"); });
+  document.querySelectorAll("details").forEach((d,k) => d.addEventListener("toggle", () => d.open && T.step("faq_open", { k: "q" + (k+1) })));
+  T.scan(document);
+
+  /* video shortcuts: scroll up to the video and start it */
+  document.querySelectorAll("[data-vsl]").forEach(b => b.addEventListener("click", () => {
+    const v = $("vsl"); const n = b.closest("[data-nudge]"); T.step("vsl_jump", { from: n ? n.dataset.nudge : (b.closest(".rail") ? "rail" : "bar") }, true);
+    v.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" });
+    setTimeout(() => v.click(), still ? 0 : 450);
+  }));
+  /* rail shows the live price step */
+  if ($("railPrice") && cur) $("railPrice").textContent = cur.off ? `${cur.label}: $${cur.price}` : `Starts ${S.start}`;
+
+  /* ===== motion: reveals, parallax, price count ===== */
+  if (!still) {
+    document.querySelectorAll("section .wrap > p, section .wrap > h2, section .wrap > ul, section .wrap > .vs, section .wrap > .method, section .wrap > .guarantee, section .wrap > details, .bonus > div").forEach(el => { if (!el.closest(".price-card")) el.classList.add("rv"); });
+    const seen = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in"); seen.unobserve(e.target);
+      if (e.target._wipes) e.target._wipes.forEach(w => w.classList.add("in"));
+      if (e.target.id === "priceCard") countDown(e.target);
+    }), { threshold: .15, rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll(".rv, .rule, h1, #priceCard").forEach(el => seen.observe(el));
+    /* a clipped photo has no visible area, so watch its frame instead */
+    document.querySelectorAll(".wipe").forEach(w => { const f = w.parentNode; (f._wipes = f._wipes || []).push(w); if (f._wipes.length === 1) seen.observe(f); });
+    const px = [...document.querySelectorAll("[data-px]")];
+    let raf = 0;
+    const onScroll = () => { raf = 0; const mid = innerHeight / 2;
+      px.forEach(im => { const r = im.parentNode.getBoundingClientRect(); if (r.bottom < -200 || r.top > innerHeight + 200) return;
+        im.style.transform = `translateY(${(mid - (r.top + r.height/2)) * im.dataset.px}px)`; }); };
+    addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(onScroll); }, { passive: true }); onScroll();
+  } else { const pc = $("priceCard"); pc && pc.classList.add("in"); }
+  function countDown(card){
+    const n = card.querySelector(".now"); if (!n || !cur || !cur.off) return;
+    const a = S.fullPrice, b = cur.price, t0 = performance.now(); n.textContent = "$" + a;
+    const f = t => { const p = Math.min(1, (t - t0) / 1100), k = 1 - Math.pow(1 - p, 3); n.textContent = "$" + Math.round(a + (b - a) * k); if (p < 1) requestAnimationFrame(f); };
+    setTimeout(() => requestAnimationFrame(f), 350);
+  }
+
+  /* sticky mobile button once the hero is out of view */
+  const mc = $("mobileCta"), join = $("join");
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.target === join) mc.dataset.join = e.isIntersecting ? "1" : "";
+    else mc.dataset.hero = e.isIntersecting ? "1" : "";
+    mc.classList.toggle("show", !mc.dataset.hero && !mc.dataset.join);
+    const rl = $("rail"); if (rl) rl.classList.toggle("show", !mc.dataset.hero && !mc.dataset.join && !mc.dataset.close);
+  }));
+  io.observe(document.querySelector(".hero")); io.observe(join);
+  const closeSec = document.querySelector("section.close");
+  if (closeSec) new IntersectionObserver(es => es.forEach(e => { mc.dataset.close = e.isIntersecting ? "1" : ""; const rl = $("rail"); if (rl) rl.classList.toggle("show", !mc.dataset.hero && !mc.dataset.join && !mc.dataset.close); })).observe(closeSec);
+})();
 </script>
 </body>
 </html>
