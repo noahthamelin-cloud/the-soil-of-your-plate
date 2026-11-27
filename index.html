@@ -287,7 +287,7 @@ h1 .line:nth-child(2)>span{transition-delay:.08s}
 <script src="/assets/xplr/xplr-track.js"></script>
 <meta property="og:title" content="Which soil is your plate? | Kayla Bundy">
 <meta property="og:description" content="A 2-minute quiz from Kayla Bundy, The Biblical Nutritionist. Find out where your plate is right now, and get your free Biblical Eating Foundation Guide.">
-<meta property="og:image" content="https://quiz.kaylabundy.com/assets/kayla/og-quiz.jpg">
+<meta property="og:image" content="https://quiz.kaylabundy.com/.netlify/functions/og-image">
 <meta property="og:url" content="https://quiz.kaylabundy.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -306,6 +306,8 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 const LEAD_KEY = `ica-lead-${C.coach.slug}`;
 /* Source tracking: links shared as ?src=youtube (or utm_source) are remembered so every lead shows where it came from. */
 const SRC_KEY = `ica-src-${C.coach.slug}`;
+/* early access link (?access=early): remembered so the sales page shows the early price after the quiz */
+try { if (new URLSearchParams(location.search).get("access") === "early") localStorage.setItem("ft-access", "early"); } catch(e){}
 (() => { const q = new URLSearchParams(location.search); const src = q.get("src") || q.get("utm_source"); if (src) try { localStorage.setItem(SRC_KEY, JSON.stringify({ src: src.slice(0,60), campaign: (q.get("utm_campaign")||"").slice(0,60) })); } catch(e){} })();
 const source = () => { try { return JSON.parse(localStorage.getItem(SRC_KEY) || "null") || {}; } catch(e){ return {}; } };
 
