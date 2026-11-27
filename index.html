@@ -283,6 +283,75 @@ h1 .line:nth-child(2)>span{transition-delay:.08s}
   .l.sprout{animation:none; opacity:0}
 }
 
+
+/* ---------- intro v2 ---------- */
+.intro .meta.after{margin:14px 0 6px}
+.intro .gets{max-width:30em;margin:0 auto 22px;text-align:left;background:var(--sand);border-radius:16px;padding:16px 20px 12px}
+.intro .gets .gk{margin:0 0 8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500;text-align:left}
+.intro .gets ul{margin:0;padding:0;list-style:none}
+.intro .gets li{position:relative;padding:0 0 8px 24px;font-size:15.5px;line-height:1.45;color:var(--ink)}
+.intro .gets li:before{content:"";position:absolute;left:2px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--gold-lt)}
+.btn.pulse{position:relative}
+.btn.pulse:after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(201,169,110,.55);animation:softPulse 2.8s ease-out infinite;pointer-events:none}
+@keyframes softPulse{0%{box-shadow:0 0 0 0 rgba(201,169,110,.5)}70%{box-shadow:0 0 0 14px rgba(201,169,110,0)}100%{box-shadow:0 0 0 0 rgba(201,169,110,0)}}
+@media (prefers-reduced-motion: reduce){.btn.pulse:after{animation:none}}
+
+/* intro v2: tighter top on phones so the promise and the button sit closer to the first screen */
+@media (max-width:719px){
+ .intro.ed .kban{aspect-ratio:2/1}
+ .intro .sower.under{width:54px;margin:-4px auto 16px}
+ .intro.ed .kban + .wrap{padding-top:14px}
+ .intro.ed h1{font-size:clamp(34px,10vw,46px)}
+ .intro .gets{margin-bottom:16px}
+ .intro .meta.after{margin:12px 0 4px}
+ .intro.ed .sub{font-size:17px}
+ .intro.ed .lede{font-size:14.5px;margin-bottom:14px}
+}
+/* ---------- results v2 ---------- */
+.r2 .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500;margin:0 0 8px}
+.r2-hero{padding:34px 0 8px}
+.r2 .hello{font-size:14px;color:var(--muted);margin:0 0 8px}
+.r2 h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,8vw,40px);line-height:1.12;margin:0 0 14px}
+.soilchip{display:inline-flex;align-items:center;gap:10px;margin:0;font-size:14px;color:var(--muted);background:var(--sand);border-radius:30px;padding:5px 14px 5px 5px}
+.soilchip b{font-weight:500;color:var(--ink)}
+.soilthumb{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.r2-banner{position:relative;min-height:380px;display:flex;align-items:flex-end;overflow:hidden;color:var(--night-ink)}
+.r2-banner > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r2-banner:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(61,46,30,.94) 8%,rgba(61,46,30,.55) 45%,rgba(61,46,30,.05) 80%)}
+.r2-banner .wrap{position:relative;z-index:2;padding-bottom:24px;width:100%}
+.r2-banner .hello{color:var(--night-muted)}
+.r2-banner .soilchip{background:rgba(250,248,244,.14);color:var(--night-muted)} .r2-banner .soilchip b{color:var(--night-ink)}
+.r2-said{padding:26px 0 0}
+.r2-said .sq{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.35;margin:0 0 8px;padding-left:14px;border-left:2px solid var(--gold-lt)}
+.r2-real{padding:22px 0 30px}
+.r2-real:after{content:"";display:table;clear:both}
+.r2-real .rt{margin:0;font-size:17px;line-height:1.6}
+.r2-float{float:right;width:40%;max-width:190px;margin:4px 0 10px 16px;border-radius:14px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 10px 26px rgba(61,46,30,.16)}
+.r2-float img{width:100%;height:100%;object-fit:cover}
+.r2-fit{background:var(--night);color:var(--night-ink);padding:34px 0 30px}
+.r2-fit h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(25px,6.6vw,31px);line-height:1.18;margin:0 0 10px}
+.r2-fit .fl{color:var(--night-muted);margin:0 0 18px}
+.r2-fit .rows{margin:0 0 22px}
+.r2-fit .row{border-top:1px solid var(--night-rule);padding:12px 0}
+.r2-fit .pa{margin:0 0 3px;font-weight:500;color:var(--gold-lt);font-size:15px}
+.r2-fit .fx{margin:0;color:var(--night-ink);font-size:16px}
+.r2-fit .price{margin:0 0 12px;text-align:center;font-size:15px;color:var(--night-muted)} .r2-fit .price s{opacity:.7} .r2-fit .price b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;color:var(--night-ink);margin:0 4px} .r2-fit .price span{color:var(--gold-lt)}
+.r2-fit .urg{margin:14px 0 4px;text-align:center;color:var(--gold-lt);font-size:15px;font-weight:500}
+.r2-fit .cap{margin:0;text-align:center;color:var(--night-muted);font-size:13.5px}
+.r2-today{margin:28px 0 0;background:var(--sand);border-radius:16px;padding:18px 20px}
+.r2-today p:last-child{margin:0;font-size:16px}
+.r2-proof{padding:26px 0 0}
+.r2-proof figure{margin:0 0 12px;padding:14px 16px;background:var(--surface);border:1px solid var(--rule);border-radius:14px}
+.r2-proof blockquote{margin:0 0 4px;font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.4}
+.r2-proof figcaption{font-size:13px;color:var(--muted)}
+.r2-proof .pn{font-size:12.5px;color:var(--muted);margin:2px 0 0}
+.r2-again{padding:18px 0 0}
+.r2-later{margin:34px 0 0;border-top:1px solid var(--rule);padding:26px 0 0}
+.r2-later p{margin:0 0 14px;color:var(--muted)}
+.r2-later .gs{display:block;font-size:14px;margin-top:4px}
+.r2-later .notready a,.r2-later .more{color:var(--muted)} .r2-later .more a{color:var(--gold)}
+.r2-later .tools{margin-top:18px}
+@media (min-width:720px){ .r2-banner{min-height:440px} }
 </style>
 <script src="/assets/xplr/xplr-track.js"></script>
 <meta property="og:title" content="Which soil is your plate? | Kayla Bundy">
@@ -419,9 +488,10 @@ function renderIntro(){
     <h1 aria-label="${esc(A.title)}">${lines(A.title)}</h1>
     <p class="sub rv">${esc(A.subtitle)}</p>
     ${PH.intro ? `<div class="rule"></div>` : ""}
-    <p class="lede rv">${esc(A.lede)}</p>
-    <div class="meta"><span>${countEstimate()} questions</span><span>${esc(A.minutes)}</span><span>Private to you</span></div>
-    <button class="btn" id="start">${resume ? "Pick up where you left off" : "Start"}</button>
+    ${A.introPain ? `<p class="lede rv">${esc(A.introPain)}</p>` : `<p class="lede rv">${esc(A.lede)}</p>`}
+    ${A.introGets ? `<div class="gets rv"><p class="gk">${esc(A.introGetsLabel||"")}</p><ul>${A.introGets.map(g => `<li>${esc(g)}</li>`).join("")}</ul></div>` : ""}
+    <button class="btn pulse" id="start">${resume ? "Pick up where you left off" : esc(A.startButton || "Start")}</button>
+    <div class="meta after"><span>${countEstimate()} questions</span><span>${esc(A.minutes)}</span><span>Private to you</span></div>
     ${resume ? `<button class="btn ghost" id="restart" style="max-width:340px;margin:10px auto 0">Start over</button>` : ""}
     <p class="note">${esc(A.privacy)} <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Privacy</a></p>
     ${others.length ? `<p class="switch">${others.map(o => `<a href="/${o.id}">Or take ${esc(o.title)}</a>`).join(" ")}</p>` : ""}
@@ -624,6 +694,7 @@ async function submit(data){
   try {
     const r = await fetch("/.netlify/functions/submit", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload) });
     if (!r.ok) throw new Error("submit " + r.status);
+    const j = await r.json().catch(() => ({})); if (j.id) setLeadId(j.id);
     state.submitted = true; state.pending = null;
   } catch(e) {
     // never block the person from their results; keep the payload and retry on the results screen
@@ -631,11 +702,19 @@ async function submit(data){
   }
   save();
 }
+/* Lead id from the server: lets the admin show who clicked through to the 40 days, reached checkout and paid. */
+const LID_KEY = `ica-leadid-${C.coach.slug}`;
+function setLeadId(id){ state.leadId = id; try { localStorage.setItem(LID_KEY, id); } catch(e){} }
+function markLead(ev){
+  const id = state.leadId || (() => { try { return localStorage.getItem(LID_KEY); } catch(e){ return null; } })(); if (!id) return;
+  const body = JSON.stringify({ coach: C.coach.slug, id, ev });
+  try { if (!navigator.sendBeacon || !navigator.sendBeacon("/.netlify/functions/mark", new Blob([body], { type: "application/json" }))) fetch("/.netlify/functions/mark", { method: "POST", body, keepalive: true }); } catch(e){}
+}
 async function retryPending(){
   if (!state.pending || state.submitted) return;
   try {
     const r = await fetch("/.netlify/functions/submit", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(state.pending) });
-    if (r.ok){ state.submitted = true; state.pending = null; save(); }
+    if (r.ok){ const j = await r.json().catch(() => ({})); if (j.id) setLeadId(j.id); state.submitted = true; state.pending = null; save(); }
   } catch(e){}
 }
 
@@ -717,70 +796,87 @@ function ctaHref(url, soil){
   if (sr) u.searchParams.set("src", sr);
   return u.pathname + u.search;
 }
-/* Step layout (assessment option `layout: "steps"`): headline, what it means, method stage, where to start in the guide,
-   one thing to do this week, one main button and a smaller "Not ready?" link. Built for result pages with one clear next step. */
+/* Results v2 (Nov 27): diagnose in her own words, then the 40-Day Family Table, then today's step, proof, and the free guide last.
+   Layout options for review: ?layout=a (no photo), b (small photo, text wraps), c (photo banner). Default from C.resultLayout. */
+function toldMe(s){
+  const pri = [4,1,2,3,0,5,6], out = [];
+  const byI = {}; Q().forEach(q => byI[q.i] = q);
+  const said = i => { const q = byI[i], a = state.answers[i]; return (q && a !== undefined && q.opts && q.opts[a]) ? q.opts[a] : null; };
+  pri.forEach(i => { const o = said(i); if (o && o[1] === s.pattern && out.length < 2) out.push(o[0]); });
+  pri.forEach(i => { const o = said(i); if (o && !out.includes(o[0]) && out.length < 2) out.push(o[0]); });
+  return out;
+}
+function urgencyNow(U){
+  const now = Date.now(); let early = false; try { early = localStorage.getItem("ft-access") === "early"; } catch(e){}
+  const u = (U||[]).find(x => Date.parse(x.ends) > now); if (!u) return null;
+  return early && u.early ? { text: u.early, price: u.earlyPrice, label: u.earlyLabel } : u;
+}
 function renderStepResults(s, P, R, L){
-  const video = embed(P.video), pdf = fileUrl(P.pdf || R.pdf);
+  const X = P.r2 || {}, RR = R.r2 || {}, pdf = fileUrl(P.pdf || R.pdf);
   const live = u => u && !/^PASTE_/.test(u);
   const cta = P.cta || {}, nr = P.notReady || {};
+  const lay = (new URLSearchParams(location.search).get("layout") || C.resultLayout || "a").toLowerCase();
+  const first = (L.name || "").trim().split(" ")[0];
+  const href = live(cta.url) ? ctaHref(cta.url, s.pattern) : "";
+  const btn = cls => href ? `<a class="btn ${cls||""}" href="${esc(href)}">${esc(RR.button || cta.button)}</a>` : "";
+  const thumb = P.scene ? `<img class="soilthumb" src="${esc(P.scene.base)}" alt="">` : "";
+  const chip = `<p class="soilchip">${thumb}<span>Your soil: <b>${esc(P.name)}</b></span></p>`;
+  const quotes = toldMe(s);
+  const photo = PH.results;
+  const proof = (PH.proof && PH.proof.row1 || []).slice(0,3);
+  const U = urgencyNow(RR.urgency), urg = U ? U.text : "";
+  const priceLine = U && U.price ? `<p class="price">${U.price < (RR.fullPrice||0) ? `<s>$${RR.fullPrice}</s> ` : ""}<b>$${U.price}</b>${U.label ? ` <span>${esc(U.label)}</span>` : ""}</p>` : "";
+  const hero = lay === "c" && photo
+    ? `<div class="r2-banner">${kimg(photo, "", "Kayla Bundy", true)}<div class="wrap">${first ? `<p class="hello">${esc(first)}, here’s what your answers show.</p>` : ""}<h1>${esc(X.plain || P.headline)}</h1>${chip}</div></div>`
+    : `<div class="r2-hero"><div class="wrap">${first ? `<p class="hello">${esc(first)}, here’s what your answers show.</p>` : ""}<h1>${esc(X.plain || P.headline)}</h1>${chip}</div></div>`;
   app.innerHTML = `
-  <div class="res-hero${PH.intro ? " ed" : " dark"}"><div class="wrap">
-    ${L.name ? `<p class="hello">${esc(L.name)}, here’s where your plate is right now.</p>` : ""}
-    ${sceneHtml(P)}
-    <p class="k">${esc(A.patternKicker)}</p>
-    <h1 aria-label="${esc(P.headline || P.name)}">${lines(P.headline || P.name)}</h1>
-    <div class="rule"></div>
-    <p class="rv">${esc(P.means)}</p>
-    ${R.season ? `<div class="foot">${esc(R.season)}</div>` : ""}
+  <div class="r2 lay-${esc(lay)}">
+  ${hero}
+  <div class="wrap">
+    ${quotes.length ? `<section class="r2-said"><p class="k">${esc(RR.toldMe || "You told me")}</p>${quotes.map(q => `<p class="sq">“${esc(q)}”</p>`).join("")}</section>` : ""}
+    <section class="r2-real">
+      ${lay === "b" && photo ? `<div class="r2-float">${kimg(photo, "", "Kayla Bundy")}</div>` : ""}
+      <p class="k">${esc(RR.realLabel || "")}</p>
+      <p class="rt">${esc(X.real || P.means)}</p>
+    </section>
+  </div>
+  <div class="r2-fit"><div class="wrap">
+    <h2>${esc((RR.fitHeading || "").replace("{name}", first ? ", " + first : ""))}</h2>
+    <p class="fl">${esc(RR.fitLead || "")}</p>
+    <div class="rows">${(X.fit || []).map(([a,b]) => `<div class="row"><p class="pa">${esc(a)}</p><p class="fx">${esc(b)}</p></div>`).join("")}</div>
+    ${btn("pulse")}
+    <p class="cap">${esc(RR.capLine || "")}</p>
   </div></div>
   <div class="wrap">
-    <section class="block">
-      <p class="k">${esc(R.stageLabel || "Your next step")}</p>
-      <h3>${esc(P.stage)}</h3>
-      <p class="lead">${esc(P.next)}</p>
+    ${X.today ? `<section class="r2-today"><p class="k">${esc(RR.todayLabel || "")}</p><p>${esc(X.today)}</p></section>` : ""}
+    ${proof.length ? `<section class="r2-proof">${proof.map(([q,c]) => `<figure><blockquote>“${esc(q)}”</blockquote><figcaption>${esc(c)}</figcaption></figure>`).join("")}<p class="pn">${esc(PH.proof.note || "")}</p></section>` : ""}
+    <div class="r2-again">${btn("")}</div>
+    <section class="r2-later">
+      <p class="k">${esc(RR.laterLabel || "")}</p>
+      <p>${esc(RR.laterBody || "")} <span class="gs">Start with ${esc(P.guideStart)}.</span></p>
+      ${pdf ? `<a class="btn ghost" href="${esc(pdf)}" target="_blank" rel="noopener">${esc(R.pdfButton)}</a>` : ""}
+      ${nr.text && live(nr.url) ? `<p class="notready"><a href="${esc(nr.url)}" target="_blank" rel="noopener">${esc(nr.text.replace(/^Not ready\?\s*/i, "").replace(/^./, c => c.toUpperCase()))}</a></p>` : ""}
+      ${(() => { const M = C.moreLinks; if (!M) return ""; const used = [cta.url, nr.url]; const items = (M.items||[]).filter(x => live(x.url) && !used.includes(x.url)); return items.length ? `<p class="more">${esc(M.label)} ${items.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.text)}</a>`).join(" · ")}</p>` : ""; })()}
+      <div class="tools"><button class="btn ghost" id="copy">Copy my result</button><button class="btn ghost" id="again">Retake</button></div>
     </section>
-    ${PH.results ? `<div class="kres">${kimg(PH.results, "", "Kayla Bundy")}</div>` : ""}
-    <section class="block"><div class="pdf">
-      <p class="k">${esc(R.guideLabel || "Start here in your free guide")}</p>
-      <b>${esc(P.guideStart)}</b>
-      <p>${esc(R.pdfBody || "")}</p>
-      ${pdf ? `<a class="btn" href="${esc(pdf)}" target="_blank" rel="noopener">${esc(R.pdfButton)}</a>` : ""}
-    </div></section>
-    <section class="block">
-      <p class="k">${esc(R.weekLabel || "Do this week")}</p>
-      <ol class="actions"><li><span class="do">${esc(P.week)}</span></li></ol>
-      ${R.note ? `<p class="quote">${esc(R.note)}</p>` : ""}
-    </section>
-    ${video ? `<section class="block"><h3>${esc(P.videoTitle || R.videoTitle)}</h3><div class="video"><iframe src="${esc(video)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(P.videoTitle || R.videoTitle)}"></iframe></div></section>` : ""}
     <p class="care">${esc(R.care)}</p>
   </div>
-  ${proofHtml()}
-  <div class="cta dark"><div class="wrap">
-    ${hostNote()}
-    <h3>${esc(cta.title || "")}</h3>
-    <p>${esc(cta.body || "")}</p>
-    ${live(cta.url) ? `<a class="btn" href="${esc(ctaHref(cta.url, s.pattern))}"${/^\//.test(cta.url) ? "" : ` target="_blank" rel="noopener"`}>${esc(cta.button)}</a>` : `<button class="btn" disabled>${esc(cta.button)}</button><p class="soon">${esc(R.soon || "Link coming soon")}</p>`}
-    ${nr.text && live(nr.url) ? `<p class="notready"><a href="${esc(nr.url)}" target="_blank" rel="noopener">${esc(nr.text)}</a></p>` : ""}
-    ${(() => { const M = C.moreLinks; if (!M) return ""; const used = [cta.url, nr.url]; const items = (M.items||[]).filter(x => live(x.url) && !used.includes(x.url)); return items.length ? `<p class="more">${esc(M.label)} ${items.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.text)}</a>`).join(" \u00b7 ")}</p>` : ""; })()}
-    <div class="tools">
-      <button class="btn ghost" id="copy">Copy my result</button>
-      <button class="btn ghost" id="again">Retake</button>
-    </div>
-  </div></div>`;
-  startScene(); motion();
-  T.step("results_view", { r: s.pattern, src: source().src || "" }, true);
-  const vf = app.querySelector(".video iframe"); if (vf) T.watchVideo(vf, "video_play");
+  </div>`;
+  motion();
+  T.step("results_view", { r: s.pattern, src: source().src || "", lay }, true);
   [["#copy","copy_result"],["#again","retake"]].forEach(([sel,e]) => { const b = app.querySelector(sel); if (b) b.setAttribute("data-track", e); });
-  app.querySelectorAll(".pdf a.btn").forEach(a => a.setAttribute("data-track", "guide_click"));
-  app.querySelectorAll(".cta > .wrap > a.btn").forEach(a => a.setAttribute("data-track", "cta_click"));
+  app.querySelectorAll(".r2-later a.btn").forEach(a => a.setAttribute("data-track", "guide_click"));
+  app.querySelectorAll(".r2-fit a.btn").forEach(a => a.setAttribute("data-track", "cta_click"));
+  app.querySelectorAll(".r2-fit a.btn, .r2-again a.btn").forEach(a => a.addEventListener("click", () => markLead("results_click")));
+  app.querySelectorAll(".r2-again a.btn").forEach(a => { a.setAttribute("data-track", "cta_click"); a.setAttribute("data-track-k", "second"); });
   app.querySelectorAll(".notready a").forEach(a => a.setAttribute("data-track", "notready_click"));
   app.querySelectorAll(".more a").forEach((a,k) => { a.setAttribute("data-track", "more_click"); a.setAttribute("data-track-k", k ? "bundle" : "ebook"); });
-  const pr = app.querySelector(".proof"); if (pr) pr.setAttribute("data-track-seen", "proof_view");
-  const kn = app.querySelector(".knote"); if (kn) kn.setAttribute("data-track-seen", "note_view");
+  const fit = app.querySelector(".r2-fit"); if (fit) fit.setAttribute("data-track-seen", "fit_view");
+  const lt = app.querySelector(".r2-later"); if (lt) lt.setAttribute("data-track-seen", "later_view");
   T.scan(app);
   document.getElementById("again").onclick = () => { state = { step:0, answers:{}, submitted:false, branch:null, order:null }; save(); render(); };
   document.getElementById("copy").onclick = async () => {
-    const text = `My ${A.title} result: ${P.headline || P.name}\n\n${R.weekLabel || "Do this week"}: ${P.week}`;
+    const text = `My ${A.title} result: ${X.plain || P.headline}\n\n${RR.todayLabel || "Do this today"}: ${X.today || P.week}`;
     try { await navigator.clipboard.writeText(text); toast("Result copied"); }
     catch(e){ toast("Copy not available here"); }
   };

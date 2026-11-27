@@ -23,7 +23,7 @@
   const pct = (a, b) => b ? Math.round(a / b * 100) + "%" : "–";
   const CSS = `
 .xf{--xf-ink:var(--ink,#171D1A);--xf-panel:var(--panel,#fff);--xf-line:var(--hairline,#D3DAD6);--xf-muted:var(--steel,#5D6862);--xf-accent:var(--verdant,#1E6B4E);--xf-bg:var(--porcelain,#F3F4F2);--xf-display:var(--display,inherit);--xf-mono:var(--mono,ui-monospace,Menlo,monospace)}
-.xf .xf-ctl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.xf .xf-ctl{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.xf .xf-ctl > *{flex:1 1 140px}.xf .xf-csv{border:1px solid var(--rule,#E7DECF);background:transparent;border-radius:10px;padding:8px 12px;font:inherit;cursor:pointer;color:inherit}
 .xf select{width:100%;background:var(--xf-panel);border:1px solid var(--xf-line);padding:10px 12px;min-height:44px;font:inherit;color:inherit}
 .xf .xf-tiles{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--xf-line);background:var(--xf-panel);margin:0 0 20px}
 .xf .xf-tile{padding:12px 14px;border-left:1px solid var(--xf-line)}
@@ -54,7 +54,9 @@
     if (!document.getElementById("xf-css")) { const st = document.createElement("style"); st.id = "xf-css"; st.textContent = CSS; document.head.appendChild(st); }
     try { localStorage.setItem("xplr-notrack", "1"); } catch (e) {}
     el.classList.add("xf");
-    const view = { days: 30, src: "", dev: "" }, cache = {};
+    const view = { days: 30, range: "30", since: "", src: "", dev: "" }, cache = {};
+    const ymd = t => { const x = new Date(t); return x.getFullYear() + "-" + String(x.getMonth()+1).padStart(2,"0") + "-" + String(x.getDate()).padStart(2,"0"); };
+    const span = () => { const today = ymd(Date.now()); if (view.range === "today") return [today, today]; if (view.range === "yesterday") { const y = ymd(Date.now() - 864e5); return [y, y]; } if (view.range === "since" && view.since) return [view.since, today]; return [ymd(Date.now() - (view.days - 1) * 864e5), today]; };
     const pin = () => typeof cfg.pin === "function" ? cfg.pin() : cfg.pin;
     const steps = cfg.steps || [];
     const has = (s, e) => s.st.includes(e) || (s.cnt && s.cnt[e] > 0);
@@ -78,7 +80,8 @@
     }
 
     function draw(F) {
-      const all = F.sessions || [];
+      const [d0, d1] = span();
+      const all = (F.sessions || []).filter(x => !x.d || (x.d >= d0 && x.d <= d1));
       const srcs = [...new Set(all.map(x => x.src || "direct"))].sort();
       const S = all.filter(x => (!view.src || (x.src || "direct") === view.src) && (!view.dev || x.dev === view.dev));
       const R = S.map(reach);
@@ -128,7 +131,9 @@
       const mob = S.filter(x => x.dev === "mobile").length;
       el.innerHTML = `
         <div class="xf-ctl">
-          <select data-f="days">${[[7, "Last 7 days"], [30, "Last 30 days"], [90, "Last 90 days"], [365, "Last 12 months"]].map(([v, l]) => `<option value="${v}" ${view.days == v ? "selected" : ""}>${l}</option>`).join("")}</select>
+          <select data-f="days">${[["today", "Today"], ["yesterday", "Yesterday"], ["7", "Last 7 days"], ["30", "Last 30 days"], ["90", "Last 90 days"], ["365", "Last 12 months"], ["since", "From a date"]].map(([v, l]) => `<option value="${v}" ${view.range == v ? "selected" : ""}>${l}</option>`).join("")}</select>
+          <input type="date" data-f="since" value="${esc(view.since)}" ${view.range === "since" ? "" : "hidden"}>
+          <button type="button" class="xf-csv" data-f="csv">Export CSV</button>
           <select data-f="src"><option value="">All sources</option>${srcs.map(x => `<option ${view.src === x ? "selected" : ""}>${esc(x)}</option>`).join("")}</select>
           <select data-f="dev"><option value="">All devices</option><option value="mobile" ${view.dev === "mobile" ? "selected" : ""}>Mobile</option><option value="desktop" ${view.dev === "desktop" ? "selected" : ""}>Desktop</option></select>
         </div>
@@ -138,9 +143,18 @@
         <h3>Where people drop off</h3>
         <div class="xf-fn">${rows}</div>
         ${worst > 0 ? `<p class="xf-note">Biggest drop: ${esc(steps[worst].label)}${steps[worst].sub ? ` (${esc(steps[worst].sub)})` : ""}, ${worstLoss} ${worstLoss === 1 ? "visit" : "visits"} lost.</p>` : ""}
+        ${(() => { const days = [...new Set(S.map(x => x.d).filter(Boolean))].sort().reverse(); if (days.length < 2) return ""; const last = steps[steps.length - 1];
+          return `<h3>Day by day</h3><table><tr><th>Day</th><th>Visits</th><th>${esc(steps[1] ? steps[1].label : "")}</th><th>${esc(last.label)}</th></tr>` + days.map(d => { const G = S.filter(x => x.d === d), RG = G.map(reach); return `<tr><td>${d}</td><td>${G.length}</td><td>${RG.filter(m => m >= 1).length}</td><td>${RG.filter(m => m >= steps.length - 1).length}</td></tr>`; }).join("") + `</table>`; })()}
         ${eng}${bds}${tops}
         <p class="xf-note" style="margin-top:0">${mob} of ${S.length} visits on mobile. Source comes from the link's utm_source tag, or the site they came from. Tag every link you share, for example ?utm_source=instagram.${cfg.note ? " " + esc(cfg.note) : ""}</p>`;
-      el.querySelector('[data-f="days"]').onchange = e => { view.days = +e.target.value; load(); };
+      el.querySelector('[data-f="days"]').onchange = e => { view.range = e.target.value; view.days = view.range === "today" || view.range === "yesterday" ? 2 : view.range === "since" ? Math.max(2, Math.ceil((Date.now() - Date.parse(view.since || ymd(Date.now() - 6 * 864e5))) / 864e5) + 1) : +view.range; load(); };
+      el.querySelector('[data-f="since"]').onchange = e => { view.since = e.target.value; view.days = Math.max(2, Math.ceil((Date.now() - Date.parse(view.since)) / 864e5) + 1); load(); };
+      el.querySelector('[data-f="csv"]').onclick = () => {
+        const cols = ["day", "source", "campaign", "device", "furthest_step", "questions_answered", ...steps.filter(st => st.e).map(st => st.e), "params"];
+        const cell = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+        const lines = [cols.map(cell).join(",")].concat(S.map(x => { const m = reach(x); return [x.d, x.src, x.cmp, x.dev, m >= 0 ? steps[m].label : "", x.q, ...steps.filter(st => st.e).map(st => has(x, st.e) ? 1 : 0), Object.entries(x.p || {}).map(([k, v]) => k + "=" + v).join("; ")].map(cell).join(","); }));
+        const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["\ufeff" + lines.join("\n")], { type: "text/csv;charset=utf-8" })); a.download = `funnel-${(cfg.name || "visits")}-${d0}-to-${d1}.csv`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      };
       el.querySelector('[data-f="src"]').onchange = e => { view.src = e.target.value; draw(F); };
       el.querySelector('[data-f="dev"]').onchange = e => { view.dev = e.target.value; draw(F); };
     }

@@ -55,7 +55,7 @@ window.ICA = {
   photos: {
     intro:     ["13", "50% 10%"],
     questions: [["02","50% 10%"], ["06","50% 10%"], ["15","50% 10%"], ["09","50% 20%"], ["19","50% 10%"], ["20","50% 20%"], ["21","50% 20%"]],
-    gate:      { photo: ["16","50% 10%"], line: "Your free guide is ready to download the moment you finish." },
+    gate:      { photo: ["16","50% 10%"], line: "Your result and free guide are ready the moment you finish." },
     results:   ["10","50% 32%"],
     /* Social proof shown on the results page before Kayla's note (same quotes as the sales page). */
     proof: {"kicker": "From women already eating this way", "heading": "Their families are at the table", "row1": [["Having a plan set and laid out for me is what I knew I needed.", "Member"], ["My husband LOVED the shakshuka and said to add it to the rotation.", "Member"], ["Day 3 dinner. My husband also had the soup and loved it.", "Member"], ["I did the gut board today and my younger son wanted to eat most of it.", "Member"], ["Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.", "Christina"]], "row2": [["It has been truly life-changing and in a way I never anticipated.", "Member"], ["I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.", "Courtney"], ["Just starting to see food, actual food, as such a gift.", "Christina"], ["It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.", "Member"], ["I don’t need all the bad foods just to celebrate something.", "Member"], ["I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.", "Member"]], "note": "Real words from real women in Kayla’s community, shared with permission. Results vary.", "ribbon": ["f-dragon2", "f-redrice", "f-raspberries", "f-board2", "f-lentil", "f-beet", "f-berries", "f-dragon"], "ribbonCap": "Every colour He made"},
@@ -64,6 +64,7 @@ window.ICA = {
                  sign: "Kayla" }
   },
 
+  resultLayout: "b",   // results page look: a (no photo), b (small photo, text wraps), c (photo banner). ?layout= overrides for testing.
   defaultAssessment: "soil",
   linkBetweenAssessments: false,
 
@@ -95,7 +96,11 @@ window.ICA = {
     soil: {
       id: "soil",
       title: "Which soil is your plate?",
-      subtitle: "Same seed. Four different results. The difference is the soil.",
+      subtitle: "Jesus said the same seed grows differently depending on the soil it lands in. Your plate works the same way.",
+      introPain: "If you start strong on Monday and you’re ordering takeout by Wednesday, if you cook one meal for you and another for everyone else, or if food feels like a fight instead of a gift, this shows you why.",
+      introGetsLabel: "In 2 minutes you’ll get",
+      introGets: ["The real reason eating well hasn’t stuck in your home (it’s not willpower)", "One simple thing you can do today", "My free Biblical Eating Foundation Guide"],
+      startButton: "Start the quiz",
       lede: "In the parable of the sower, the seed never changes. The soil does. Seven quick questions show where your plate is right now, and exactly where to start in my free Biblical Eating Foundation Guide.",
       minutes: "About 2 minutes",
       privacy: "A reflection tool, not medical advice.",
@@ -120,6 +125,11 @@ window.ICA = {
             verse: "Some seeds fell by the way side, and the fowls came and devoured them up.", ref: "Matthew 13:4" },
           cta: OFFER.tablePath,
           notReady: { text: "Not ready? Peek inside with a 7-day free trial in the Academy", url: LINKS.academy },
+          r2: {
+            plain: "Food and faith have never really been connected for you.",
+            real: "Nobody ever showed you that what’s on your plate matters to God, so eating has mostly been about what’s quick or what tastes good. That’s not a failure. It’s a seed that never had a chance to land. And if you feel tired more often than you’d like, it’s worth looking at what’s on your plate.",
+            fit: [["Not knowing where to start", "Week one walks you through a simple kitchen reset, step by step."], ["Worried it’s extreme", "No strict rules. Real, filling food your family already likes, closer to how God made it."], ["Food feeling separate from your faith", "A daily affirmation and a weekly family devotional bring God to the table."]],
+            today: "Before your next meal, read Genesis 1:29, then look at your plate and ask one question: how much of this did God make, and how much did a factory make?" },
           video: "https://youtu.be/XfpBCy4Pxes", pdf: GUIDE },
 
         rocky: { name: "Rocky ground", headline: "Your plate is on rocky ground.",
@@ -133,6 +143,11 @@ window.ICA = {
             verse: "Because they had no root, they withered away.", ref: "Matthew 13:6" },
           cta: OFFER.tableRocky,
           notReady: { text: "Not ready? Start a 7-day free trial in the Academy", url: LINKS.academy },
+          r2: {
+            plain: "You’re doing a lot right. It just doesn’t hold when life gets busy.",
+            real: "You start strong, then one hard week, a party or a craving knocks you off and you’re back to Monday. That’s not a willpower problem. It’s what happens when you’re doing this alone, with no plan to fall back on and no reason deeper than a goal holding you in place.",
+            fit: [["Restarting every Monday", "A weekly plan and prep day, so one hard week doesn’t undo everything."], ["Doing it alone", "Weekly check-ins with me and a private group chat of families walking it with you."], ["Your why fading when it gets hard", "Daily Scripture and affirmations that give you a reason deeper than a goal."]],
+            today: "Pick one dinner this week and write down exactly what you’ll cook and when. Deciding before you’re hungry takes the 5pm guessing out of it." },
           video: "https://youtu.be/XfpBCy4Pxes", pdf: GUIDE },
 
         thorns: { name: "Thorns", headline: "Your plate is among the thorns.",
@@ -146,6 +161,11 @@ window.ICA = {
             verse: "And some fell among thorns; and the thorns sprung up, and choked them.", ref: "Matthew 13:7" },
           cta: OFFER.tableThorns,
           notReady: { text: "Not ready? Start a 7-day free trial in the Academy", url: LINKS.academy },
+          r2: {
+            plain: "You want to eat this way. Your life keeps getting in the way.",
+            real: "Busy days, a tight budget, a picky family and constant cravings keep crowding it out. You don’t need more information. You need the thinking done for you, so you can just follow along.",
+            fit: [["No time to figure it out", "Meal plans and grocery lists handed to you every week."], ["A picky family", "Swaps your husband and kids will actually eat, plus Little Learners lessons for the kids."], ["Running on empty by 5pm", "One prep day on the weekend and your week is ready."]],
+            today: "Make one swap today: replace your cooking oil with extra virgin olive oil. One change you never have to think about again." },
           video: "https://youtu.be/XfpBCy4Pxes", pdf: GUIDE },
 
         good: { name: "Good soil", headline: "Your plate is good soil.",
@@ -159,6 +179,11 @@ window.ICA = {
             verse: "But other fell into good ground, and brought forth fruit, some an hundredfold, some sixtyfold, some thirtyfold.", ref: "Matthew 13:8" },
           cta: OFFER.tableGood,
           notReady: { text: "Not ready? Join the Academy and encourage other women on the way", url: LINKS.academy },
+          r2: {
+            plain: "You’ve built real habits. Now it’s time to bring your family with you.",
+            real: "You’ve stopped starting over and you know how you want to eat. The hard part now is the people around your table: cooking two meals, getting your husband on board, and teaching your kids why it matters.",
+            fit: [["Cooking two different dinners", "One family meal plan the whole table eats."], ["Getting your husband and kids on board", "Meals that don’t taste like diet food, and lessons that make your kids part of it."], ["Keeping it going as life changes", "A weekly rhythm, check-ins with me and other families to keep you steady."]],
+            today: "Tonight, lead your family in 30 seconds of thanks before dinner, and name one food on the table that God made." },
           video: "https://youtu.be/XfpBCy4Pxes", pdf: GUIDE }
       },
 
@@ -215,6 +240,23 @@ window.ICA = {
         pdfBody: "Every result gets the full guide. This is the part to open first.",
         pdfButton: "Download the free guide",
         videoTitle: "My story",
+        r2: {
+          toldMe: "You told me",
+          realLabel: "What’s really going on",
+          fitHeading: "Good news{name}. You’re exactly who I built the 40-Day Family Table for.",
+          fitLead: "Here’s what’s holding you back, and what the 40 days does about it.",
+          button: "See the 40-Day Family Table",
+          capLine: "Starts January 1. The founding group is capped at 20 families.",
+          todayLabel: "Do this today",
+          laterLabel: "Not ready yet?",
+          laterBody: "Start with your free Biblical Eating Foundation Guide.",
+          urgency: [
+            { ends: "2026-12-03T23:59:59-05:00", price: 497, label: "Black Friday price", text: "Black Friday pricing ends December 3.",
+              early: "Your early access price is waiting. It ends December 3.", earlyPrice: 349, earlyLabel: "Your early access price" },
+            { ends: "2026-12-25T23:59:59-05:00", price: 558, label: "Holiday price", text: "Holiday pricing ends December 25." },
+            { ends: "2026-12-31T23:59:59-05:00", price: 697, label: "", text: "Doors close December 31." } ],
+          fullPrice: 697
+        },
         soon: "Doors open soon. Link coming shortly.",
         note: "Food is not the enemy, but it is what the enemy will always use to distort, manipulate and separate you from God.",
         care: "This is a starting point, not medical advice. If you’re pregnant, nursing, managing a health condition or taking medication, talk to your doctor before big changes. And if food has been feeling out of control, please reach out to your doctor or a counselor. You don’t have to carry it alone."

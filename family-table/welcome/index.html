@@ -214,6 +214,7 @@ footer{padding:30px 0 44px; text-align:center; font-size:13px; color:var(--muted
   /* funnel tracking: the sale, joined to the same visit as the quiz and sales page when she came that way */
   const T = window.XPLRTrack ? XPLRTrack.init({ site: "kayla", repeat: ["calendar_add"] }) : { step(){}, scan(){} };
   T.step("purchase", { tier: tier || "unknown", plan: plan ? "yes" : "no" }, true);
+  try { const id = localStorage.getItem("ica-leadid-kayla"); if (id) { const body = JSON.stringify({ coach: "kayla", id, ev: "paid" }); if (!navigator.sendBeacon || !navigator.sendBeacon("/.netlify/functions/mark", new Blob([body], { type: "application/json" }))) fetch("/.netlify/functions/mark", { method: "POST", body, keepalive: true }); } } catch(e){}
   T.scan(document);
 
   /* gentle reveals */

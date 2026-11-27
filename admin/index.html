@@ -98,6 +98,10 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .toast.on{opacity:1}
 .tabs{display:flex;gap:6px;margin:18px 0 4px}.tab{border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:20px;padding:8px 18px;font:inherit;cursor:pointer}.tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .fh{font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px;margin:26px 0 10px}
+.chip.warn{background:#F6E3D6;color:#8A4A2B;border-color:#E9C6AF}
+.journey{display:grid;gap:6px;margin:6px 0 0;font-size:14px}.journey span{color:var(--muted)}.journey span.done{color:var(--ink)}.journey small{color:var(--muted);margin-left:4px}
+.fmsg{background:var(--sand,#F3EDE3);border-radius:12px;padding:12px 14px;font-size:14.5px;line-height:1.5;margin:6px 0 10px;white-space:pre-wrap}
+.controls input[type=date]{min-width:0}
 </style>
 </head>
 <body>
@@ -109,7 +113,32 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 const app = document.getElementById("app");
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const SESSION = "ica-admin-session";
-let session = null, data = { coach:null, leads:[] }, view = { q:"", assessment:"", pattern:"", tab:"leads" };
+let session = null, data = { coach:null, leads:[] }, view = { q:"", assessment:"", pattern:"", tab:"leads", range:"all", since:"", status:"" };
+/* Click-through tracking (mark function) started with the Nov 27 update. Older leads have no click record. */
+const TRACK_FROM = "2026-11-27T13:00:00Z";
+const SOIL_KEY = { "The path":"path", "Rocky ground":"rocky", "Thorns":"thorns", "Good soil":"good" };
+/* Follow-up messages for women who finished the quiz but didn't click through. Kayla's voice. {name} is replaced. */
+const FOLLOW = {
+  path: "Hey {name}! Thank you for taking my soil quiz \ud83e\udd0d Your result was the path, which honestly just means nobody ever showed you how food and faith connect. That\u2019s exactly why I built the 40-Day Family Table. We start January 1 and I\u2019d love to have you. Can I send you the details?",
+  rocky: "Hey {name}! Thank you for taking my soil quiz \ud83e\udd0d Your result was rocky ground. You\u2019re doing so much right, it just doesn\u2019t hold when life gets busy. The 40-Day Family Table gives you a weekly plan, a prep day and other families walking it with you. Want me to send you the details?",
+  thorns: "Hey {name}! Thank you for taking my soil quiz \ud83e\udd0d Your result was thorns, which means you really want this but life keeps crowding it out. The 40-Day Family Table hands you the meal plans, grocery lists and prep day so you can just follow along. Want me to send you the details?",
+  good: "Hey {name}! Thank you for taking my soil quiz \ud83e\udd0d Your result was good soil, you\u2019ve built real habits! The next step is bringing your family with you, and that\u2019s exactly what the 40-Day Family Table does. Want me to send you the details?"
+};
+const followText = l => (FOLLOW[l.pattern] || FOLLOW[SOIL_KEY[l.pattern_label]] || FOLLOW.rocky).replace("{name}", String(l.name||"").trim().split(" ")[0] || "love");
+const ev = l => l.events || {};
+const tracked = l => l.created_at >= TRACK_FROM;
+const stage = l => ev(l).paid ? "paid" : ev(l).checkout_click ? "checkout" : ev(l).results_click ? "clicked" : tracked(l) ? "follow" : "";
+const STAGE = { paid:["Paid","gold"], checkout:["Reached checkout","gold"], clicked:["Went to the 40 days",""], follow:["Follow up","warn"] };
+const dayStr = d => { const x = new Date(d); return x.getFullYear() + "-" + String(x.getMonth()+1).padStart(2,"0") + "-" + String(x.getDate()).padStart(2,"0"); };
+function inRange(iso){
+  if (view.range === "all") return true;
+  const d = dayStr(iso), today = dayStr(Date.now()), yest = dayStr(Date.now() - 864e5);
+  if (view.range === "today") return d === today;
+  if (view.range === "yesterday") return d === yest;
+  if (view.range === "7") return new Date(iso).getTime() > Date.now() - 7*864e5;
+  if (view.range === "since") return !view.since || d >= view.since;
+  return true;
+}
 try { session = JSON.parse(sessionStorage.getItem(SESSION) || "null"); } catch(e){}
 const seenKey = () => `ica-admin-seen-${(session && session.coach) || "site"}`;
 const lastSeen = () => { try { return localStorage.getItem(seenKey()) || ""; } catch(e){ return ""; } };
@@ -149,7 +178,7 @@ function mountFunnel(){
   const SOIL = { path:"The path", rocky:"Rocky ground", thorns:"Thorns", good:"Good soil" };
   const soilName = v => SOIL[v] || (v === "none" ? "Came straight to the page" : v);
   XPLRFunnel.mount(document.getElementById("f-quiz"), {
-    pin: () => session.pin,
+    name: "quiz", pin: () => session.pin,
     steps: [
       { e:"land", label:"Opened the quiz", group:"Arrive" },
       { e:"start", label:"Pressed Start" },
@@ -163,17 +192,18 @@ function mountFunnel(){
     tiles: [ { label:"Quiz visits", step:"land" }, { label:"Started", step:"start", of:"land" },
              { label:"Leads", step:"gate_submit", of:"land" }, { label:"To the sales page", step:"cta_click", of:"results_view" } ],
     engagement: { title:"On the results page", base:"results_view", items:[
-      ["Downloaded the free guide","guide_click"], ["Played the video","video_play"], ["Saw the testimonials","proof_view"],
-      ["Read Kayla\u2019s note","note_view"], ["Clicked to the Family Table","cta_click"], ["Chose the Academy trial","notready_click"],
+      ["Saw the 40-Day Family Table section","fit_view"], ["Clicked to the Family Table","cta_click"], ["Scrolled to \u201cNot ready yet?\u201d","later_view"],
+      ["Downloaded the free guide","guide_click"], ["Played the video (old page)","video_play"], ["Saw the testimonials (old page)","proof_view"], ["Chose the Academy trial","notready_click"],
       ["Clicked the ebook or bundle","more_click"], ["Copied their result","copy_result"], ["Retook the quiz","retake"] ] },
     breakdowns: [
       { title:"By source", key:"src", cols:[["Visits","land"],["Leads","gate_submit"],["To sales page","cta_click"]], rate:["Lead rate","gate_submit","land"] },
-      { title:"By soil", key:"p.r", label: soilName, cols:[["Results","results_view"],["Guide","guide_click"],["To sales page","cta_click"]], rate:["Click-through","cta_click","results_view"] }
+      { title:"By soil", key:"p.r", label: soilName, cols:[["Results","results_view"],["Guide","guide_click"],["To sales page","cta_click"]], rate:["Click-through","cta_click","results_view"] },
+      { title:"By results layout", key:"p.lay", label: v => ({ a:"A. No photo", b:"B. Small photo, text wraps", c:"C. Photo banner" })[v] || v, cols:[["Results","results_view"],["To sales page","cta_click"]], rate:["Click-through","cta_click","results_view"] }
     ],
     tops: [ { title:"Own-pace links clicked", event:"more_click" } ]
   });
   XPLRFunnel.mount(document.getElementById("f-sales"), {
-    pin: () => session.pin,
+    name: "sales", pin: () => session.pin,
     steps: [
       { e:"sales_land", label:"Opened the sales page", group:"Arrive" },
       { e:"vsl_play", label:"Pressed play on the video", group:"Watch" },
@@ -202,6 +232,8 @@ function mountFunnel(){
 const fmt = iso => { const d = new Date(iso); return d.toLocaleDateString(undefined, { month:"short", day:"numeric" }) + " " + d.toLocaleTimeString(undefined, { hour:"numeric", minute:"2-digit" }); };
 const wa = n => "https://wa.me/" + String(n||"").replace(/\D/g, "");
 const filtered = () => data.leads.filter(l =>
+  inRange(l.created_at) &&
+  (!view.status || (view.status === "follow" ? stage(l) === "follow" : view.status === "clicked" ? ["clicked","checkout","paid"].includes(stage(l)) : stage(l) === view.status)) &&
   (!view.assessment || l.assessment_id === view.assessment) &&
   (!view.pattern || l.pattern_label === view.pattern) &&
   (!view.q || [l.name,l.whatsapp,l.email,l.instagram,l.pattern_label,l.source].join(" ").toLowerCase().includes(view.q.toLowerCase())));
@@ -223,11 +255,15 @@ function renderApp(){
   <div class="wrap" id="tab-funnel" ${view.tab === "funnel" ? "" : "hidden"}></div>
   <div class="wrap" id="tab-leads" ${view.tab === "funnel" ? "hidden" : ""}>
     <div class="stats">
-      <div class="stat"><b>${data.leads.length}</b><span>Total leads</span></div>
-      <div class="stat"><b>${data.leads.filter(l => new Date(l.created_at).getTime() > week).length}</b><span>Last 7 days</span></div>
+      <div class="stat"><b>${data.leads.filter(l => inRange(l.created_at)).length}</b><span>Leads in this range</span></div>
+      <div class="stat"><b>${(() => { const t = data.leads.filter(l => inRange(l.created_at) && tracked(l)); const c = t.filter(l => stage(l) !== "follow").length; return t.length ? Math.round(c/t.length*100) + "%" : "\u2013"; })()}</b><span>Went to the 40 days</span></div>
+      <div class="stat"><b>${data.leads.filter(l => inRange(l.created_at) && stage(l) === "follow").length}</b><span>Need a follow-up</span></div>
       <div class="stat"><b>${newCount}</b><span>New since your last visit</span></div>
     </div>
     <div class="controls">
+      <select id="fr">${[["all","All time"],["today","Today"],["yesterday","Yesterday"],["7","Last 7 days"],["since","From a date"]].map(([v,t]) => `<option value="${v}" ${view.range===v?"selected":""}>${t}</option>`).join("")}</select>
+      <input type="date" id="fs" value="${esc(view.since)}" ${view.range === "since" ? "" : "hidden"}>
+      <select id="fst"><option value="">Everyone</option>${[["follow","Didn\u2019t click through (follow up)"],["clicked","Went to the 40 days"],["checkout","Reached checkout"],["paid","Paid"]].map(([v,t]) => `<option value="${v}" ${view.status===v?"selected":""}>${t}</option>`).join("")}</select>
       <input id="q" placeholder="Search name, email, handle, source" value="${esc(view.q)}">
       <select id="fa"><option value="">All assessments</option>${assessments.map(a => { const id = (data.leads.find(l => (l.assessment_title||l.assessment_id)===a)||{}).assessment_id; return `<option value="${esc(id)}" ${view.assessment===id?"selected":""}>${esc(a)}</option>`; }).join("")}</select>
       <select id="fp"><option value="">All patterns</option>${patterns.map(p => `<option ${view.pattern===p?"selected":""}>${esc(p)}</option>`).join("")}</select>
@@ -239,6 +275,9 @@ function renderApp(){
   app.querySelectorAll(".tab").forEach(b => b.onclick = () => { view.tab = b.dataset.tab; renderApp(); });
   if (view.tab === "funnel") mountFunnel();
   document.getElementById("q").oninput = e => { view.q = e.target.value; renderList(seen); };
+  document.getElementById("fr").onchange = e => { view.range = e.target.value; renderApp(); };
+  document.getElementById("fs").onchange = e => { view.since = e.target.value; renderApp(); };
+  document.getElementById("fst").onchange = e => { view.status = e.target.value; renderApp(); };
   document.getElementById("fa").onchange = e => { view.assessment = e.target.value; renderList(seen); };
   document.getElementById("fp").onchange = e => { view.pattern = e.target.value; renderList(seen); };
   document.getElementById("csv").onclick = exportCsv;
@@ -258,6 +297,7 @@ function renderList(seen){
       <div class="sub">
         ${l.created_at > seen ? `<span class="chip new">New</span>` : ""}
         <span class="chip gold">${esc(l.pattern_label||l.pattern)}</span>
+        ${stage(l) ? `<span class="chip ${STAGE[stage(l)][1]}">${STAGE[stage(l)][0]}</span>` : ""}
         <span class="chip">${esc(l.assessment_title||l.assessment_id)}</span>
         ${typeof l.overall === "number" ? `<span>Overall ${l.overall}</span>` : ""}
         ${l.lowest ? `<span>Lowest: ${esc(l.lowest)}</span>` : ""}
@@ -297,12 +337,17 @@ function openLead(id){
         <button class="btn ghost sm" id="copylead">Copy summary</button>
       </div>
     </section>
+    <section><h3>Where she got to</h3><p class="journey">${tracked(l) ? [["results_click","Went to the 40 days"],["checkout_click","Reached checkout"],["paid","Paid"]].map(([k,t]) => `<span class="${ev(l)[k] ? "done" : ""}">${ev(l)[k] ? "\u2713" : "\u2013"} ${t}${ev(l)[k] ? ` <small>${fmt(ev(l)[k])}</small>` : ""}</span>`).join("") : "<span>Before click tracking started (Nov 27).</span>"}</p>
+      ${stage(l) === "follow" || !tracked(l) ? `<h3 style="margin-top:14px">Follow-up message</h3><p class="fmsg" id="fmsg">${esc(followText(l))}</p>
+      <div class="acts"><button class="btn sm" id="copyf">Copy message</button>${l.whatsapp ? `<a class="btn ghost sm" href="${wa(l.whatsapp)}?text=${encodeURIComponent(followText(l))}" target="_blank" rel="noopener">Send on WhatsApp</a>` : ""}${l.instagram ? `<a class="btn ghost sm" href="https://ig.me/m/${esc(l.instagram)}" target="_blank" rel="noopener">Open her Instagram DM</a>` : ""}</div>` : ""}
+    </section>
     ${scores.length ? `<section><h3>Scores</h3>${scores.map(([k,v]) => `<div class="meter"><div class="row"><b>${esc(k)}</b><span>${v}/100</span></div><div class="track ${v<40?"low":""}"><i style="width:${Math.max(v,3)}%"></i></div></div>`).join("")}</section>` : ""}
     ${(l.actions||[]).length ? `<section><h3>Steps she was given this week</h3><ol class="todo">${l.actions.map(a => `<li>${esc(a)}</li>`).join("")}</ol></section>` : ""}
     <section><h3>Every answer</h3>${answers}</section>`;
   const sheet = document.getElementById("sheet"); sheet.classList.add("on");
   document.getElementById("close").onclick = () => sheet.classList.remove("on");
   sheet.onclick = e => { if (e.target === sheet) sheet.classList.remove("on"); };
+  const cf = document.getElementById("copyf"); if (cf) cf.onclick = async () => { try { await navigator.clipboard.writeText(followText(l)); toast("Message copied"); } catch(e){ toast("Copy not available here"); } };
   document.getElementById("copylead").onclick = async () => {
     const t = `${l.name}${l.email?" \u00b7 "+l.email:""}${l.whatsapp?" \u00b7 "+l.whatsapp:""}${l.instagram?" \u00b7 @"+l.instagram:""}\n${l.assessment_title||l.assessment_id}: ${l.pattern_label||l.pattern}\n` +
       scores.map(([k,v]) => `${k} ${v}/100`).join(", ") + `\nLowest: ${l.lowest||""}\n${fmt(l.created_at)}`;
@@ -315,11 +360,11 @@ function exportCsv(){
   const dims = [...new Set(rows.flatMap(l => Object.keys(l.scores||{})))];
   const maxQ = Math.max(...rows.map(l => (l.answers||[]).length));
   const extras = [...new Set(rows.flatMap(l => Object.keys(l.lead_extra||{})))];
-  const head = ["date","assessment","name","phone","email","instagram","source",...extras,"track","profile","overall","lowest",...dims, ...Array.from({length:maxQ},(_,i)=>`q${i+1}`)];
+  const head = ["date","assessment","name","phone","email","instagram","source",...extras,"track","profile","went_to_40_days","reached_checkout","paid","overall","lowest",...dims, ...Array.from({length:maxQ},(_,i)=>`q${i+1}`)];
   const cell = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
   const lines = [head.map(cell).join(",")].concat(rows.map(l => {
     const ans = (l.answers||[]).map(a => a.answer && typeof a.answer === "object" ? Object.entries(a.answer).map(([k,n])=>`${k}=${n}`).join("; ") : a.answer);
-    return [l.created_at, l.assessment_title||l.assessment_id, l.name, l.whatsapp, l.email, l.instagram, l.source, ...extras.map(k => (l.lead_extra||{})[k] ?? ""), l.branch, l.pattern_label||l.pattern, l.overall, l.lowest, ...dims.map(d => (l.scores||{})[d] ?? ""), ...ans].map(cell).join(",");
+    return [l.created_at, l.assessment_title||l.assessment_id, l.name, l.whatsapp, l.email, l.instagram, l.source, ...extras.map(k => (l.lead_extra||{})[k] ?? ""), l.branch, l.pattern_label||l.pattern, ev(l).results_click||"", ev(l).checkout_click||"", ev(l).paid||"", l.overall, l.lowest, ...dims.map(d => (l.scores||{})[d] ?? ""), ...ans].map(cell).join(",");
   }));
   const blob = new Blob(["\ufeff" + lines.join("\n")], { type:"text/csv;charset=utf-8" });
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `${data.coach.slug}-leads-${new Date().toISOString().slice(0,10)}.csv`; a.click();
