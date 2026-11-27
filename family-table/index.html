@@ -36,7 +36,7 @@
 window.SALES = {
   fullPrice: 697,
   start: "January 1, 2027",
-  vsl: "https://youtu.be/DTn3C5XKdvA",
+  vsl: "https://youtu.be/BYPWDRWhU-U",
   cap: 20,                       // families in the founding group (shown as text, never a fake counter). Set null to hide.
   steps: [
     { id: "bf",      label: "Black Friday week",   off: 29, price: 497, ends: "2026-12-03T23:59:59-05:00",
@@ -283,6 +283,30 @@ details p{margin:10px 0 0; color:var(--muted)}
 .mobile-cta{position:fixed; left:0; right:0; bottom:0; z-index:15; padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(250,248,244,.96); border-top:1px solid var(--rule); transform:translateY(110%); transition:transform .3s}
 .mobile-cta.show{transform:none}
 @media (min-width:640px){ .vs{grid-template-columns:1fr 1fr} .method{grid-template-columns:repeat(4,1fr)} .mobile-cta{display:none} }
+
+/* nudges: short cuts to the video and the price for people who skim */
+.nudge{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;margin:30px 0 0;padding:20px 0 0;border-top:1px solid var(--rule);text-align:center}
+.nudge p{flex-basis:100%;margin:0;font-family:var(--serif);font-style:italic;font-size:19px}
+.nudge .btn{min-height:50px;padding:0 26px;font-size:15px}
+.nudge .vlink{background:none;border:0;padding:6px 2px;font:500 15px var(--sans);color:inherit;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.nudge .vlink:before{content:"\25B6";font-size:10px;margin-right:7px;vertical-align:1px}
+.dark .nudge{border-top-color:rgba(201,169,110,.3)}
+.dark .nudge p{color:var(--cream)}
+/* desktop rail */
+.rail{position:fixed;right:22px;bottom:22px;z-index:15;width:236px;padding:18px 18px 14px;border-radius:18px;background:var(--espresso);color:var(--cream);box-shadow:0 18px 40px rgba(30,22,14,.28);text-align:center;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s}
+.rail.show{opacity:1;transform:none;pointer-events:auto}
+.rail .rk{margin:0;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.rail .rp{margin:4px 0 12px;font-family:var(--serif);font-size:19px;line-height:1.25}
+.rail .btn{width:100%;min-height:48px;padding:0 14px;font-size:15px}
+.rail .vlink{display:block;width:100%;margin-top:8px;background:none;border:0;color:var(--night-muted);font:13.5px var(--sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (max-width:1099px){.rail{display:none}}
+/* mobile bar: video + seat */
+.mobile-cta{display:flex;gap:8px}
+.mobile-cta .btn{flex:1}
+.mobile-cta .mv{flex:0 0 auto;min-height:56px;padding:0 18px;border-radius:30px;border:1px solid var(--espresso);background:transparent;color:var(--espresso);font:500 15px var(--sans);cursor:pointer}
+@media (prefers-reduced-motion: reduce){.rail{transition:none}}
+@media (min-width:640px){.mobile-cta{display:none}}
+
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .mobile-cta{transition:none} }
 </style>
 </head>
@@ -311,6 +335,7 @@ details p{margin:10px 0 0; color:var(--muted)}
     <figure class="ph ph-r"><img class="wipe" src="../assets/kayla/pain-1200.webp" srcset="../assets/kayla/pain-480.webp 480w, ../assets/kayla/pain-800.webp 800w, ../assets/kayla/pain-1200.webp 1200w, ../assets/kayla/pain-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt="Kayla reaching into a kitchen cabinet holding a bowl of eggs" loading="lazy"></figure>
     <ul class="checks"><li>You cook one dinner for yourself and a second one for everyone else.</li><li>Monday you’re all in. By Wednesday it’s takeout and a promise to start again next week.</li><li>Your husband pokes at the plate. Your kids ask for something else.</li><li>It’s 5pm, you’re standing in front of the fridge, and there’s no plan and no energy left.</li><li>You love the Lord, and deep down you know food was meant to be part of that, not a fight you have three times a day.</li></ul>
     <p class="lead">Here’s what nobody told you. You were never short on willpower. You were short on a plan, and on people walking it with you. Willpower runs out by Wednesday. A plan doesn’t.</p>
+    <div class="nudge" data-nudge="pain"><p>If that sounds like your kitchen, you already know this is for you.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
   </div>
 </section>
 
@@ -320,6 +345,7 @@ details p{margin:10px 0 0; color:var(--muted)}
     <h2>Waiting isn’t free. You’re already paying for it.</h2>
     <p>Yes, in the takeout you order because there’s no plan. But that’s the smallest cost.</p><p>The real cost is what food is quietly taking from you. It’s pulling you farther from God, because the thing you reach for first when you’re tired, anxious or lonely isn’t Him. It’s pulling you from the people you love, because you’re too drained, too foggy and too hard on yourself to be fully present with them.</p><p>And it’s stealing the energy, confidence and clarity you need for what God has already placed in your lap. The calling, the marriage, the children, the purpose. You can’t steward them well while you’re running on empty.</p><p>Your kids are paying too. The enemy has always used food as a door, from the very first bite in the garden. He uses it to whisper lies to our children about who they are, what their bodies are worth, and who God is. Every craving they’re ruled by and every bit of shame they feel at the table is a door left open.</p><p>‘Someday’ isn’t a plan. It’s how next January looks exactly like this one, with that door still open in your home.</p><p>It’s time to close it.</p>
     <p class="verse">“To day if ye will hear his voice, harden not your hearts.” <span>Hebrews 3:15</span></p>
+    <div class="nudge" data-nudge="cost"><p>Ready to close that door?</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
   </div>
 </section>
 
@@ -342,6 +368,7 @@ details p{margin:10px 0 0; color:var(--muted)}
       <div class="new"><h3>The Family Table</h3><p>Built for the whole family and rooted in Scripture. The meal plans, the grocery lists and prep day are handed to you. You stop deciding and start following, together.</p></div>
     </div>
     <div class="method"><div><b>Renew</b><span>how you see food and your plate</span></div><div><b>Plant</b><span>one simple change at a time</span></div><div><b>Tend</b><span>it with a weekly plan and prep day</span></div><div><b>Harvest</b><span>a rhythm your whole family shares</span></div></div>
+    <div class="nudge" data-nudge="different"><p>Want the whole picture in a few minutes?</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
   </div>
 </section>
 
@@ -363,6 +390,7 @@ details p{margin:10px 0 0; color:var(--muted)}
     <h2>Here’s everything I hand you</h2>
     <div class="duo"><img data-sz="half" class="wipe" src="../assets/kayla/prep1-1200.webp" srcset="../assets/kayla/prep1-480.webp 480w, ../assets/kayla/prep1-800.webp 800w, ../assets/kayla/prep1-1200.webp 1200w, ../assets/kayla/prep1-1717.webp 1717w" sizes="(min-width:740px) 340px, 50vw" alt="Kayla putting a dish in the oven" loading="lazy"><img src="../assets/kayla/prep2-1200.webp" srcset="../assets/kayla/prep2-480.webp 480w, ../assets/kayla/prep2-800.webp 800w, ../assets/kayla/prep2-1200.webp 1200w, ../assets/kayla/prep2-1717.webp 1717w" sizes="(min-width:740px) 340px, 50vw" data-sz="half" class="wipe" style="transition-delay:.15s" alt="Kayla smiling while prepping fresh vegetables" loading="lazy"></div>
     <ul class="inside"><li><b>Week one kitchen reset.</b> Clear out what’s working against you and restock with what God called good. You’ll feel the difference in the first week.</li><li><b>Weekly family meal plans and grocery lists.</b> Dinner is decided before Monday. You just shop the list.</li><li><b>A weekly prep-day plan.</b> One session on the weekend and your week is ready.</li><li><b>Swaps your husband and kids will actually eat.</b> Not diet food. Real meals for the whole table.</li><li><b>Little Learners lessons for your kids.</b> They learn why God made food the way He did, so they’re on your team, not across the table from you.</li><li><b>Daily Godly affirmations and a weekly family table devotional.</b> Your table becomes the place your family meets God, not just where they eat.</li><li><b>Recipe library.</b> Meals you’ll keep making long after day 40.</li><li><b>Weekly check-ins and a private group chat with me.</b> You won’t be doing this alone. I’ll be right there with you every week, and so will the other families.</li></ul>
+    <div class="nudge" data-nudge="inside"><p>All of it is yours from day one.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>
   </div>
 </section>
 
@@ -374,7 +402,8 @@ details p{margin:10px 0 0; color:var(--muted)}
   </div>
   <div class="marq"><div class="track"><figure class="mc"><blockquote>&ldquo;Having a plan set and laid out for me is what I knew I needed.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;My husband LOVED the shakshuka and said to add it to the rotation.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Day 3 dinner. My husband also had the soup and loved it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I did the gut board today and my younger son wanted to eat most of it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.&rdquo;</blockquote><figcaption>Christina</figcaption></figure><figure class="mc"><blockquote>&ldquo;Having a plan set and laid out for me is what I knew I needed.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;My husband LOVED the shakshuka and said to add it to the rotation.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Day 3 dinner. My husband also had the soup and loved it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I did the gut board today and my younger son wanted to eat most of it.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;Usually we’d only pray over our dinner when we’re all together. Such a shift to truly pray and give thanks for everything.&rdquo;</blockquote><figcaption>Christina</figcaption></figure></div></div>
   <div class="marq"><div class="track r"><figure class="mc"><blockquote>&ldquo;It has been truly life-changing and in a way I never anticipated.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.&rdquo;</blockquote><figcaption>Courtney</figcaption></figure><figure class="mc"><blockquote>&ldquo;Just starting to see food, actual food, as such a gift.&rdquo;</blockquote><figcaption>Christina</figcaption></figure><figure class="mc"><blockquote>&ldquo;It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I don’t need all the bad foods just to celebrate something.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;It has been truly life-changing and in a way I never anticipated.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I feel so much closer to God and praying over my food makes me feel even more grateful for all He provides.&rdquo;</blockquote><figcaption>Courtney</figcaption></figure><figure class="mc"><blockquote>&ldquo;Just starting to see food, actual food, as such a gift.&rdquo;</blockquote><figcaption>Christina</figcaption></figure><figure class="mc"><blockquote>&ldquo;It’s a great way to get closer to God while learning a whole new relationship with food that will change your life.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I don’t need all the bad foods just to celebrate something.&rdquo;</blockquote><figcaption>Member</figcaption></figure><figure class="mc"><blockquote>&ldquo;I see it now as active obedience to the Lord, and that my choices are going to make a difference in how I function and treat others.&rdquo;</blockquote><figcaption>Member</figcaption></figure></div></div>
-  <div class="wrap"><p class="small" style="text-align:center">Real words from real women in Kayla’s community, shared with permission. Results vary.</p></div>
+  <div class="wrap"><p class="small" style="text-align:center">Real words from real women in Kayla’s community, shared with permission. Results vary.</p>
+    <div class="nudge" data-nudge="proof"><p>Your family could be next at the table.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div></div>
 </section>
 
 <section class="dark" id="bonusSec">
@@ -414,7 +443,8 @@ details p{margin:10px 0 0; color:var(--muted)}
     <p class="k">Questions</p>
     <h2 style="margin-bottom:16px">Before you join</h2>
     <details><summary>When does it start?</summary><p>January 1. Join now and your seat is saved, and you’ll get what you need to get ready before day one.</p></details><details><summary>My husband and kids are picky. Will this work?</summary><p>That’s exactly who I built it for. The swaps are made for the whole table, and the Little Learners lessons bring your kids into it instead of fighting them at dinner.</p></details><details><summary>What if my husband isn’t on board yet?</summary><p>You don’t need him to sign up. You need him to sit down and eat. Most husbands come around the first time a meal is good and nobody calls it diet food.</p></details><details><summary>How much time will it take?</summary><p>The thinking is done for you. You get the meal plan, the grocery list and one prep day a week. You cook, I handle the planning.</p></details><details><summary>I’ve tried before and fallen off.</summary><p>You didn’t fail. The system failed you. This one has a weekly plan, daily affirmations, a weekly devotional, weekly check-ins and a private group chat of families walking it with you. And if you slip, you don’t start over. You come back to the table.</p></details><details><summary>Is now really the right time?</summary><p>There’s never a perfect time to change how your family eats. January 1 is the closest thing to one. And the price only gets better if you decide early.</p></details><details><summary>Is there a payment plan?</summary><p>Yes, you can split it into 3 payments, charged every 2 weeks. You’ll see the option right under the price.</p></details><details><summary>Can I give it as a gift?</summary><p>Yes. Check out with your details, then email kaylabundymanagement@gmail.com with the name and email of the person you’re gifting it to, and I’ll set them up.</p></details><details><summary>Is this medical advice?</summary><p>No. This is faith and whole food, not medical advice. If you’re pregnant, nursing, managing a health condition or taking medication, talk to your doctor before making big changes.</p></details>
-  </div>
+
+    <div class="nudge" data-nudge="faq"><p>Still have a question? The video answers most of them.</p><a class="btn" href="#join">Save my family&rsquo;s seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></div>  </div>
 </section>
 
 <section class="dark close">
@@ -433,7 +463,8 @@ details p{margin:10px 0 0; color:var(--muted)}
 
 <footer>Kayla Bundy &middot; The Biblical Nutritionist &middot; <a href="https://kaylabundy.com">kaylabundy.com</a> &middot; <a href="/terms/">Terms &amp; Privacy</a></footer>
 
-<div class="mobile-cta" id="mobileCta"><a class="btn block" href="#join" id="mobileBtn">Save my family&rsquo;s seat</a></div>
+<aside class="rail" id="rail" aria-label="Save your seat"><p class="rk">40-Day Family Table</p><p class="rp" id="railPrice">Starts January 1</p><a class="btn" href="#join">Save my seat</a><button class="vlink" type="button" data-vsl>Watch Kayla&rsquo;s video</button></aside>
+<div class="mobile-cta" id="mobileCta"><button class="mv" type="button" data-vsl aria-label="Watch Kayla's video">&#9654; Video</button><a class="btn block" href="#join" id="mobileBtn">Save my family&rsquo;s seat</a></div>
 
 <script>
 (() => {
@@ -539,6 +570,15 @@ details p{margin:10px 0 0; color:var(--muted)}
   document.querySelectorAll("details").forEach((d,k) => d.addEventListener("toggle", () => d.open && T.step("faq_open", { k: "q" + (k+1) })));
   T.scan(document);
 
+  /* video shortcuts: scroll up to the video and start it */
+  document.querySelectorAll("[data-vsl]").forEach(b => b.addEventListener("click", () => {
+    const v = $("vsl"); const n = b.closest("[data-nudge]"); T.step("vsl_jump", { from: n ? n.dataset.nudge : (b.closest(".rail") ? "rail" : "bar") }, true);
+    v.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" });
+    setTimeout(() => v.click(), still ? 0 : 450);
+  }));
+  /* rail shows the live price step */
+  if ($("railPrice") && cur) $("railPrice").textContent = cur.off ? `${cur.label}: $${cur.price}` : `Starts ${S.start}`;
+
   /* ===== motion: reveals, parallax, price count ===== */
   if (!still) {
     document.querySelectorAll("section .wrap > p, section .wrap > h2, section .wrap > ul, section .wrap > .vs, section .wrap > .method, section .wrap > .guarantee, section .wrap > details, .bonus > div").forEach(el => { if (!el.closest(".price-card")) el.classList.add("rv"); });
@@ -571,8 +611,11 @@ details p{margin:10px 0 0; color:var(--muted)}
     if (e.target === join) mc.dataset.join = e.isIntersecting ? "1" : "";
     else mc.dataset.hero = e.isIntersecting ? "1" : "";
     mc.classList.toggle("show", !mc.dataset.hero && !mc.dataset.join);
+    const rl = $("rail"); if (rl) rl.classList.toggle("show", !mc.dataset.hero && !mc.dataset.join && !mc.dataset.close);
   }));
   io.observe(document.querySelector(".hero")); io.observe(join);
+  const closeSec = document.querySelector("section.close");
+  if (closeSec) new IntersectionObserver(es => es.forEach(e => { mc.dataset.close = e.isIntersecting ? "1" : ""; const rl = $("rail"); if (rl) rl.classList.toggle("show", !mc.dataset.hero && !mc.dataset.join && !mc.dataset.close); })).observe(closeSec);
 })();
 </script>
 </body>
