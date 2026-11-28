@@ -125,6 +125,8 @@ window.ICA = {
             verse: "Some seeds fell by the way side, and the fowls came and devoured them up.", ref: "Matthew 13:4" },
           cta: OFFER.tablePath,
           notReady: { text: "Not ready? Peek inside with a 7-day free trial in the Academy", url: LINKS.academy },
+          r3: { pains: ["You eat whatever’s quick and don’t think much about it.", "Food and your faith have never really been in the same conversation.", "You feel more tired than you’d like, and you’re not sure why.", "You’d like to start, but you don’t know where."],
+            cost: "{name}, every week food stays separate from your faith is another week your kids pick up the same habits you were handed. You don’t need to overhaul your life. You need someone to show you where to start, one simple step at a time." },
           r2: {
             plain: "Food and faith have never really been connected for you.",
             real: "Nobody ever showed you that what’s on your plate matters to God, so eating has mostly been about what’s quick or what tastes good. That’s not a failure. It’s a seed that never had a chance to land. And if you feel tired more often than you’d like, it’s worth looking at what’s on your plate.",
@@ -143,6 +145,8 @@ window.ICA = {
             verse: "Because they had no root, they withered away.", ref: "Matthew 13:6" },
           cta: OFFER.tableRocky,
           notReady: { text: "Not ready? Start a 7-day free trial in the Academy", url: LINKS.academy },
+          r3: { pains: ["Monday you’re all in. By Wednesday it’s takeout and a promise to start again next week.", "One party or one stressful week and the whole thing falls apart.", "You hold out, then cave, and feel annoyed with yourself.", "You’re doing it alone, and it’s exhausting."],
+            cost: "{name}, every Monday restart costs you something: your energy, your confidence, and the belief that this time will be different. Another round alone won’t fix it. A plan, a prep day and other families walking with you will." },
           r2: {
             plain: "You’re doing a lot right. It just doesn’t hold when life gets busy.",
             real: "You start strong, then one hard week, a party or a craving knocks you off and you’re back to Monday. That’s not a willpower problem. It’s what happens when you’re doing this alone, with no plan to fall back on and no reason deeper than a goal holding you in place.",
@@ -161,6 +165,8 @@ window.ICA = {
             verse: "And some fell among thorns; and the thorns sprung up, and choked them.", ref: "Matthew 13:7" },
           cta: OFFER.tableThorns,
           notReady: { text: "Not ready? Start a 7-day free trial in the Academy", url: LINKS.academy },
+          r3: { pains: ["It’s 5pm, you’re standing in front of the fridge, and there’s no plan and no energy left.", "You cook one dinner for yourself and a second one for everyone else.", "The grocery bill keeps climbing and you’re not sure eating well is worth it.", "Cravings hit in the afternoon and win most days."],
+            cost: "{name}, every night you stand at the fridge with no plan, takeout wins. Not because you don’t care, but because you’re tired. Forty days of meal plans, grocery lists and one prep day a week takes that fight off your plate." },
           r2: {
             plain: "You want to eat this way. Your life keeps getting in the way.",
             real: "Busy days, a tight budget, a picky family and constant cravings keep crowding it out. You don’t need more information. You need the thinking done for you, so you can just follow along.",
@@ -179,6 +185,8 @@ window.ICA = {
             verse: "But other fell into good ground, and brought forth fruit, some an hundredfold, some sixtyfold, some thirtyfold.", ref: "Matthew 13:8" },
           cta: OFFER.tableGood,
           notReady: { text: "Not ready? Join the Academy and encourage other women on the way", url: LINKS.academy },
+          r3: { pains: ["You eat well, but your family doesn’t always come with you.", "Some nights you’re still cooking two dinners.", "Your husband pokes at the plate. Your kids ask for something else.", "You want your kids to grow up knowing why food matters to God."],
+            cost: "{name}, you’ve already done the hardest part for yourself. Every week your family eats from a different plate, they miss what God has already shown you. The 40 days brings them to the table with you." },
           r2: {
             plain: "You’ve built real habits. Now it’s time to bring your family with you.",
             real: "You’ve stopped starting over and you know how you want to eat. The hard part now is the people around your table: cooking two meals, getting your husband on board, and teaching your kids why it matters.",

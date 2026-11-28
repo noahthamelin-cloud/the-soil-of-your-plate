@@ -127,7 +127,7 @@ const FOLLOW = {
 const followText = l => (FOLLOW[l.pattern] || FOLLOW[SOIL_KEY[l.pattern_label]] || FOLLOW.rocky).replace("{name}", String(l.name||"").trim().split(" ")[0] || "love");
 const ev = l => l.events || {};
 const tracked = l => l.created_at >= TRACK_FROM;
-const stage = l => ev(l).paid ? "paid" : ev(l).checkout_click ? "checkout" : ev(l).results_click ? "clicked" : tracked(l) ? "follow" : "";
+const stage = l => ev(l).paid ? "paid" : ev(l).checkout_click ? "checkout" : tracked(l) ? "follow" : "";
 const STAGE = { paid:["Paid","gold"], checkout:["Reached checkout","gold"], clicked:["Went to the 40 days",""], follow:["Follow up","warn"] };
 const dayStr = d => { const x = new Date(d); return x.getFullYear() + "-" + String(x.getMonth()+1).padStart(2,"0") + "-" + String(x.getDate()).padStart(2,"0"); };
 function inRange(iso){
@@ -256,14 +256,14 @@ function renderApp(){
   <div class="wrap" id="tab-leads" ${view.tab === "funnel" ? "hidden" : ""}>
     <div class="stats">
       <div class="stat"><b>${data.leads.filter(l => inRange(l.created_at)).length}</b><span>Leads in this range</span></div>
-      <div class="stat"><b>${(() => { const t = data.leads.filter(l => inRange(l.created_at) && tracked(l)); const c = t.filter(l => stage(l) !== "follow").length; return t.length ? Math.round(c/t.length*100) + "%" : "\u2013"; })()}</b><span>Went to the 40 days</span></div>
+      <div class="stat"><b>${(() => { const t = data.leads.filter(l => inRange(l.created_at) && tracked(l)); const c = t.filter(l => stage(l) !== "follow").length; return t.length ? Math.round(c/t.length*100) + "%" : "\u2013"; })()}</b><span>Reached checkout</span></div>
       <div class="stat"><b>${data.leads.filter(l => inRange(l.created_at) && stage(l) === "follow").length}</b><span>Need a follow-up</span></div>
       <div class="stat"><b>${newCount}</b><span>New since your last visit</span></div>
     </div>
     <div class="controls">
       <select id="fr">${[["all","All time"],["today","Today"],["yesterday","Yesterday"],["7","Last 7 days"],["since","From a date"]].map(([v,t]) => `<option value="${v}" ${view.range===v?"selected":""}>${t}</option>`).join("")}</select>
       <input type="date" id="fs" value="${esc(view.since)}" ${view.range === "since" ? "" : "hidden"}>
-      <select id="fst"><option value="">Everyone</option>${[["follow","Didn\u2019t click through (follow up)"],["clicked","Went to the 40 days"],["checkout","Reached checkout"],["paid","Paid"]].map(([v,t]) => `<option value="${v}" ${view.status===v?"selected":""}>${t}</option>`).join("")}</select>
+      <select id="fst"><option value="">Everyone</option>${[["follow","Didn\u2019t reach checkout (follow up)"],["checkout","Reached checkout"],["paid","Paid"]].map(([v,t]) => `<option value="${v}" ${view.status===v?"selected":""}>${t}</option>`).join("")}</select>
       <input id="q" placeholder="Search name, email, handle, source" value="${esc(view.q)}">
       <select id="fa"><option value="">All assessments</option>${assessments.map(a => { const id = (data.leads.find(l => (l.assessment_title||l.assessment_id)===a)||{}).assessment_id; return `<option value="${esc(id)}" ${view.assessment===id?"selected":""}>${esc(a)}</option>`; }).join("")}</select>
       <select id="fp"><option value="">All patterns</option>${patterns.map(p => `<option ${view.pattern===p?"selected":""}>${esc(p)}</option>`).join("")}</select>
