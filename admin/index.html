@@ -25,6 +25,8 @@ button,input,select{font:inherit; color:inherit}
 h1,h2,h3{font-family:var(--serif); font-weight:600; margin:0}
 .btn{display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:0 20px; border-radius:24px; border:0; background:var(--gold-lt); color:#000; font-weight:500; font-size:15px; cursor:pointer; text-decoration:none; white-space:nowrap}
 .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--rule)}
+.btn.del{background:transparent; color:#9A3B2A; border:1px solid #E2B9AE; margin-left:auto}
+.btn.del.armed{background:#9A3B2A; color:#fff; border-color:#9A3B2A}
 .btn.sm{min-height:38px; padding:0 14px; font-size:14px}
 .btn[disabled]{opacity:.4; cursor:not-allowed}
 
@@ -335,6 +337,7 @@ function openLead(id){
         ${l.instagram ? `<a class="btn sm" href="https://ig.me/m/${esc(l.instagram)}" target="_blank" rel="noopener">Message on Instagram</a>` : ""}
         ${l.email ? `<a class="btn ${l.instagram ? "ghost " : ""}sm" href="mailto:${esc(l.email)}?subject=${encodeURIComponent("Your Biblical Eating starting point")}&body=${encodeURIComponent(`Hi ${l.name}, Kayla here. I saw your result (${l.pattern_label||""}) and wanted to reach out.`)}">Email</a>` : ""}
         <button class="btn ghost sm" id="copylead">Copy summary</button>
+        <button class="btn sm del" id="dellead">Delete lead</button>
       </div>
     </section>
     <section><h3>Where she got to</h3><p class="journey">${tracked(l) ? [["results_click","Went to the 40 days"],["checkout_click","Reached checkout"],["paid","Paid"]].map(([k,t]) => `<span class="${ev(l)[k] ? "done" : ""}">${ev(l)[k] ? "\u2713" : "\u2013"} ${t}${ev(l)[k] ? ` <small>${fmt(ev(l)[k])}</small>` : ""}</span>`).join("") : "<span>Before click tracking started (Nov 27).</span>"}</p>
@@ -348,6 +351,16 @@ function openLead(id){
   document.getElementById("close").onclick = () => sheet.classList.remove("on");
   sheet.onclick = e => { if (e.target === sheet) sheet.classList.remove("on"); };
   const cf = document.getElementById("copyf"); if (cf) cf.onclick = async () => { try { await navigator.clipboard.writeText(followText(l)); toast("Message copied"); } catch(e){ toast("Copy not available here"); } };
+  /* delete: first tap arms it, second tap within 5 seconds deletes */
+  const dl = document.getElementById("dellead"); let armed = 0;
+  dl.onclick = async () => {
+    if (Date.now() > armed) { armed = Date.now() + 5000; dl.textContent = "Tap again to delete for good"; dl.classList.add("armed"); setTimeout(() => { if (Date.now() > armed) { dl.textContent = "Delete lead"; dl.classList.remove("armed"); } }, 5100); return; }
+    dl.disabled = true; dl.textContent = "Deleting\u2026";
+    const r = await api({ pin: session.pin, action: "delete", id: l.id });
+    if (!r.ok && !/already gone/.test(r.error || "")) { dl.disabled = false; dl.textContent = "Delete lead"; dl.classList.remove("armed"); armed = 0; return toast(r.error || "Couldn\u2019t delete"); }
+    data.leads = data.leads.filter(x => x.id !== l.id);
+    sheet.classList.remove("on"); renderApp(); toast("Lead deleted");
+  };
   document.getElementById("copylead").onclick = async () => {
     const t = `${l.name}${l.email?" \u00b7 "+l.email:""}${l.whatsapp?" \u00b7 "+l.whatsapp:""}${l.instagram?" \u00b7 @"+l.instagram:""}\n${l.assessment_title||l.assessment_id}: ${l.pattern_label||l.pattern}\n` +
       scores.map(([k,v]) => `${k} ${v}/100`).join(", ") + `\nLowest: ${l.lowest||""}\n${fmt(l.created_at)}`;
