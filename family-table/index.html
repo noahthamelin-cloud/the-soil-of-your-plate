@@ -426,6 +426,25 @@ html,body{overflow-x:clip}
 .stack li b{font-weight:500;color:var(--muted);white-space:nowrap}
 .stack .stot{display:flex;justify-content:space-between;margin:6px 0 0;padding-top:12px;border-top:2px solid var(--espresso);font-family:var(--serif);font-style:italic;font-size:22px}
 .stack .stot b{font-weight:400}
+
+/* ---------- final audit (Nov 28) ---------- */
+/* phones: section photos become short full-width banners, so text never squeezes into a 3-word column */
+@media (max-width:739px){
+ .ph-r,.ph-wide,.ph-portrait{float:none;width:100%;margin:4px 0 18px}
+ .ph-r img,.ph-wide img,.ph-portrait img{aspect-ratio:16/9;border-radius:16px}
+ .you .yph{width:36%;max-width:150px}
+}
+/* desktop: Why forty days as two columns (words and the four steps left, photo right), no dead space */
+@media (min-width:740px){
+ section.forty .wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;column-gap:36px;align-items:start}
+ section.forty .wrap > *{grid-column:1}
+ section.forty .wrap > .k,section.forty .wrap > h2,section.forty .wrap > .nudge{grid-column:1/-1}
+ section.forty .ph{grid-column:2;grid-row:3 / span 4;float:none;width:auto;margin:6px 0 0;align-self:stretch}
+ section.forty .ph img{height:100%;min-height:360px;aspect-ratio:auto;object-fit:cover}
+ section.forty .method{grid-template-columns:1fr 1fr;margin-top:18px}
+ #bonuses{grid-template-columns:1fr 1fr}
+ .you .yph{width:300px;max-width:40%}
+}
 </style>
 </head>
 <body>
@@ -534,7 +553,7 @@ html,body{overflow-x:clip}
 
 <section class="linen about">
   <div class="wrap">
-    <figure class="ph ph-portrait"><img class="wipe" src="../assets/kayla/about-1200.webp" srcset="../assets/kayla/about-480.webp 480w, ../assets/kayla/about-800.webp 800w, ../assets/kayla/about-1200.webp 1200w, ../assets/kayla/about-1717.webp 1717w" sizes="(min-width:740px) 680px, 100vw" alt="Kayla Bundy at her table, smiling with a cup of tea" loading="lazy"></figure>
+    <figure class="ph ph-portrait"><img class="wipe" src="../assets/kayla/q-12-1200.webp" srcset="../assets/kayla/q-12-800.webp 800w, ../assets/kayla/q-12-1200.webp 1200w" sizes="(min-width:740px) 680px, 100vw" style="object-position:50% 25%" alt="Kayla smiling with a loaf of fresh bread" loading="lazy"></figure>
     <p class="k">Who I am</p>
     <h2>Hi, I’m Kayla.</h2>
     <p>I was a professional dancer. From the outside I looked like the picture of health. On the inside I was exhausted, constantly sick, and running on a kind of tired that sleep didn’t fix.</p><p>Then I removed refined sugar, and something shifted. That one change sent me back to Scripture with a new question: what foods does God actually call good? Years later, eating this way is one of the most joyful parts of my life, and I want that for your whole table.</p>
@@ -615,8 +634,7 @@ html,body{overflow-x:clip}
       <h1>${esc(X.plain)}</h1>
       <p class="chip">${thumb}<span>Your soil: <b>${esc(P.name)}</b></span></p>
       ${said.length ? `<p class="kk">You told me</p>${said.map(q => `<p class="sq">“${esc(q)}”</p>`).join("")}` : ""}
-      <div class="real"><figure class="yph"><img src="../assets/kayla/q-10-800.webp" alt="Kayla Bundy" style="object-position:50% 32%"></figure>
-        <p class="kk" style="margin-top:22px">What’s really going on</p><p>${esc(X.real)}</p></div>
+      <div class="real"><p class="kk" style="margin-top:22px">What’s really going on</p><figure class="yph"><img src="../assets/kayla/q-10-800.webp" alt="Kayla Bundy" style="object-position:50% 32%"></figure><p>${esc(X.real)}</p></div>
     </div>
     <div class="fitb"><div class="wrap">
       <h2>${esc((RR.fitHeading || "").replace("{name}", first ? ", " + first : ""))}</h2>
