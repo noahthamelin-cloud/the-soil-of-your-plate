@@ -14,6 +14,18 @@ exports.handler = async (event) => {
     await new Promise(r => setTimeout(r, 600)); // slow down guessing
     return json(401, { error: "That PIN isn\u2019t right." });
   }
+  /* Delete one lead (admin only, behind the same PIN). Removes it from the store for good. */
+  if (p.action === "delete") {
+    const id = String(p.id || "");
+    if (!/^[\w-]{10,60}$/.test(id)) return json(400, { error: "Bad lead id" });
+    try {
+      const store = getStore("leads");
+      const row = await store.get(id, { type: "json" });
+      if (!row) return json(404, { error: "That lead is already gone." });
+      await store.delete(id);
+      return json(200, { deleted: id });
+    } catch (e) { return json(502, { error: "Could not delete the lead", detail: String(e.message || e) }); }
+  }
   try {
     const store = getStore("leads");
     const { blobs } = await store.list();
